@@ -1,8 +1,9 @@
-const CACHE_NAME = 'emlurb-156-v1';
+const CACHE_NAME = 'dvcc-156-v2';
 const ASSETS = [
   './',
   './index.html',
   './manifest.json',
+  './icon-512.png',
   'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js',
   'https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0',
