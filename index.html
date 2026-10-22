@@ -257,9 +257,9 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
     <div class="kpi-grid">
       <div class="kpi" style="border-bottom:4px solid var(--secondary)"><div class="kpi-label">TOTAL DEMANDAS</div><div class="kpi-value" id="kpiTotal">0</div><div class="kpi-sub">GERAL PROCESSADO</div></div>
       <div class="kpi" style="border-bottom:4px solid var(--success)"><div class="kpi-label">ATENDIDAS</div><div class="kpi-value" id="kpiAtendidas">0</div><div class="kpi-sub">PRAZO + ATRASO</div></div>
-      <div class="kpi" style="border-bottom:4px solid var(--primary)"><div class="kpi-label" style="color:var(--primary)">EM ANDAMENTO</div><div class="kpi-value" id="kpiAndamento">0</div><div class="kpi-sub">TODA A FILA</div></div>
-      <div class="kpi" style="border-bottom:4px solid var(--success)"><div class="kpi-label" style="color:var(--success)">NO PRAZO</div><div class="kpi-value" id="kpiNoPrazo" style="color:var(--success)">0</div><div class="kpi-sub">FILA DENTRO DO PRAZO</div></div>
-      <div class="kpi" style="border-bottom:4px solid var(--danger)"><div class="kpi-label" style="color:var(--danger)">ATRASADAS</div><div class="kpi-value" id="kpiAtrasadas" style="color:var(--danger)">0</div><div class="kpi-sub">FILA VENCIDA</div></div>
+      <div class="kpi" style="border-bottom:4px solid var(--primary)"><div class="kpi-label" style="color:var(--primary)">EM ANDAMENTO</div><div class="kpi-value" id="kpiAndamento">0</div><div class="kpi-sub">TODAS EM ABERTO</div></div>
+      <div class="kpi" style="border-bottom:4px solid var(--success)"><div class="kpi-label" style="color:var(--success)">NO PRAZO</div><div class="kpi-value" id="kpiNoPrazo" style="color:var(--success)">0</div><div class="kpi-sub">DENTRO DO PRAZO</div></div>
+      <div class="kpi" style="border-bottom:4px solid var(--danger)"><div class="kpi-label" style="color:var(--danger)">ATRASADAS</div><div class="kpi-value" id="kpiAtrasadas" style="color:var(--danger)">0</div><div class="kpi-sub">VENCIDA</div></div>
       <div class="kpi" style="border-bottom:4px solid var(--warning)"><div class="kpi-label" style="color:var(--warning)">PENDÊNCIAS</div><div class="kpi-value" id="kpiPendencias" style="color:var(--warning)">0</div><div class="kpi-sub">STATUS PENDÊNCIA</div></div>
       <div class="kpi" style="border-bottom:4px solid var(--secondary)"><div class="kpi-label">IC %</div><div class="kpi-value" id="kpiIC">0.0%</div><div class="kpi-sub">ÍNDICE DE CONVERSÃO</div></div>
       <div class="kpi" style="border-bottom:4px solid var(--secondary)"><div class="kpi-label">IE %</div><div class="kpi-value" id="kpiIE">0.0%</div><div class="kpi-sub">ÍNDICE EFICIÊNCIA</div></div>
@@ -269,7 +269,7 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
 
   <div id="secGraficos" class="hidden">
     <div class="charts-grid">
-      <div class="chart-card"><h3>📊 SITUAÇÃO (FILA VS ATENDIDAS)</h3><div class="chart-wrap"><canvas id="chartStatus"></canvas></div></div>
+      <div class="chart-card"><h3>📊 SITUAÇÃO (DEMANDAS VS ATENDIDAS)</h3><div class="chart-wrap"><canvas id="chartStatus"></canvas></div></div>
       <div class="chart-card"><h3>🏢 DEMANDAS POR GERÊNCIA</h3><div class="chart-wrap"><canvas id="chartGerencia"></canvas></div></div>
       
       <div class="chart-card">
@@ -282,7 +282,7 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
       
       <div class="chart-card"><h3>📈 TENDÊNCIA TEMPORAL (GERAL)</h3><div class="chart-wrap"><canvas id="chartTendencia"></canvas></div></div>
       <div class="chart-card"><h3>🔧 TOP SERVIÇOS</h3><div class="chart-wrap"><canvas id="chartServicos"></canvas></div></div>
-      <div class="chart-card"><h3>📊 EVOLUÇÃO MENSAL DA FILA</h3><div class="chart-wrap"><canvas id="chartStatusMensal"></canvas></div></div>
+      <div class="chart-card"><h3>📊 EVOLUÇÃO MENSAL DAS DEMANDAS</h3><div class="chart-wrap"><canvas id="chartStatusMensal"></canvas></div></div>
     </div>
 
     <div class="card">
@@ -630,31 +630,36 @@ function limparFiltros() {
 
 function atualizarKPI(dados) {
   const total = dados.length;
-  let atendidas=0, fila_no_prazo=0, fila_atraso=0, prazo=0, pendencias_brutas=0;
+  let atendidas=0, ap=0, af=0, andamento=0, atraso=0, pendencias_brutas=0;
 
   dados.forEach(r => {
-    if (r.__situacaoMatematica === 'atendido_prazo' || r.__situacaoMatematica === 'atendido_fora') {
-      atendidas++; if(r.__situacaoMatematica==='atendido_prazo') prazo++;
-    } else if (r.__situacaoMatematica === 'andamento') {
-      fila_no_prazo++;
-    } else if (r.__situacaoMatematica === 'atraso') {
-      fila_atraso++;
-    }
+    if (r.__situacaoMatematica === 'atendido_prazo') { atendidas++; ap++; }
+    else if (r.__situacaoMatematica === 'atendido_fora') { atendidas++; af++; }
+    else if (r.__situacaoMatematica === 'andamento') { andamento++; }
+    else if (r.__situacaoMatematica === 'atraso') { atraso++; }
+    
     if (String(r[colStatus]||'').toUpperCase().trim() === 'PENDENCIA') pendencias_brutas++;
   });
 
-  const em_andamento_total = fila_no_prazo + fila_atraso;
+  const em_aberto_total = andamento + atraso; // Demandas não atendidas
 
   document.getElementById('kpiTotal').textContent = total.toLocaleString('pt-BR');
   document.getElementById('kpiAtendidas').textContent = atendidas.toLocaleString('pt-BR');
-  document.getElementById('kpiAndamento').textContent = em_andamento_total.toLocaleString('pt-BR');
-  document.getElementById('kpiNoPrazo').textContent = fila_no_prazo.toLocaleString('pt-BR');
-  document.getElementById('kpiAtrasadas').textContent = fila_atraso.toLocaleString('pt-BR');
+  document.getElementById('kpiAndamento').textContent = em_aberto_total.toLocaleString('pt-BR');
+  document.getElementById('kpiNoPrazo').textContent = andamento.toLocaleString('pt-BR');
+  document.getElementById('kpiAtrasadas').textContent = atraso.toLocaleString('pt-BR');
   document.getElementById('kpiPendencias').textContent = pendencias_brutas.toLocaleString('pt-BR');
   
+  // IC % = Atendidas / Total
   document.getElementById('kpiIC').textContent = total > 0 ? (atendidas/total*100).toFixed(1)+'%' : '0.0%';
-  document.getElementById('kpiIE').textContent = atendidas > 0 ? (prazo/atendidas*100).toFixed(1)+'%' : '0.0%';
-  document.getElementById('kpiIA').textContent = total > 0 ? (fila_atraso/total*100).toFixed(1)+'%' : '0.0%';
+  
+  // IE % = Atendidas no Prazo / Atendidas (AP / (AP + AF))
+  document.getElementById('kpiIE').textContent = atendidas > 0 ? (ap/atendidas*100).toFixed(1)+'%' : '0.0%';
+  
+  // IA % = Demandas em Atraso / Demandas Não Atendidas (AT / (AN + AT))
+  document.getElementById('kpiIA').textContent = em_aberto_total > 0 ? (atrato_calc = atraso/em_aberto_total*100).toFixed(1)+'%' : '0.0%';
+  // Fix variable name for IA calculation
+  document.getElementById('kpiIA').textContent = em_aberto_total > 0 ? (atraso/em_aberto_total*100).toFixed(1)+'%' : '0.0%';
 }
 
 function renderRelatorioDinamico(dados = dadosFiltrados) {
@@ -679,6 +684,9 @@ function renderRelatorioDinamico(dados = dadosFiltrados) {
     tAn+=gAn; tAp+=gAp; tAf+=gAf; tAt+=gAt; tTot+=gTot;
     const isOp = gruposExpandidos.has(grupo), arr = isOp ? '▼' : '▶';
 
+    const gAtendidas = gAp + gAf;
+    const gNaoAtendidas = gAn + gAt;
+
     html += `<tr class="tr-grupo" onclick="toggleGrupo('${grupo.replace(/'/g,"\\'")}')">
       <td style="text-align:left"><span style="margin-right:6px;font-size:0.8rem">${arr}</span><strong>${grupo.toUpperCase()}</strong></td>
       <td class="cell-clk bg-andamento" onclick="event.stopPropagation(); filtrarCell('${grupo.replace(/'/g,"\\'")}','','andamento')">${gAn||'-'}</td>
@@ -686,13 +694,15 @@ function renderRelatorioDinamico(dados = dadosFiltrados) {
       <td class="cell-clk bg-fora" onclick="event.stopPropagation(); filtrarCell('${grupo.replace(/'/g,"\\'")}','','atendido_fora')">${gAf||'-'}</td>
       <td class="cell-clk bg-atraso atraso" onclick="event.stopPropagation(); filtrarCell('${grupo.replace(/'/g,"\\'")}','','atraso')">${gAt||'-'}</td>
       <td class="cell-clk" onclick="event.stopPropagation(); filtrarCell('${grupo.replace(/'/g,"\\'")}','','total')"><strong>${gTot}</strong></td>
-      <td style="text-align:center">${pcts(gAp+gAf, gTot)}</td>
-      <td style="text-align:center">${pcts(gAp, gAp+gAf+gAt)}</td>
-      <td style="text-align:center">${pcts(gAt, gTot)}</td>
+      <td style="text-align:center">${pcts(gAtendidas, gTot)}</td>
+      <td style="text-align:center">${pcts(gAp, gAtendidas)}</td>
+      <td style="text-align:center">${pcts(gAt, gNaoAtendidas)}</td>
     </tr>`;
 
     Object.entries(servs).sort((a,b) => b[1].tot - a[1].tot).forEach(([srv, v]) => {
       const cls = isOp ? 'expanded' : '', sT = v.an + v.ap + v.af + v.at;
+      const sAtendidas = v.ap + v.af;
+      const sNaoAtendidas = v.an + v.at;
       html += `<tr class="tr-servico ${cls}">
         <td style="text-align:left">↳ ${srv.toUpperCase()}</td>
         <td class="cell-clk bg-andamento" onclick="filtrarCell('${grupo.replace(/'/g,"\\'")}','${srv.replace(/'/g,"\\'")}','andamento')">${v.an||'-'}</td>
@@ -700,13 +710,16 @@ function renderRelatorioDinamico(dados = dadosFiltrados) {
         <td class="cell-clk bg-fora" onclick="filtrarCell('${grupo.replace(/'/g,"\\'")}','${srv.replace(/'/g,"\\'")}','atendido_fora')">${v.af||'-'}</td>
         <td class="cell-clk bg-atraso atraso" onclick="filtrarCell('${grupo.replace(/'/g,"\\'")}','${srv.replace(/'/g,"\\'")}','atraso')">${v.at||'-'}</td>
         <td class="cell-clk" onclick="filtrarCell('${grupo.replace(/'/g,"\\'")}','${srv.replace(/'/g,"\\'")}','total')" style="color:var(--secondary)">${sT}</td>
-        <td style="text-align:center">${pcts(v.ap+v.af, sT)}</td>
-        <td style="text-align:center">${pcts(v.ap, v.ap+v.af+v.at)}</td>
-        <td style="text-align:center">${pcts(v.at, sT)}</td>
+        <td style="text-align:center">${pcts(sAtendidas, sT)}</td>
+        <td style="text-align:center">${pcts(v.ap, sAtendidas)}</td>
+        <td style="text-align:center">${pcts(v.at, sNaoAtendidas)}</td>
       </tr>`;
     });
   });
   tbody.innerHTML = html;
+
+  const tAtendidasGeral = tAp + tAf;
+  const tNaoAtendidasGeral = tAn + tAt;
 
   document.getElementById('tblRelatorioFoot').innerHTML = `<tr>
     <td style="text-align:right">TOTAIS GERAIS:</td>
@@ -715,9 +728,9 @@ function renderRelatorioDinamico(dados = dadosFiltrados) {
     <td class="cell-clk bg-fora" onclick="filtrarCell(null,null,'atendido_fora')">${tAf}</td>
     <td class="cell-clk bg-atraso atraso" onclick="filtrarCell(null,null,'atraso')">${tAt}</td>
     <td class="cell-clk" onclick="filtrarCell(null,null,'total')"><strong>${tTot}</strong></td>
-    <td style="text-align:center;color:var(--primary)"><strong>${pcts(tAp+tAf, tTot)}</strong></td>
-    <td style="text-align:center;color:var(--primary)"><strong>${pcts(tAp, tAp+tAf+tAt)}</strong></td>
-    <td style="text-align:center;color:var(--danger)"><strong>${pcts(tAt, tTot)}</strong></td>
+    <td style="text-align:center;color:var(--primary)"><strong>${pcts(tAtendidasGeral, tTot)}</strong></td>
+    <td style="text-align:center;color:var(--primary)"><strong>${pcts(tAp, tAtendidasGeral)}</strong></td>
+    <td style="text-align:center;color:var(--danger)"><strong>${pcts(tAt, tNaoAtendidasGeral)}</strong></td>
   </tr>`;
 }
 
