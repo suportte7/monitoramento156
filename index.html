@@ -7,7 +7,7 @@
 <!-- Configuração PWA -->
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#000055">
-<link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3011/3011937.png">
+<link rel="apple-touch-icon" href="icon-512.png">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
@@ -149,30 +149,30 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
 .empty-state{text-align:center;padding:50px 20px;color:var(--muted); text-transform:uppercase; font-weight:700; font-size:0.85rem;}
 .hidden{display:none!important}
 
-/* Botão PWA Elegante */
+/* Botão PWA Elegante com Botão Fechar */
 #installBanner { 
   display:none; position:fixed; bottom:24px; left:50%; transform:translateX(-50%); 
-  background:rgba(0, 0, 85, 0.85); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
-  color:#fff; padding:12px 24px; border-radius:16px; font-weight:800; font-size:0.85rem; text-transform:uppercase;
-  box-shadow:0 12px 40px rgba(0,0,0,0.3); z-index:99999; cursor:pointer; align-items:center; gap:10px; 
+  background:rgba(0, 0, 85, 0.95); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  color:#fff; padding:12px 18px 12px 22px; border-radius:16px; font-weight:800; font-size:0.85rem; text-transform:uppercase;
+  box-shadow:0 12px 40px rgba(0,0,0,0.3); z-index:99999; align-items:center; gap:12px; 
   border:1px solid rgba(255,255,255,0.18); transition:transform 0.2s ease, background 0.2s ease;
 }
-#installBanner:hover { transform:translateX(-50%) translateY(-3px); background:rgba(0,0,85,0.95); }
+#installBanner .install-action { display:flex; align-items:center; gap:8px; cursor:pointer; }
+#installBanner .install-action:hover { opacity:0.9; }
+#installBanner .close-banner { background:none; border:none; color:#fff; font-size:1.1rem; cursor:pointer; opacity:0.7; padding:0 4px; transition:opacity 0.2s; }
+#installBanner .close-banner:hover { opacity:1; }
 
 /* --- REGRAS RESPONSIVAS PARA CELULAR --- */
 @media (max-width: 768px) {
-  /* KPIs Exatamente 3x3 */
   .kpi-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 6px !important; }
   .kpi { padding: 8px !important; height: 95px !important; border-radius: 8px !important; }
   .kpi-label { font-size: 0.55rem !important; letter-spacing: 0; }
   .kpi-value { font-size: 1.15rem !important; margin: 2px 0 !important; }
   .kpi-sub { font-size: 0.5rem !important; }
   
-  /* Filtros do Pareto empilhados 100% */
   .pareto-filters { flex-direction: column; align-items: stretch !important; gap: 8px !important; }
   .pareto-filters .form-group { width: 100%; min-width: 100% !important; }
   
-  /* Menu de Colunas Pop-up Centralizado no Ecrã */
   #ms-cols-drop { 
     width: calc(100vw - 32px) !important; 
     position: fixed !important; 
@@ -190,7 +190,10 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
 </head>
 <body>
 
-<div id="installBanner" onclick="instalarApp()">📱 <span>Instalar App no Celular</span></div>
+<div id="installBanner">
+  <div class="install-action" onclick="instalarApp()">📱 <span>INSTALAR DVCC 156 NO CELULAR</span></div>
+  <button class="close-banner" onclick="fecharBanner()" title="Fechar">✕</button>
+</div>
 
 <header class="top-bar">
   <div class="top-title">EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA</div>
@@ -393,6 +396,9 @@ function instalarApp() {
       deferredPrompt = null;
     });
   }
+}
+function fecharBanner() {
+  document.getElementById('installBanner').style.display = 'none';
 }
 
 let dadosBrutos = [], dadosFiltrados = [], colunas = [];
