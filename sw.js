@@ -1,18 +1,13 @@
-const CACHE_NAME = 'dvcc-156-v3';
+const CACHE_NAME = 'dvcc-156-v4';
 const ASSETS = [
   './',
   './index.html',
   './manifest.json',
-  './icon-512.svg',
-  'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js',
-  'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js',
-  'https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0',
-  'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',
-  'https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js'
+  './icon-512.svg'
 ];
 
 self.addEventListener('install', (e) => {
-  self.skipWaiting(); // Força a atualização imediata no celular
+  self.skipWaiting(); // Força a instalação imediata
   e.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
   );
@@ -29,8 +24,19 @@ self.addEventListener('activate', (e) => {
   return self.clients.claim();
 });
 
+// A GRANDE MUDANÇA: Estratégia "Network First" (Rede Primeiro)
 self.addEventListener('fetch', (e) => {
   e.respondWith(
-    caches.match(e.request).then((response) => response || fetch(e.request))
+    fetch(e.request)
+      .then((response) => {
+        // Se a internet funcionar, clona a resposta fresquinha e guarda no cache
+        const responseClone = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(e.request, responseClone));
+        return response;
+      })
+      .catch(() => {
+        // Se estiver offline (sem internet), aí sim puxa do cache
+        return caches.match(e.request);
+      })
   );
 });
