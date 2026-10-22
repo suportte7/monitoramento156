@@ -1,0 +1,17 @@
+{
+  "name": "Indicadores 156 EMLURB",
+  "short_name": "EMLURB 156",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f3f6fb",
+  "theme_color": "#000055",
+  "description": "Painel analítico e interativo para monitoramento de demandas da EMLURB.",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3011/3011937.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
