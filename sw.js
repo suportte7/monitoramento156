@@ -1,9 +1,9 @@
-const CACHE_NAME = 'dvcc-156-v2';
+const CACHE_NAME = 'dvcc-156-v3';
 const ASSETS = [
   './',
   './index.html',
   './manifest.json',
-  './icon-512.png',
+  './icon-512.svg',
   'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js',
   'https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0',
@@ -12,10 +12,10 @@ const ASSETS = [
 ];
 
 self.addEventListener('install', (e) => {
+  self.skipWaiting(); // Força a atualização imediata no celular
   e.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
   );
-  self.skipWaiting();
 });
 
 self.addEventListener('activate', (e) => {
