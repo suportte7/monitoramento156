@@ -60,18 +60,19 @@ body{background:var(--bg);color:var(--text);padding-top:36px;padding-bottom:20px
 .header-meta strong{color:var(--primary)}
 
 .wrap{padding:0 18px 18px 18px}
-.card{background:var(--surface);border-radius:14px;padding:20px;margin-bottom:20px;box-shadow:var(--shadow);border:1px solid var(--border); transition:all 0.3s ease;}
-.card-title{font-size:0.95rem;font-weight:700;color:var(--primary);padding-bottom:8px;margin-bottom:14px;border-bottom:2px solid #f1f3f5;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px; text-transform:uppercase;}
+/* CARDS ESPREMIDOS (PADDING MENOR) */
+.card{background:var(--surface);border-radius:14px;padding:14px 16px;margin-bottom:16px;box-shadow:var(--shadow);border:1px solid var(--border); transition:all 0.3s ease;}
+.card-title{font-size:0.9rem;font-weight:700;color:var(--primary);padding-bottom:6px;margin-bottom:10px;border-bottom:2px solid #f1f3f5;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px; text-transform:uppercase;}
 
 /* ESTILOS DO UPLOAD DINÂMICO */
 .upload-wrap { display:flex; flex-direction:column; align-items:center; gap:10px; transition:all 0.3s ease; }
-.upload-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;background:color-mix(in srgb,var(--secondary) 8%,transparent);border:1.5px dashed var(--secondary);border-radius:8px;cursor:pointer;font-size:.9rem;font-weight:700;color:var(--primary);transition:all .2s;width:100%;justify-content:center; text-transform:uppercase;}
+.upload-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:color-mix(in srgb,var(--secondary) 8%,transparent);border:1.5px dashed var(--secondary);border-radius:8px;cursor:pointer;font-size:.85rem;font-weight:700;color:var(--primary);transition:all .2s;width:100%;justify-content:center; text-transform:uppercase;}
 .upload-btn:hover{background:color-mix(in srgb,var(--secondary) 16%,transparent);border-style:solid}
 .upload-btn input{display:none}
-#uploadStatus { font-size:0.85rem; color:var(--muted); text-transform:uppercase; font-weight:600; text-align:center; }
-.upload-icon { font-size:1.2rem; }
+#uploadStatus { font-size:0.8rem; color:var(--muted); text-transform:uppercase; font-weight:600; text-align:center; }
+.upload-icon { font-size:1.1rem; }
 
-.card.compact { padding: 10px 18px; margin-bottom: 12px; }
+.card.compact { padding: 10px 16px; margin-bottom: 12px; }
 .card.compact .upload-wrap { flex-direction: row; justify-content: space-between; }
 .card.compact .upload-btn { width: auto; padding: 6px 14px; font-size: 0.8rem; border:1px solid var(--secondary); }
 .card.compact .upload-icon { display: none; }
@@ -81,10 +82,10 @@ body{background:var(--bg);color:var(--text);padding-top:36px;padding-bottom:20px
 .filters-grid{display:flex;flex-direction:column;gap:14px}
 .form-group{display:flex;flex-direction:column;gap:5px}
 .form-group label{font-size:.78rem;font-weight:700;color:var(--text); text-transform:uppercase;}
-.form-control{padding:10px;border:1px solid var(--border);border-radius:8px;font-size:.8rem;background:var(--surface);color:var(--text);transition:border .2s;width:100%; text-transform:uppercase;}
+.form-control{padding:8px 10px;border:1px solid var(--border);border-radius:8px;font-size:.8rem;background:var(--surface);color:var(--text);transition:border .2s;width:100%; text-transform:uppercase;}
 .form-control:focus{outline:none;border-color:var(--secondary);box-shadow:0 0 0 3px rgba(0,119,200,.1)}
 .ms-wrap{position:relative}
-.ms-btn{width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);font-size:.8rem;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center; text-transform:uppercase; font-weight:600;}
+.ms-btn{width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);font-size:.8rem;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center; text-transform:uppercase; font-weight:600;}
 .ms-btn:hover{border-color:var(--secondary)}
 .ms-drop{display:none;position:absolute;top:calc(100% + 3px);left:0;right:0;background:var(--surface);border:1px solid var(--border);border-radius:6px;max-height:240px;overflow-y:auto;z-index:500;box-shadow:0 8px 24px rgba(0,0,0,.15)}
 .ms-drop.open{display:block}
@@ -110,23 +111,24 @@ body{background:var(--bg);color:var(--text);padding-top:36px;padding-bottom:20px
 .btn-success{background:var(--success);color:#fff}
 .btn-secondary{background:var(--secondary);color:#fff}
 
-/* KPIS */
-.kpi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;margin-bottom:20px}
-.kpi{background:var(--surface);border-radius:12px;padding:14px;border:1px solid var(--border);box-shadow:var(--shadow);position:relative;overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; height:105px;}
+/* KPIS ESPREMIDOS */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-bottom:16px}
+.kpi{background:var(--surface);border-radius:10px;padding:12px;border:1px solid var(--border);box-shadow:var(--shadow);position:relative;overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; height:100px;}
 .kpi:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,var(--secondary),var(--primary))}
 .kpi-label{font-size:.7rem;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.5px;line-height:1.1}
 .kpi-value{font-size:1.6rem;font-weight:800;color:var(--primary);line-height:1;margin:4px 0}
 .kpi-sub{font-size:.65rem;color:var(--muted);font-weight:700;line-height:1.1;text-transform:uppercase;}
 
-.charts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px;margin-bottom:20px}
-.chart-card{background:var(--surface);border-radius:12px;padding:16px;border:1px solid var(--border);box-shadow:var(--shadow)}
-.chart-card h3{font-size:0.8rem;font-weight:700;color:var(--primary);margin-bottom:12px; text-transform:uppercase;}
-.chart-wrap{position:relative;height:250px}
+/* GRÁFICOS ESPREMIDOS */
+.charts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px;margin-bottom:16px}
+.chart-card{background:var(--surface);border-radius:10px;padding:12px;border:1px solid var(--border);box-shadow:var(--shadow)}
+.chart-card h3{font-size:0.75rem;font-weight:700;color:var(--primary);margin-bottom:10px; text-transform:uppercase;}
+.chart-wrap{position:relative;height:240px}
 
 /* PARETO */
 .pareto-filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; align-items: flex-end; }
 .pareto-scroll { overflow-x: auto; overflow-y: hidden; width: 100%; padding-bottom: 10px; }
-.pareto-wrap { height: 380px; min-width: 700px; position: relative; }
+.pareto-wrap { height: 360px; min-width: 700px; position: relative; }
 .pareto-filters .form-group { flex-direction: column; }
 .pareto-filters .form-control { padding: 6px 10px; }
 
@@ -188,7 +190,7 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
   display:none; position:fixed; bottom:24px; left:50%; transform:translateX(-50%); 
   background:rgba(0, 0, 85, 0.95); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
   color:#fff; padding:12px 18px 12px 22px; border-radius:16px; font-weight:800; font-size:0.85rem; text-transform:uppercase;
-  box-shadow:0 12px 40px rgba(0,0,0,0.3); z-index:99999; align-items:center; gap:12px; 
+  box-shadow:0 12px 40px rgba(0,0,0,0.3); z-index:99998; align-items:center; gap:12px; 
   border:1px solid rgba(255,255,255,0.18); transition:transform 0.2s ease, background 0.2s ease;
 }
 #installBanner .install-action { display:flex; align-items:center; gap:8px; cursor:pointer; }
@@ -196,8 +198,35 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
 #installBanner .close-banner { background:none; border:none; color:#fff; font-size:1.1rem; cursor:pointer; opacity:0.7; padding:0 4px; transition:opacity 0.2s; }
 #installBanner .close-banner:hover { opacity:1; }
 
+/* BOTÃO VOLTAR AO TOPO FLUTUANTE */
+#btnBackToTop {
+  position: fixed;
+  bottom: 24px;
+  right: 18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--secondary);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  z-index: 99999;
+}
+#btnBackToTop:hover { background: var(--primary); transform: translateY(18px); }
+#btnBackToTop:active { transform: translateY(22px) scale(0.95); }
+#btnBackToTop.show { opacity: 1; visibility: visible; transform: translateY(0); }
+#btnBackToTop.show:hover { transform: translateY(-3px); }
+
 /* RODAPÉ DISCRETO */
-.app-footer { text-align: center; padding: 16px 0 6px 0; font-size: 0.75rem; color: var(--muted); font-style: italic; font-weight: 400; opacity: 0.85; letter-spacing: 0.3px; }
+.app-footer { text-align: center; padding: 10px 0 6px 0; font-size: 0.75rem; color: var(--muted); font-style: italic; font-weight: 400; opacity: 0.85; letter-spacing: 0.3px; }
 
 @media (max-width: 768px) {
   .kpi-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 6px !important; }
@@ -455,6 +484,11 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
   </footer>
 </div>
 
+<!-- BOTÃO VOLTAR AO TOPO -->
+<button id="btnBackToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="Voltar ao Topo">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+</button>
+
 <div class="overlay" id="overlay">
   <div class="ov-box">
     <div class="ov-spinner"></div>
@@ -574,6 +608,14 @@ const UIController = {
     document.getElementById('ovBar').style.width = pct + '%'; 
     document.getElementById('ovPct').textContent = pct + '%'; 
     document.getElementById('ovStatus').textContent = st; 
+  },
+  
+  initScrollToTop() {
+    window.addEventListener('scroll', () => {
+      const btn = document.getElementById('btnBackToTop');
+      if (window.scrollY > 300) btn.classList.add('show');
+      else btn.classList.remove('show');
+    });
   }
 };
 
@@ -582,6 +624,7 @@ document.addEventListener('click', e => {
 });
 
 UIController.initTheme();
+UIController.initScrollToTop();
 
 /* ========================================================
    3. MÓDULO DE PROCESSAMENTO E FILTROS (FilterManager)
