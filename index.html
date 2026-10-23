@@ -111,28 +111,29 @@ body{background:var(--bg);color:var(--text);padding-top:36px;padding-bottom:20px
 .btn-success{background:var(--success);color:#fff}
 .btn-secondary{background:var(--secondary);color:#fff}
 
-/* KPIS ESPREMIDOS */
+/* KPIS ESPREMIDOS (ALTURA REDUZIDA AQUI) */
 .kpi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-bottom:16px}
-.kpi{background:var(--surface);border-radius:10px;padding:12px;border:1px solid var(--border);box-shadow:var(--shadow);position:relative;overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; height:100px;}
+.kpi{background:var(--surface);border-radius:10px;padding:12px;border:1px solid var(--border);box-shadow:var(--shadow);position:relative;overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; height:80px;}
 .kpi:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,var(--secondary),var(--primary))}
 .kpi-label{font-size:.7rem;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.5px;line-height:1.1}
 .kpi-value{font-size:1.6rem;font-weight:800;color:var(--primary);line-height:1;margin:4px 0}
 .kpi-sub{font-size:.65rem;color:var(--muted);font-weight:700;line-height:1.1;text-transform:uppercase;}
 
-/* GRÁFICOS ESPREMIDOS */
+/* GRÁFICOS ESPREMIDOS (ALTURA REDUZIDA AQUI) */
 .charts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px;margin-bottom:16px}
 .chart-card{background:var(--surface);border-radius:10px;padding:12px;border:1px solid var(--border);box-shadow:var(--shadow)}
 .chart-card h3{font-size:0.75rem;font-weight:700;color:var(--primary);margin-bottom:10px; text-transform:uppercase;}
-.chart-wrap{position:relative;height:240px}
+.chart-wrap{position:relative;height:200px}
 
-/* PARETO */
+/* PARETO (ALTURA REDUZIDA AQUI) */
 .pareto-filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; align-items: flex-end; }
 .pareto-scroll { overflow-x: auto; overflow-y: hidden; width: 100%; padding-bottom: 10px; }
-.pareto-wrap { height: 360px; min-width: 700px; position: relative; }
+.pareto-wrap { height: 280px; min-width: 700px; position: relative; }
 .pareto-filters .form-group { flex-direction: column; }
 .pareto-filters .form-control { padding: 6px 10px; }
 
-.tbl-wrap{overflow-x:auto;max-height:480px;border:1px solid var(--border);border-radius:10px;background:var(--surface)}
+/* TABELA (ALTURA REDUZIDA AQUI) */
+.tbl-wrap{overflow-x:auto;max-height:380px;border:1px solid var(--border);border-radius:10px;background:var(--surface)}
 table{width:100%;border-collapse:collapse;font-size:0.78rem; text-transform:uppercase;}
 thead th{background:var(--bg);color:var(--primary);font-weight:800;padding:8px 10px;border-bottom:2px solid var(--border);white-space:nowrap;position:sticky;top:0;z-index:5}
 thead th.sortable{cursor:pointer;user-select:none;transition:background .2s}
@@ -230,7 +231,8 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
 
 @media (max-width: 768px) {
   .kpi-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 6px !important; }
-  .kpi { padding: 8px !important; height: 95px !important; border-radius: 8px !important; }
+  /* KPI MOBILE: ALTURA REDUZIDA AQUI TAMBÉM */
+  .kpi { padding: 8px !important; height: 75px !important; border-radius: 8px !important; }
   .kpi-label { font-size: 0.55rem !important; letter-spacing: 0; }
   .kpi-value { font-size: 1.15rem !important; margin: 2px 0 !important; }
   .kpi-sub { font-size: 0.5rem !important; }
@@ -420,7 +422,8 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
         <button class="btn-mini" onclick="RelatorioManager.expandirTudo(false)">➖ RECOLHER TUDO</button>
       </div>
     </div>
-    <div class="tbl-wrap" style="max-height:550px">
+    <!-- ALTURA REDUZIDA AQUI NO RELATÓRIO DINÂMICO TAMBÉM -->
+    <div class="tbl-wrap" style="max-height:400px">
       <table>
         <thead>
           <tr>
