@@ -1122,12 +1122,17 @@ function renderParetoBairro() {
     base = base.filter(r => prRpaState.has(String(r[colRPA]||'').trim().replace('.0','').toUpperCase()));
   }
 
-  const ct = {}; base.forEach(r => { const v = String(r[colBairro]||'S/I').trim().toUpperCase(); ct[v] = (ct[v]||0)+1; });
+  const ct = {}; 
+  base.forEach(r => { 
+    const v = String(r[colBairro]||'S/I').trim().toUpperCase(); 
+    if(v) ct[v] = (ct[v]||0)+1; 
+  });
+  
   let sorted = Object.entries(ct).sort((a,b)=>b[1]-a[1]);
   const tot = sorted.reduce((s,x)=>s+x[1],0);
   if(topN>0) sorted = sorted.slice(0, topN);
 
-  let acum = 0; const acm = sorted.map(x => { acum+=x[1]; return parseFloat((acum/tot*100).toFixed(1)); });
+  let acum = 0; const acm = sorted.map(x => { acum+=x[1]; return tot > 0 ? parseFloat((acum/tot*100).toFixed(1)) : 0; });
   
   chParetoBairro = new Chart(document.getElementById('chartParetoBairro'), { 
     type:'bar', 
@@ -1144,7 +1149,7 @@ function renderParetoBairro() {
       scales:{
         x: { ticks: { font: fontResponsiva } },
         y:{beginAtZero:true, position:'left'}, 
-        y2:{beginAtZero:true, position:'right', min:0, max:100, grid:{drawOnChartArea:false}, ticks:{callback:v+'%'}}
+        y2:{beginAtZero:true, position:'right', min:0, max:100, grid:{drawOnChartArea:false}, ticks:{callback:v=>v+'%'}}
       }
     } 
   });
