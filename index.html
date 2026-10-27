@@ -32,7 +32,7 @@ body{background:var(--bg);color:var(--text);padding-top:36px;padding-bottom:20px
 .top-bar { position:fixed; top:0; left:0; right:0; height:40px; background:var(--primary); display:flex; justify-content:space-between; align-items:center; padding:0 14px; z-index:1000; box-shadow:0 2px 8px rgba(0,0,0,0.15); transition:background 0.25s; }
 .top-left { display:flex; align-items:center; gap:12px; }
 
-/* NOVO ESTILO DO TÍTULO DA BARRA */
+/* ESTILO DO TÍTULO DA BARRA */
 .top-title-wrapper { display: flex; align-items: center; gap: 8px; color: #fff; text-transform: uppercase; letter-spacing: 0.3px; opacity: 0.95; font-style: italic; }
 .top-title-brand { font-size: 1.1rem; font-weight: 800; }
 .top-title-text { display: flex; flex-direction: column; font-size: 0.65rem; line-height: 1.1; font-weight: 400; }
@@ -115,7 +115,7 @@ body{background:var(--bg);color:var(--text);padding-top:36px;padding-bottom:20px
 .btn-success{background:var(--success);color:#fff}
 .btn-secondary{background:var(--secondary);color:#fff}
 
-/* KPIS (AJUSTE DA ALTURA PARA NÃO CORTAR TEXTO) */
+/* KPIS */
 .kpi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-bottom:16px}
 .kpi{background:var(--surface);border-radius:10px;padding:12px;border:1px solid var(--border);box-shadow:var(--shadow);position:relative;overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; min-height:85px; height:auto;}
 .kpi:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,var(--secondary),var(--primary))}
@@ -235,7 +235,6 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
 
 @media (max-width: 768px) {
   .kpi-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 6px !important; }
-  /* KPI MOBILE: ALTURA FLEXÍVEL AQUI TAMBÉM */
   .kpi { padding: 8px !important; min-height: 75px !important; height: auto !important; border-radius: 8px !important; }
   .kpi-label { font-size: 0.55rem !important; letter-spacing: 0; }
   .kpi-value { font-size: 1.15rem !important; margin: 4px 0 !important; }
@@ -304,7 +303,11 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
       <div class="form-group"><label>BAIRRO</label><div class="ms-wrap"><button class="ms-btn" onclick="UIController.toggleMs('bairro')"><span id="ms-bairro-lbl">TODOS</span><span>▾</span></button><div class="ms-drop" id="ms-bairro-drop"></div></div></div>
       <div class="form-group"><label>LOGRADOURO</label><div class="ms-wrap"><button class="ms-btn" onclick="UIController.toggleMs('logradouro')"><span id="ms-logradouro-lbl">TODOS</span><span>▾</span></button><div class="ms-drop" id="ms-logradouro-drop"></div></div></div>
       
-      <div class="form-group">
+      <!-- NOVOS FILTROS DE DATA DE CADASTRO -->
+      <div class="form-group"><label>INÍCIO (DATA CADASTRO)</label><input type="date" class="form-control" id="dtCadInicio" onchange="FilterManager.aplicarFiltros()"></div>
+      <div class="form-group"><label>FIM (DATA CADASTRO)</label><input type="date" class="form-control" id="dtCadFim" onchange="FilterManager.aplicarFiltros()"></div>
+
+      <div class="form-group" style="margin-top:4px;">
         <label>PERÍODO (MOVIMENTAÇÃO)</label>
         <div class="periodo-btns">
           <button class="btn-per" onclick="FilterManager.setPeriodo(7,this)">7D</button>
@@ -327,7 +330,10 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
 
 <div class="sub-header">
   <div class="sub-title">INDICADORES 156 - MONITORAMENTO</div>
-  <div class="fonte-text">FONTE: SGDEM/156</div>
+  <div class="fonte-text">
+    FONTE: SGDEM/156 
+    <span id="spanDataAntiga" class="hidden" style="margin-left:6px; opacity:0.85;">| ⏳ REGISTRO MAIS ANTIGO: <strong id="lblDataAntiga">-</strong></span>
+  </div>
 </div>
 
 <div class="wrap">
@@ -432,7 +438,6 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
         <button class="btn-mini" onclick="RelatorioManager.expandirTudo(false)">➖ RECOLHER TUDO</button>
       </div>
     </div>
-    <!-- ALTURA REDUZIDA AQUI NO RELATÓRIO DINÂMICO TAMBÉM -->
     <div class="tbl-wrap" style="max-height:400px">
       <table>
         <thead>
@@ -555,6 +560,7 @@ const AppState = {
   colStatus: 'Situação',
   colPrazo: 'Prazo',
   colMov: 'Data Mov',
+  colCadastro: 'Data Cadastro',
   colGerencia: '',
   colRPA: '',
   colBairro: '',
@@ -672,6 +678,7 @@ const FilterManager = {
                 AppState.colStatus = AppState.colunas.find(c => /^SITUAÇÃO$|^SITUACAO$/i.test(c)) || 'Situação';
                 AppState.colPrazo = AppState.colunas.find(c => /^PRAZO$/i.test(c)) || 'Prazo';
                 AppState.colMov = AppState.colunas.find(c => /data.*mov|movimentacao/i.test(c)) || 'Data Mov';
+                AppState.colCadastro = AppState.colunas.find(c => /data.*cadastro/i.test(c)) || 'Data Cadastro';
                 AppState.colGerencia = AppState.colunas.find(c => /gerencia|setor/i.test(c)) || 'Gerencia';
                 AppState.colRPA = AppState.colunas.find(c => /^RPA$/i.test(c)) || 'RPA';
                 AppState.colBairro = AppState.colunas.find(c => /^BAIRRO$/i.test(c)) || 'Bairro';
@@ -697,6 +704,7 @@ const FilterManager = {
                   const item = { ...r };
                   item.__dateMov = parseD(r[AppState.colMov]);
                   item.__prazo = parseD(r[AppState.colPrazo]);
+                  item.__dateCad = parseD(r[AppState.colCadastro]);
                   return item;
                 }).filter(r => !/cancelad/i.test(String(r[AppState.colStatus] || '')));
 
@@ -825,6 +833,11 @@ const FilterManager = {
     const dtIni = strIni ? new Date(strIni + 'T00:00:00') : null;
     const dtRef = strRef ? new Date(strRef + 'T00:00:00').setHours(0,0,0,0) : new Date().setHours(0,0,0,0);
 
+    const strCadIni = document.getElementById('dtCadInicio').value;
+    const strCadFim = document.getElementById('dtCadFim').value;
+    const dtCadIni = strCadIni ? new Date(strCadIni + 'T00:00:00') : null;
+    const dtCadFim = strCadFim ? new Date(strCadFim + 'T23:59:59') : null;
+
     RelatorioManager.limparFiltroDinamicoBase();
 
     AppState.dadosFiltrados = AppState.dadosBrutos.filter(r => {
@@ -833,8 +846,12 @@ const FilterManager = {
         if (colName && AppState.msOpcoes[c].length && !AppState.msState[c].has(String(r[colName]||'').replace('.0','').trim()||'(Vazio)')) return false;
       }
       if (dtIni && r.__dateMov && r.__dateMov < dtIni) return false;
+      if (dtCadIni && r.__dateCad && r.__dateCad < dtCadIni) return false;
+      if (dtCadFim && r.__dateCad && r.__dateCad > dtCadFim) return false;
       return true;
     });
+
+    let minCadastrada = null;
 
     AppState.dadosFiltrados.forEach(r => {
       let movVal = r.__dateMov ? new Date(r.__dateMov.getTime()).setHours(0,0,0,0) : dtRef;
@@ -846,7 +863,22 @@ const FilterManager = {
       } else {
         r.__situacaoMatematica = przVal < dtRef ? 'atraso' : 'andamento';
       }
+      
+      // Procura a data mais antiga no grupo filtrado
+      if (r.__dateCad) {
+        if (!minCadastrada || r.__dateCad < minCadastrada) minCadastrada = r.__dateCad;
+      }
     });
+
+    // Atualiza campo Data Mais Antiga
+    const spanDataAntiga = document.getElementById('spanDataAntiga');
+    const lblDataAntiga = document.getElementById('lblDataAntiga');
+    if (minCadastrada) {
+      lblDataAntiga.textContent = minCadastrada.toLocaleDateString('pt-BR');
+      spanDataAntiga.classList.remove('hidden');
+    } else {
+      spanDataAntiga.classList.add('hidden');
+    }
 
     document.getElementById('headerTotalReg').textContent = AppState.dadosFiltrados.length.toLocaleString('pt-BR');
     document.getElementById('headerRegistros').classList.remove('hidden');
@@ -868,6 +900,8 @@ const FilterManager = {
     AppState.camposMs.forEach(c => { AppState.msState[c] = new Set(AppState.msOpcoes[c]); this.renderMsOpts(c); this.attLbl(c); });
     
     document.getElementById('dtInicio').value = '';
+    document.getElementById('dtCadInicio').value = '';
+    document.getElementById('dtCadFim').value = '';
     document.getElementById('dtReferencia').value = '';
     document.querySelectorAll('.periodo-btns .btn-per').forEach(b => b.classList.remove('active'));
     document.querySelector('.periodo-btns .btn-per:last-child').classList.add('active');
