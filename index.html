@@ -25,14 +25,14 @@ body[data-theme="rosa"]{--primary:#963e70;--secondary:#d85c9b;--bg:#fff1f7;--sur
 body[data-theme="ambar"]{--primary:#805400;--secondary:#d99400;--bg:#fff8e7;--surface:#fff;--border:#f0dfb5;--text:#43371f;--muted:#82714c}
 body[data-theme="grafite"]{color-scheme:dark;--primary:#d2d9e3;--secondary:#8796aa;--bg:#17191d;--surface:#22262c;--border:#3b414a;--text:#edf0f4;--muted:#b0b8c3;--shadow:0 8px 24px rgba(0,0,0,.28)}
 body[data-theme="vinho"]{--primary:#762b45;--secondary:#bd5271;--bg:#fbf0f3;--surface:#fff;--border:#ecd2da;--text:#402832;--muted:#826a73}
+body[data-theme="premium"]{color-scheme:dark;--primary:#7c6fff;--secondary:#00e5b0;--bg:#07090f;--surface:#111520;--border:#1e2438;--text:#f0f2ff;--muted:#8892b0;--success:#00e5b0;--warning:#ffb547;--danger:#ff5f7e;--shadow:0 12px 40px rgba(0,0,0,0.45)}
+
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',system-ui,sans-serif}
 body{background:var(--bg);color:var(--text);padding-top:36px;padding-bottom:20px;transition:background .25s,color .25s}
 
 /* BARRA SUPERIOR E GAVETA */
 .top-bar { position:fixed; top:0; left:0; right:0; height:40px; background:var(--primary); display:flex; justify-content:space-between; align-items:center; padding:0 14px; z-index:1000; box-shadow:0 2px 8px rgba(0,0,0,0.15); transition:background 0.25s; }
 .top-left { display:flex; align-items:center; gap:12px; }
-
-/* ESTILO DO TÍTULO DA BARRA */
 .top-title-wrapper { display: flex; align-items: center; gap: 8px; color: #fff; text-transform: uppercase; letter-spacing: 0.3px; opacity: 0.95; font-style: italic; }
 .top-title-brand { font-size: 1.1rem; font-weight: 800; }
 .top-title-text { display: flex; flex-direction: column; font-size: 0.65rem; line-height: 1.1; font-weight: 400; }
@@ -45,7 +45,6 @@ body{background:var(--bg);color:var(--text);padding-top:36px;padding-bottom:20px
 /* GAVETA LATERAL */
 .sidebar-overlay { position:fixed; inset:0; background:rgba(0,10,30,0.6); backdrop-filter:blur(2px); -webkit-backdrop-filter:blur(2px); z-index:10001; opacity:0; visibility:hidden; transition:all 0.3s ease; }
 .sidebar-overlay.show { opacity:1; visibility:visible; }
-
 .sidebar { position:fixed; top:0; left:0; bottom:0; width:340px; max-width:85vw; background:var(--surface); z-index:10002; transform:translateX(-100%); transition:transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); display:flex; flex-direction:column; box-shadow:4px 0 24px rgba(0,0,0,0.25); border-right:1px solid var(--border); }
 .sidebar.open { transform:translateX(0); }
 .sidebar-header { padding:18px 20px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:color-mix(in srgb, var(--primary) 4%, var(--surface)); }
@@ -67,8 +66,9 @@ body{background:var(--bg);color:var(--text);padding-top:36px;padding-bottom:20px
 .wrap{padding:0 18px 18px 18px}
 .card{background:var(--surface);border-radius:14px;padding:14px 16px;margin-bottom:16px;box-shadow:var(--shadow);border:1px solid var(--border); transition:all 0.3s ease;}
 .card-title{font-size:0.9rem;font-weight:700;color:var(--primary);padding-bottom:6px;margin-bottom:10px;border-bottom:2px solid #f1f3f5;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px; text-transform:uppercase;}
+body[data-theme="premium"] .card-title { border-bottom-color: var(--border); }
 
-/* ESTILOS DO UPLOAD DINÂMICO */
+/* UPLOAD DINÂMICO */
 .upload-wrap { display:flex; flex-direction:column; align-items:center; gap:10px; transition:all 0.3s ease; }
 .upload-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:color-mix(in srgb,var(--secondary) 8%,transparent);border:1.5px dashed var(--secondary);border-radius:8px;cursor:pointer;font-size:.85rem;font-weight:700;color:var(--primary);transition:all .2s;width:100%;justify-content:center; text-transform:uppercase;}
 .upload-btn:hover{background:color-mix(in srgb,var(--secondary) 16%,transparent);border-style:solid}
@@ -97,7 +97,6 @@ body{background:var(--bg);color:var(--text);padding-top:36px;padding-bottom:20px
 .ms-search input{width:100%;padding:5px 9px;border:1px solid var(--border);border-radius:4px;font-size:.8rem;background:var(--surface);color:var(--text); text-transform:uppercase;}
 
 .sidebar-content .ms-drop { position: static; margin-top: 4px; box-shadow: inset 0 4px 10px rgba(0,0,0,0.05); max-height: 200px; border-radius: 8px; }
-
 .ms-opt{padding:8px 10px;display:flex;align-items:center;gap:8px;font-size:.8rem;cursor:pointer; text-transform:uppercase;}
 .ms-opt:hover{background:color-mix(in srgb,var(--secondary) 10%,transparent)}
 .ms-opt span { white-space: normal; line-height: 1.2; word-break: break-word; }
@@ -123,11 +122,34 @@ body{background:var(--bg);color:var(--text);padding-top:36px;padding-bottom:20px
 .kpi-value{font-size:1.6rem;font-weight:800;color:var(--primary);line-height:1;margin:6px 0;}
 .kpi-sub{font-size:.65rem;color:var(--muted);font-weight:700;line-height:1.1;text-transform:uppercase;margin-top:auto;}
 
-/* GRÁFICOS */
-.charts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px;margin-bottom:16px}
-.chart-card{background:var(--surface);border-radius:10px;padding:12px;border:1px solid var(--border);box-shadow:var(--shadow)}
-.chart-card h3{font-size:0.75rem;font-weight:700;color:var(--primary);margin-bottom:10px; text-transform:uppercase;}
-.chart-wrap{position:relative;height:200px}
+/* GRÁFICOS E WIDGETS PREMIUM */
+.charts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-bottom:16px}
+.chart-card{background:var(--surface);border-radius:12px;padding:14px;border:1px solid var(--border);box-shadow:var(--shadow); transition:transform 0.2s, box-shadow 0.2s; display:flex; flex-direction:column;}
+body[data-theme="premium"] .chart-card:hover { transform:translateY(-3px); box-shadow:0 15px 45px rgba(0,0,0,0.5); }
+.chart-card h3{font-size:0.75rem;font-weight:700;color:var(--primary);margin-bottom:12px; text-transform:uppercase; display:flex; align-items:center; justify-content:space-between; gap:6px;}
+.chart-wrap{position:relative;flex:1;min-height:220px;}
+
+/* GAUGE DE ARCO ÚNICO CSS */
+.gauge-outer { display:flex; flex-direction:column; align-items:center; justify-content:center; flex:1; position:relative; min-height:160px;}
+.multi-gauge-legend { display:flex; justify-content:center; gap:12px; width:100%; margin-top:8px; flex-wrap:wrap;}
+.mg-item { display:flex; align-items:center; gap:4px; font-size:0.7rem; font-weight:700; color:var(--text); text-transform:uppercase; }
+.mg-dot { width:8px; height:8px; border-radius:50%; display:inline-block; }
+
+/* RANKING BAIRROS COMPACTO CSS */
+.rank-list { display:flex; flex-direction:column; gap:6px; max-height:200px; overflow-y:auto; padding-right:4px; flex:1;}
+.rank-list::-webkit-scrollbar { width:4px; }
+.rank-list::-webkit-scrollbar-thumb { background:var(--border); border-radius:4px; }
+.rank-row { display:flex; align-items:center; gap:8px; padding:6px 10px; border-radius:8px; background:color-mix(in srgb, var(--secondary) 6%, var(--surface)); transition:background 0.15s; border:1px solid transparent; }
+.rank-row:hover { background:color-mix(in srgb, var(--secondary) 12%, var(--surface)); border-color:var(--border); }
+.rpos { width:20px; height:20px; border-radius:4px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:0.6rem; font-weight:800; }
+.rpos.g { background:linear-gradient(135deg, #ffd700, #ff9500); color:#000; box-shadow:0 2px 6px rgba(255,215,0,0.4); }
+.rpos.s { background:linear-gradient(135deg, #c0c0c0, #888888); color:#000; box-shadow:0 2px 6px rgba(192,192,192,0.4); }
+.rpos.b { background:linear-gradient(135deg, #cd7f32, #a05020); color:#fff; box-shadow:0 2px 6px rgba(205,127,50,0.4); }
+.rpos.n { background:var(--bg); color:var(--muted); border:1px solid var(--border); }
+.rname { flex:1; font-size:0.7rem; font-weight:700; color:var(--text); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; text-transform:uppercase; }
+.rbar-wrap { width:50px; height:4px; background:color-mix(in srgb, var(--border) 50%, transparent); border-radius:2px; overflow:hidden;}
+.rbar { height:100%; border-radius:2px; background:linear-gradient(90deg, var(--primary), var(--secondary)); transition:width 0.5s ease;}
+.rcount { font-size:0.75rem; font-weight:800; color:var(--secondary); min-width:24px; text-align:right; }
 
 /* PARETO */
 .pareto-filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; align-items: flex-end; }
@@ -191,46 +213,18 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
 .modal-export-item:hover { background:color-mix(in srgb, var(--secondary) 8%, var(--bg)); }
 .modal-export-item input { accent-color: var(--secondary); width:15px; height:15px; }
 
-#installBanner { 
-  display:none; position:fixed; bottom:24px; left:50%; transform:translateX(-50%); 
-  background:rgba(0, 0, 85, 0.95); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
-  color:#fff; padding:12px 18px 12px 22px; border-radius:16px; font-weight:800; font-size:0.85rem; text-transform:uppercase;
-  box-shadow:0 12px 40px rgba(0,0,0,0.3); z-index:99998; align-items:center; gap:12px; 
-  border:1px solid rgba(255,255,255,0.18); transition:transform 0.2s ease, background 0.2s ease;
-}
+#installBanner { display:none; position:fixed; bottom:24px; left:50%; transform:translateX(-50%); background:rgba(0, 0, 85, 0.95); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); color:#fff; padding:12px 18px 12px 22px; border-radius:16px; font-weight:800; font-size:0.85rem; text-transform:uppercase; box-shadow:0 12px 40px rgba(0,0,0,0.3); z-index:99998; align-items:center; gap:12px; border:1px solid rgba(255,255,255,0.18); transition:transform 0.2s ease, background 0.2s ease;}
 #installBanner .install-action { display:flex; align-items:center; gap:8px; cursor:pointer; }
 #installBanner .install-action:hover { opacity:0.9; }
 #installBanner .close-banner { background:none; border:none; color:#fff; font-size:1.1rem; cursor:pointer; opacity:0.7; padding:0 4px; transition:opacity 0.2s; }
 #installBanner .close-banner:hover { opacity:1; }
 
-/* BOTÃO VOLTAR AO TOPO FLUTUANTE */
-#btnBackToTop {
-  position: fixed;
-  bottom: 24px;
-  right: 18px;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--secondary);
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(20px);
-  transition: all 0.3s ease;
-  z-index: 99999;
-}
+#btnBackToTop { position: fixed; bottom: 24px; right: 18px; width: 44px; height: 44px; border-radius: 50%; background: var(--secondary); color: #fff; border: none; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transform: translateY(20px); transition: all 0.3s ease; z-index: 99999;}
 #btnBackToTop:hover { background: var(--primary); transform: translateY(18px); }
 #btnBackToTop:active { transform: translateY(22px) scale(0.95); }
 #btnBackToTop.show { opacity: 1; visibility: visible; transform: translateY(0); }
 #btnBackToTop.show:hover { transform: translateY(-3px); }
 
-/* RODAPÉ DISCRETO */
 .app-footer { text-align: center; padding: 10px 0 6px 0; font-size: 0.75rem; color: var(--muted); font-style: italic; font-weight: 400; opacity: 0.85; letter-spacing: 0.3px; }
 
 @media (max-width: 768px) {
@@ -243,18 +237,7 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
   .pareto-filters { flex-direction: column; align-items: stretch !important; gap: 8px !important; }
   .pareto-filters .form-group { width: 100%; min-width: 100% !important; }
   
-  #ms-cols-drop { 
-    width: calc(100vw - 32px) !important; 
-    position: fixed !important; 
-    top: 50% !important; 
-    left: 16px !important; 
-    right: 16px !important; 
-    transform: translateY(-50%) !important; 
-    max-height: 70vh !important; 
-    box-shadow: 0 10px 50px rgba(0,0,0,0.5) !important; 
-    border: 2px solid var(--secondary) !important; 
-    z-index: 10001 !important; 
-  }
+  #ms-cols-drop { width: calc(100vw - 32px) !important; position: fixed !important; top: 50% !important; left: 16px !important; right: 16px !important; transform: translateY(-50%) !important; max-height: 70vh !important; box-shadow: 0 10px 50px rgba(0,0,0,0.5) !important; border: 2px solid var(--secondary) !important; z-index: 10001 !important; }
 }
 </style>
 </head>
@@ -265,7 +248,6 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
   <button class="close-banner" onclick="fecharBanner()" title="Fechar">✕</button>
 </div>
 
-<!-- BARRA SUPERIOR COM BOTÃO DA GAVETA E TÍTULO ESTRUTURADO -->
 <header class="top-bar">
   <div class="top-left">
     <button type="button" class="menu-btn" onclick="UIController.openSidebar()" title="Filtros Avançados">
@@ -284,7 +266,6 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
   </button>
 </header>
 
-<!-- GAVETA LATERAL DE FILTROS -->
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="UIController.closeSidebar()"></div>
 <div class="sidebar" id="sidebarFiltros">
   <div class="sidebar-header">
@@ -303,7 +284,6 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
       <div class="form-group"><label>BAIRRO</label><div class="ms-wrap"><button class="ms-btn" onclick="UIController.toggleMs('bairro')"><span id="ms-bairro-lbl">TODOS</span><span>▾</span></button><div class="ms-drop" id="ms-bairro-drop"></div></div></div>
       <div class="form-group"><label>LOGRADOURO</label><div class="ms-wrap"><button class="ms-btn" onclick="UIController.toggleMs('logradouro')"><span id="ms-logradouro-lbl">TODOS</span><span>▾</span></button><div class="ms-drop" id="ms-logradouro-drop"></div></div></div>
       
-      <!-- NOVOS FILTROS DE DATA DE CADASTRO -->
       <div class="form-group"><label>INÍCIO (DATA CADASTRO)</label><input type="date" class="form-control" id="dtCadInicio" onchange="FilterManager.aplicarFiltros()"></div>
       <div class="form-group"><label>FIM (DATA CADASTRO)</label><input type="date" class="form-control" id="dtCadFim" onchange="FilterManager.aplicarFiltros()"></div>
 
@@ -367,27 +347,82 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
   </div>
 
   <div id="secGraficos" class="hidden">
-    <!-- BARRA DISCRETA DE AÇÃO DE GRÁFICOS -->
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; background:var(--surface); padding:10px 16px; border-radius:10px; border:1px solid var(--border); box-shadow:var(--shadow);">
       <span style="font-size:0.8rem; font-weight:800; color:var(--primary); text-transform:uppercase;">📈 PAINEL VISUAL DE GRÁFICOS</span>
       <button class="btn btn-secondary btn-mini" onclick="ExportManager.abrirModalExportGraficos()">📸 EXPORTAR GRÁFICOS (PDF)</button>
     </div>
 
+    <!-- LINHA PRINCIPAL DEDICADA: VELOCÍMETRO, BAIRROS E TOP SERVIÇOS UNIFICADO -->
+    <div class="charts-grid" style="margin-bottom:12px;">
+      
+      <!-- Velocímetro de Arco Único (Ponteiros de Precisão) -->
+      <div class="chart-card">
+        <h3><span>🎯 ÍNDICES (VELOCÍMETRO)</span></h3>
+        <div class="gauge-outer">
+          <canvas id="multiGauge" width="260" height="150"></canvas>
+          <div class="multi-gauge-legend">
+             <div class="mg-item"><span class="mg-dot" style="background:var(--secondary)"></span> IC: <b id="mgIC">0%</b></div>
+             <div class="mg-item"><span class="mg-dot" style="background:var(--success)"></span> IE: <b id="mgIE">0%</b></div>
+             <div class="mg-item"><span class="mg-dot" style="background:var(--danger)"></span> IA: <b id="mgIA">0%</b></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ranking Bairros com Seletor Integrado -->
+      <div class="chart-card">
+        <h3>
+          <span>🗺️ TOP BAIRROS</span>
+          <select id="topBairrosFiltro" class="form-control" style="width:auto; padding:2px 6px; font-size:0.7rem; height:auto; margin:0;" onchange="GraficosManager.renderRankingPremiumCompact(AppState.dadosFiltrados)">
+            <option value="todos" selected>TODAS DEMANDAS</option>
+            <option value="atraso">EM ATRASO</option>
+            <option value="atendido">APENAS ATENDIDAS</option>
+          </select>
+        </h3>
+        <div class="rank-list" id="rankBairrosPremium"></div>
+      </div>
+
+      <!-- Top Serviços Unificado com Seletor Integrado -->
+      <div class="chart-card">
+        <h3>
+          <span>🔧 TOP SERVIÇOS</span>
+          <select id="topServicosFiltro" class="form-control" style="width:auto; padding:2px 6px; font-size:0.7rem; height:auto; margin:0;" onchange="GraficosManager.renderTopServicosChart(AppState.dadosFiltrados)">
+            <option value="atraso" selected>EM ATRASO</option>
+            <option value="todos">TODAS DEMANDAS</option>
+            <option value="atendido">APENAS ATENDIDAS</option>
+          </select>
+        </h3>
+        <div class="chart-wrap" style="height:190px"><canvas id="chartServicos"></canvas></div>
+      </div>
+
+    </div>
+
+    <!-- DEMAIS GRÁFICOS COMPLEMENTARES -->
     <div class="charts-grid">
-      <div class="chart-card"><h3>📊 SITUAÇÃO (DEMANDAS VS ATENDIDAS)</h3><div class="chart-wrap"><canvas id="chartStatus"></canvas></div></div>
-      <div class="chart-card"><h3>🏢 DEMANDAS POR GERÊNCIA</h3><div class="chart-wrap"><canvas id="chartGerencia"></canvas></div></div>
+      <div class="chart-card"><h3><span>📊 SITUAÇÃO (DEMANDAS VS ATENDIDAS)</span></h3><div class="chart-wrap"><canvas id="chartStatus"></canvas></div></div>
+      
+      <!-- Gerência com Seletor Integrado -->
+      <div class="chart-card">
+        <h3>
+          <span>🏢 DEMANDAS POR GERÊNCIA</span>
+          <select id="topGerenciaFiltro" class="form-control" style="width:auto; padding:2px 6px; font-size:0.7rem; height:auto; margin:0;" onchange="GraficosManager.renderGerenciaChart(AppState.dadosFiltrados)">
+            <option value="todos" selected>TODAS DEMANDAS</option>
+            <option value="atraso">EM ATRASO</option>
+            <option value="atendido">APENAS ATENDIDAS</option>
+          </select>
+        </h3>
+        <div class="chart-wrap"><canvas id="chartGerencia"></canvas></div>
+      </div>
       
       <div class="chart-card">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; gap:6px;">
-           <h3 style="margin:0; color:var(--danger)">📍 DEMANDAS POR RPA EM ATRASO</h3>
-           <button class="btn-mini" id="btnAgruparRPA" onclick="GraficosManager.toggleRPA()" style="padding:4px 8px;">AGRUPAR (2/3, 4/5)</button>
-        </div>
+        <h3>
+           <span style="color:var(--danger)">📍 DEMANDAS POR RPA EM ATRASO</span>
+           <button class="btn-mini" id="btnAgruparRPA" onclick="GraficosManager.toggleRPA()" style="padding:2px 6px; font-size:0.65rem;">AGRUPAR (2/3, 4/5)</button>
+        </h3>
         <div class="chart-wrap"><canvas id="chartRpa"></canvas></div>
       </div>
       
-      <div class="chart-card"><h3>📈 TENDÊNCIA TEMPORAL (GERAL)</h3><div class="chart-wrap"><canvas id="chartTendencia"></canvas></div></div>
-      <div class="chart-card"><h3>🔧 TOP SERVIÇOS</h3><div class="chart-wrap"><canvas id="chartServicos"></canvas></div></div>
-      <div class="chart-card"><h3>📊 EVOLUÇÃO MENSAL DAS DEMANDAS</h3><div class="chart-wrap"><canvas id="chartStatusMensal"></canvas></div></div>
+      <div class="chart-card"><h3><span>📈 TENDÊNCIA TEMPORAL (GERAL)</span></h3><div class="chart-wrap"><canvas id="chartTendencia"></canvas></div></div>
+      <div class="chart-card"><h3><span>📊 EVOLUÇÃO MENSAL DAS DEMANDAS</span></h3><div class="chart-wrap"><canvas id="chartStatusMensal"></canvas></div></div>
     </div>
 
     <div class="card">
@@ -404,7 +439,6 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
       </div>
     </div>
 
-    <!-- PARETO DE BAIRROS -->
     <div class="card">
       <div class="card-title">📉 ANÁLISE DE PARETO — DEMANDAS POR BAIRRO</div>
       <div class="pareto-filters">
@@ -427,7 +461,6 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
         </div>
       </div>
     </div>
-
   </div>
 
   <div class="card hidden" id="secRelatorio">
@@ -496,13 +529,11 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
     <div style="margin-top:10px">SELECIONE A PLANILHA NO BOTÃO ACIMA PARA INICIAR.</div>
   </div>
 
-  <!-- RODAPÉ DISCRETO -->
   <footer class="app-footer">
     <em>DVCC 156 - Divisão de Controle Central 156</em>
   </footer>
 </div>
 
-<!-- BOTÃO VOLTAR AO TOPO -->
 <button id="btnBackToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="Voltar ao Topo">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
 </button>
@@ -520,7 +551,6 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
   </div>
 </div>
 
-<!-- MODAL DE SELEÇÃO PARA EXPORTAÇÃO DOS GRÁFICOS -->
 <div class="modal-export-overlay" id="modalExportGraficos">
   <div class="modal-export-box">
     <h3>
@@ -528,14 +558,14 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
       <button class="sidebar-close" onclick="ExportManager.fecharModalExportGraficos()">✕</button>
     </h3>
     <div style="font-size:0.75rem; color:var(--muted); margin-bottom:12px; text-transform:uppercase; font-weight:600;">
-      Marque os gráficos que deseja incluir no relatório PDF gerencial (formato retrato A4, um em cima e outro embaixo):
+      Marque os gráficos que deseja incluir no relatório PDF gerencial:
     </div>
     <div class="modal-export-list">
+      <label class="modal-export-item"><input type="checkbox" class="chk-exp-graf" value="chartServicos" checked> 🔧 Top Serviços (Unificado)</label>
       <label class="modal-export-item"><input type="checkbox" class="chk-exp-graf" value="chartStatus" checked> 📊 Situação (Demandas vs Atendidas)</label>
       <label class="modal-export-item"><input type="checkbox" class="chk-exp-graf" value="chartGerencia" checked> 🏢 Demandas por Gerência</label>
       <label class="modal-export-item"><input type="checkbox" class="chk-exp-graf" value="chartRpa" checked> 📍 Demandas por RPA em Atraso</label>
       <label class="modal-export-item"><input type="checkbox" class="chk-exp-graf" value="chartTendencia" checked> 📈 Tendência Temporal (Geral)</label>
-      <label class="modal-export-item"><input type="checkbox" class="chk-exp-graf" value="chartServicos" checked> 🔧 Top Serviços</label>
       <label class="modal-export-item"><input type="checkbox" class="chk-exp-graf" value="chartStatusMensal" checked> 📊 Evolução Mensal das Demandas</label>
       <label class="modal-export-item"><input type="checkbox" class="chk-exp-graf" value="chartPareto" checked> 📉 Análise de Pareto — Serviços</label>
       <label class="modal-export-item"><input type="checkbox" class="chk-exp-graf" value="chartParetoBairro" checked> 📉 Análise de Pareto — Bairros</label>
@@ -552,44 +582,20 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
    1. MÓDULO DE ESTADO GLOBAL (AppState)
    ================================================-------- */
 const AppState = {
-  dadosBrutos: [],
-  dadosFiltrados: [],
-  colunas: [],
-  colGrupo: 'Grupo Servico',
-  colServico: 'Serviço',
-  colStatus: 'Situação',
-  colPrazo: 'Prazo',
-  colMov: 'Data Mov',
-  colCadastro: 'Data Cadastro',
-  colGerencia: '',
-  colRPA: '',
-  colBairro: '',
-  colLogradouro: '',
-  colunasVisiveis: new Set(),
-  isRpaAgrupado: false,
-  fDinGrupo: null,
-  fDinServico: null,
-  fDinCat: null,
-  gruposExpandidos: new Set(),
-  paginaAtual: 1,
-  linhasPorPagina: 50,
-  sortCol: null,
-  sortDir: 1,
-  tblDadosVisiveis: [],
-  camposMs: ['gerencia', 'status', 'servico', 'rpa', 'bairro', 'logradouro'],
-  msState: {},
-  msOpcoes: {},
-  prRpaOpcoes: [],
-  prRpaState: new Set()
+  dadosBrutos: [], dadosFiltrados: [], colunas: [],
+  colGrupo: 'Grupo Servico', colServico: 'Serviço', colStatus: 'Situação', colPrazo: 'Prazo', colMov: 'Data Mov',
+  colCadastro: 'Data Cadastro', colGerencia: '', colRPA: '', colBairro: '', colLogradouro: '',
+  colunasVisiveis: new Set(), isRpaAgrupado: false, fDinGrupo: null, fDinServico: null, fDinCat: null,
+  gruposExpandidos: new Set(), paginaAtual: 1, linhasPorPagina: 50, sortCol: null, sortDir: 1, tblDadosVisiveis: [],
+  camposMs: ['gerencia', 'status', 'servico', 'rpa', 'bairro', 'logradouro'], msState: {}, msOpcoes: {}, prRpaOpcoes: [], prRpaState: new Set()
 };
-
 AppState.camposMs.forEach(c => { AppState.msState[c] = new Set(); AppState.msOpcoes[c] = []; });
 
 /* ========================================================
    2. MÓDULO DE CONTROLE DE INTERFACE E TEMAS (UIController)
    ================================================-------- */
 const UIController = {
-  temasList: ['azul','noite','verde','roxo','oceano','sunset','rosa','ambar','grafite','vinho'],
+  temasList: ['azul','premium','noite','verde','roxo','oceano','sunset','rosa','ambar','grafite','vinho'],
   currentThemeIdx: 0,
 
   initTheme() {
@@ -606,44 +612,19 @@ const UIController = {
     if(AppState.dadosFiltrados.length) GraficosManager.renderGraficos(AppState.dadosFiltrados);
   },
 
-  openSidebar() {
-    document.getElementById('sidebarFiltros').classList.add('open');
-    document.getElementById('sidebarOverlay').classList.add('show');
-  },
-
-  closeSidebar() {
-    document.getElementById('sidebarFiltros').classList.remove('open');
-    document.getElementById('sidebarOverlay').classList.remove('show');
-  },
-
+  openSidebar() { document.getElementById('sidebarFiltros').classList.add('open'); document.getElementById('sidebarOverlay').classList.add('show'); },
+  closeSidebar() { document.getElementById('sidebarFiltros').classList.remove('open'); document.getElementById('sidebarOverlay').classList.remove('show'); },
   toggleMs(c) {
-    const d = document.getElementById(`ms-${c}-drop`); 
-    const isOp = d.classList.contains('open');
+    const d = document.getElementById(`ms-${c}-drop`); const isOp = d.classList.contains('open');
     document.querySelectorAll('.ms-drop').forEach(x => x.classList.remove('open'));
     if(!isOp) d.classList.add('open');
   },
-
-  setOverlay(pct, st) { 
-    document.getElementById('ovBar').style.width = pct + '%'; 
-    document.getElementById('ovPct').textContent = pct + '%'; 
-    document.getElementById('ovStatus').textContent = st; 
-  },
-  
-  initScrollToTop() {
-    window.addEventListener('scroll', () => {
-      const btn = document.getElementById('btnBackToTop');
-      if (window.scrollY > 300) btn.classList.add('show');
-      else btn.classList.remove('show');
-    });
-  }
+  setOverlay(pct, st) { document.getElementById('ovBar').style.width = pct + '%'; document.getElementById('ovPct').textContent = pct + '%'; document.getElementById('ovStatus').textContent = st; },
+  initScrollToTop() { window.addEventListener('scroll', () => { const btn = document.getElementById('btnBackToTop'); if (window.scrollY > 300) btn.classList.add('show'); else btn.classList.remove('show'); }); }
 };
 
-document.addEventListener('click', e => { 
-  if (!e.target.closest('.ms-wrap')) document.querySelectorAll('.ms-drop').forEach(x => x.classList.remove('open')); 
-});
-
-UIController.initTheme();
-UIController.initScrollToTop();
+document.addEventListener('click', e => { if (!e.target.closest('.ms-wrap')) document.querySelectorAll('.ms-drop').forEach(x => x.classList.remove('open')); });
+UIController.initTheme(); UIController.initScrollToTop();
 
 /* ========================================================
    3. MÓDULO DE PROCESSAMENTO E FILTROS (FilterManager)
@@ -653,11 +634,8 @@ const FilterManager = {
     document.getElementById('fileInput').addEventListener('change', e => {
       const file = e.target.files[0]; if (!file) return;
       document.getElementById('ovFile').textContent = file.name;
-      document.getElementById('ovBar').style.width = '0%'; 
-      document.getElementById('overlay').classList.add('show');
-      
+      document.getElementById('ovBar').style.width = '0%'; document.getElementById('overlay').classList.add('show');
       UIController.setOverlay(15, 'LENDO BASE DVCC...');
-
       const reader = new FileReader();
       reader.onload = evt => {
         setTimeout(() => {
@@ -666,7 +644,6 @@ const FilterManager = {
             setTimeout(() => {
               const data = new Uint8Array(evt.target.result);
               const wb = XLSX.read(data, { type: 'array', cellDates: true });
-              
               UIController.setOverlay(70, 'MAPEANDO COLUNAS E REGISTROS...');
               setTimeout(() => {
                 const json = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { defval: '' });
@@ -685,29 +662,23 @@ const FilterManager = {
                 AppState.colLogradouro = AppState.colunas.find(c => /LOU?GRADOURO/i.test(c)) || 'Logradouro';
 
                 const parseD = val => {
-                  if (!val) return null;
-                  let d = null;
+                  if (!val) return null; let d = null;
                   if (val instanceof Date) d = val;
                   else {
                     d = new Date(val);
                     if (isNaN(d.getTime()) && typeof val === 'string' && val.includes('/')) {
-                      const parts = val.split(' ')[0].split('/');
-                      if (parts.length === 3) d = new Date(parts[2], parts[1] - 1, parts[0]);
+                      const parts = val.split(' ')[0].split('/'); if (parts.length === 3) d = new Date(parts[2], parts[1] - 1, parts[0]);
                     }
                   }
                   return (d instanceof Date && !isNaN(d.getTime())) ? d : null; 
                 };
 
                 UIController.setOverlay(90, 'ORGANIZANDO DADOS E FILTROS...');
-
                 AppState.dadosBrutos = json.map(r => {
                   const item = { ...r };
-                  item.__dateMov = parseD(r[AppState.colMov]);
-                  item.__prazo = parseD(r[AppState.colPrazo]);
-                  item.__dateCad = parseD(r[AppState.colCadastro]);
+                  item.__dateMov = parseD(r[AppState.colMov]); item.__prazo = parseD(r[AppState.colPrazo]); item.__dateCad = parseD(r[AppState.colCadastro]);
                   return item;
                 }).filter(r => !/cancelad/i.test(String(r[AppState.colStatus] || '')));
-
                 AppState.gruposExpandidos.clear();
                 [...new Set(AppState.dadosBrutos.map(r => String(r[AppState.colGrupo] || 'SEM GRUPO').trim()))].forEach(g => AppState.gruposExpandidos.add(g));
 
@@ -719,21 +690,16 @@ const FilterManager = {
                   document.getElementById('overlay').classList.remove('show'); 
                   let dataRefPadrao = new Date().toLocaleDateString('pt-BR');
                   let inputData = prompt("Planilha lida com sucesso!\n\nConfirme a Data de Referência para cálculo de prazos (DD/MM/AAAA)\nou clique em OK para Hoje:", dataRefPadrao);
-                  
                   if (inputData && inputData.trim() !== '') {
                     let parts = inputData.split('/');
                     if (parts.length === 3) document.getElementById('dtReferencia').value = `${parts[2]}-${parts[1].padStart(2,'0')}-${parts[0].padStart(2,'0')}`;
                   } else { document.getElementById('dtReferencia').value = ''; }
-                  
                   this.initDashboard(); 
                 }, 300);
 
               }, 60);
             }, 60);
-          } catch(err) { 
-            alert('Erro ao processar base DVCC: ' + err.message); 
-            document.getElementById('overlay').classList.remove('show'); 
-          }
+          } catch(err) { alert('Erro ao processar base DVCC: ' + err.message); document.getElementById('overlay').classList.remove('show'); }
         }, 60);
       };
       reader.readAsArrayBuffer(file);
@@ -743,79 +709,44 @@ const FilterManager = {
   initDashboard() {
     document.getElementById('emptyState').classList.add('hidden');
     document.getElementById('divHeaderMeta').classList.remove('hidden');
-    ['secKPI','secGraficos','secRelatorio','secTabela'].forEach(id => {
-      document.getElementById(id).classList.remove('hidden');
-    });
-
+    ['secKPI','secGraficos','secRelatorio','secTabela'].forEach(id => document.getElementById(id).classList.remove('hidden'));
     const mapeamento = { gerencia: AppState.colGerencia, status: AppState.colStatus, servico: AppState.colServico, rpa: AppState.colRPA, bairro: AppState.colBairro, logradouro: AppState.colLogradouro };
     AppState.camposMs.forEach(c => this.popularMs(c, mapeamento[c]));
-    
     AppState.colunasVisiveis = new Set(AppState.colunas.filter(c => !c.startsWith('__')));
-    TabelaManager.renderColsOpts();
-    GraficosManager.popularParetoG();
-    GraficosManager.popularParetoBairroFiltros();
+    TabelaManager.renderColsOpts(); GraficosManager.popularParetoG(); GraficosManager.popularParetoBairroFiltros();
     this.aplicarFiltros();
   },
 
   popularMs(campo, col) {
     if (!col) return;
     const vals = [...new Set(AppState.dadosBrutos.map(r => String(r[col]||'').replace('.0','').trim() || '(Vazio)'))].sort();
-    AppState.msOpcoes[campo] = vals; 
-    AppState.msState[campo] = new Set(vals);
-    this.renderMsOpts(campo); 
-    this.attLbl(campo);
+    AppState.msOpcoes[campo] = vals; AppState.msState[campo] = new Set(vals);
+    this.renderMsOpts(campo); this.attLbl(campo);
   },
 
   atualizarServicosGlobais() {
     const eraTudo = (AppState.msState['servico'].size === AppState.msOpcoes['servico'].length);
     let base = AppState.dadosBrutos;
-    
     if (AppState.msState['gerencia'].size > 0 && AppState.msState['gerencia'].size < AppState.msOpcoes['gerencia'].length) {
       base = base.filter(r => AppState.msState['gerencia'].has(String(r[AppState.colGerencia]||'').replace('.0','').trim()||'(Vazio)'));
     }
-    
     const novosServicos = [...new Set(base.map(r => String(r[AppState.colServico]||'').replace('.0','').trim() || '(Vazio)'))].sort();
     AppState.msOpcoes['servico'] = novosServicos;
-    
-    if (eraTudo) {
-      AppState.msState['servico'] = new Set(novosServicos);
-    } else {
-      for (let s of AppState.msState['servico']) {
-        if (!novosServicos.includes(s)) AppState.msState['servico'].delete(s);
-      }
-    }
-    this.renderMsOpts('servico');
-    this.attLbl('servico');
+    if (eraTudo) { AppState.msState['servico'] = new Set(novosServicos); } else { for (let s of AppState.msState['servico']) { if (!novosServicos.includes(s)) AppState.msState['servico'].delete(s); } }
+    this.renderMsOpts('servico'); this.attLbl('servico');
   },
 
   renderMsOpts(c) {
     const cont = document.getElementById(`ms-${c}-drop`), searchInput = cont.querySelector('.ms-search input');
     const busca = searchInput ? searchInput.value.toLowerCase() : '';
-    const res = AppState.msOpcoes[c].filter(v => v.toLowerCase().includes(busca)).map(v => `
-      <label class="ms-opt"><input type="checkbox" ${AppState.msState[c].has(v)?'checked':''} onchange="FilterManager.tglOpt('${c}','${v.replace(/'/g,"\\'")}',this.checked)"><span>${v}</span></label>
-    `).join('');
+    const res = AppState.msOpcoes[c].filter(v => v.toLowerCase().includes(busca)).map(v => `<label class="ms-opt"><input type="checkbox" ${AppState.msState[c].has(v)?'checked':''} onchange="FilterManager.tglOpt('${c}','${v.replace(/'/g,"\\'")}',this.checked)"><span>${v}</span></label>`).join('');
     const hdr = `<div class="ms-search"><input type="text" placeholder="BUSCAR..." oninput="FilterManager.filtrarOpcoes('${c}')"></div><div class="ms-selall" onclick="FilterManager.selAll('${c}')">✔ INVERTER SELEÇÃO</div>`;
     cont.innerHTML = hdr + `<div style="padding:6px 0">` + res + `</div>`;
   },
-
-  tglOpt(c, v, chk) { 
-    if(chk) AppState.msState[c].add(v); else AppState.msState[c].delete(v); 
-    this.attLbl(c); 
-    if(c === 'gerencia') this.atualizarServicosGlobais();
-  },
-
-  attLbl(c) {
-    const t = AppState.msOpcoes[c].length, s = AppState.msState[c].size, l = document.getElementById(`ms-${c}-lbl`);
-    l.textContent = s===0 ? 'NENHUM' : s===t ? 'TODOS' : s + ' SELECIONADOS';
-  },
-
+  tglOpt(c, v, chk) { if(chk) AppState.msState[c].add(v); else AppState.msState[c].delete(v); this.attLbl(c); if(c === 'gerencia') this.atualizarServicosGlobais(); },
+  attLbl(c) { const t = AppState.msOpcoes[c].length, s = AppState.msState[c].size, l = document.getElementById(`ms-${c}-lbl`); l.textContent = s===0 ? 'NENHUM' : s===t ? 'TODOS' : s + ' SELECIONADOS'; },
   filtrarOpcoes(c) { this.renderMsOpts(c); },
-
-  selAll(c) { 
-    if(AppState.msState[c].size === AppState.msOpcoes[c].length) AppState.msState[c].clear(); else AppState.msOpcoes[c].forEach(v => AppState.msState[c].add(v));
-    this.renderMsOpts(c); this.attLbl(c); 
-    if(c === 'gerencia') this.atualizarServicosGlobais();
-  },
+  selAll(c) { if(AppState.msState[c].size === AppState.msOpcoes[c].length) AppState.msState[c].clear(); else AppState.msOpcoes[c].forEach(v => AppState.msState[c].add(v)); this.renderMsOpts(c); this.attLbl(c); if(c === 'gerencia') this.atualizarServicosGlobais(); },
 
   setPeriodo(d, btn) {
     document.querySelectorAll('.periodo-btns .btn-per').forEach(b => b.classList.remove('active')); if(btn) btn.classList.add('active');
@@ -832,11 +763,8 @@ const FilterManager = {
     const strIni = document.getElementById('dtInicio').value, strRef = document.getElementById('dtReferencia').value;
     const dtIni = strIni ? new Date(strIni + 'T00:00:00') : null;
     const dtRef = strRef ? new Date(strRef + 'T00:00:00').setHours(0,0,0,0) : new Date().setHours(0,0,0,0);
-
-    const strCadIni = document.getElementById('dtCadInicio').value;
-    const strCadFim = document.getElementById('dtCadFim').value;
-    const dtCadIni = strCadIni ? new Date(strCadIni + 'T00:00:00') : null;
-    const dtCadFim = strCadFim ? new Date(strCadFim + 'T23:59:59') : null;
+    const strCadIni = document.getElementById('dtCadInicio').value, strCadFim = document.getElementById('dtCadFim').value;
+    const dtCadIni = strCadIni ? new Date(strCadIni + 'T00:00:00') : null, dtCadFim = strCadFim ? new Date(strCadFim + 'T23:59:59') : null;
 
     RelatorioManager.limparFiltroDinamicoBase();
 
@@ -852,33 +780,17 @@ const FilterManager = {
     });
 
     let minCadastrada = null;
-
     AppState.dadosFiltrados.forEach(r => {
       let movVal = r.__dateMov ? new Date(r.__dateMov.getTime()).setHours(0,0,0,0) : dtRef;
       let przVal = r.__prazo ? new Date(r.__prazo.getTime()).setHours(0,0,0,0) : movVal + 86400000;
       const st = String(r[AppState.colStatus]||'').toUpperCase();
-
-      if (st.includes('ATENDIDA') || st.includes('CONCLUIDA')) {
-        r.__situacaoMatematica = movVal <= przVal ? 'atendido_prazo' : 'atendido_fora';
-      } else {
-        r.__situacaoMatematica = przVal < dtRef ? 'atraso' : 'andamento';
-      }
-      
-      // Procura a data mais antiga no grupo filtrado
-      if (r.__dateCad) {
-        if (!minCadastrada || r.__dateCad < minCadastrada) minCadastrada = r.__dateCad;
-      }
+      if (st.includes('ATENDIDA') || st.includes('CONCLUIDA')) { r.__situacaoMatematica = movVal <= przVal ? 'atendido_prazo' : 'atendido_fora'; } 
+      else { r.__situacaoMatematica = przVal < dtRef ? 'atraso' : 'andamento'; }
+      if (r.__dateCad) { if (!minCadastrada || r.__dateCad < minCadastrada) minCadastrada = r.__dateCad; }
     });
 
-    // Atualiza campo Data Mais Antiga
-    const spanDataAntiga = document.getElementById('spanDataAntiga');
-    const lblDataAntiga = document.getElementById('lblDataAntiga');
-    if (minCadastrada) {
-      lblDataAntiga.textContent = minCadastrada.toLocaleDateString('pt-BR');
-      spanDataAntiga.classList.remove('hidden');
-    } else {
-      spanDataAntiga.classList.add('hidden');
-    }
+    const spanDataAntiga = document.getElementById('spanDataAntiga'), lblDataAntiga = document.getElementById('lblDataAntiga');
+    if (minCadastrada) { lblDataAntiga.textContent = minCadastrada.toLocaleDateString('pt-BR'); spanDataAntiga.classList.remove('hidden'); } else { spanDataAntiga.classList.add('hidden'); }
 
     document.getElementById('headerTotalReg').textContent = AppState.dadosFiltrados.length.toLocaleString('pt-BR');
     document.getElementById('headerRegistros').classList.remove('hidden');
@@ -889,35 +801,24 @@ const FilterManager = {
     try { GraficosManager.renderGraficos(AppState.dadosFiltrados); } catch(e) { console.error(e); }
     try { RelatorioManager.renderRelatorioDinamico(AppState.dadosFiltrados); } catch(e) { console.error(e); }
     try { TabelaManager.renderTabela(AppState.dadosFiltrados); } catch(e) { console.error(e); }
-    
     UIController.closeSidebar();
   },
 
   limparFiltros() {
-    AppState.msState['gerencia'] = new Set(AppState.msOpcoes['gerencia']);
-    this.atualizarServicosGlobais();
-    
+    AppState.msState['gerencia'] = new Set(AppState.msOpcoes['gerencia']); this.atualizarServicosGlobais();
     AppState.camposMs.forEach(c => { AppState.msState[c] = new Set(AppState.msOpcoes[c]); this.renderMsOpts(c); this.attLbl(c); });
-    
-    document.getElementById('dtInicio').value = '';
-    document.getElementById('dtCadInicio').value = '';
-    document.getElementById('dtCadFim').value = '';
-    document.getElementById('dtReferencia').value = '';
-    document.querySelectorAll('.periodo-btns .btn-per').forEach(b => b.classList.remove('active'));
-    document.querySelector('.periodo-btns .btn-per:last-child').classList.add('active');
+    document.getElementById('dtInicio').value = ''; document.getElementById('dtCadInicio').value = ''; document.getElementById('dtCadFim').value = ''; document.getElementById('dtReferencia').value = '';
+    document.querySelectorAll('.periodo-btns .btn-per').forEach(b => b.classList.remove('active')); document.querySelector('.periodo-btns .btn-per:last-child').classList.add('active');
     this.aplicarFiltros();
   },
 
   atualizarKPI(dados) {
-    const total = dados.length;
-    let atendidas=0, ap=0, af=0, andamento=0, atraso=0, pendencias_brutas=0;
-
+    const total = dados.length; let atendidas=0, ap=0, af=0, andamento=0, atraso=0, pendencias_brutas=0;
     dados.forEach(r => {
       if (r.__situacaoMatematica === 'atendido_prazo') { atendidas++; ap++; }
       else if (r.__situacaoMatematica === 'atendido_fora') { atendidas++; af++; }
       else if (r.__situacaoMatematica === 'andamento') { andamento++; }
       else if (r.__situacaoMatematica === 'atraso') { atraso++; }
-      
       if (String(r[AppState.colStatus]||'').toUpperCase().trim() === 'PENDENCIA') pendencias_brutas++;
     });
 
@@ -935,7 +836,6 @@ const FilterManager = {
     document.getElementById('kpiIA').textContent = em_aberto_total > 0 ? (atraso/em_aberto_total*100).toFixed(1)+'%' : '0.0%';
   }
 };
-
 FilterManager.init();
 
 /* ========================================================
@@ -943,80 +843,42 @@ FilterManager.init();
    ================================================-------- */
 const GraficosManager = {
   fontResponsiva(ctx) {
-    let label = ctx.tick && ctx.tick.label ? ctx.tick.label : '';
-    if(Array.isArray(label)) label = label.join('');
+    let label = ctx.tick && ctx.tick.label ? ctx.tick.label : ''; if(Array.isArray(label)) label = label.join('');
     return label.length > 22 ? { size: 8, family: "'Segoe UI', sans-serif" } : { size: 10, family: "'Segoe UI', sans-serif" };
   },
-
   popularParetoG() {
     const sel = document.getElementById('paretoGerencia'); sel.innerHTML='<option value="">TODAS</option>';
     if(AppState.colGerencia) [...new Set(AppState.dadosBrutos.map(r=>String(r[AppState.colGerencia]||'').trim()).filter(Boolean))].sort().forEach(v => { const o=document.createElement('option'); o.value=v.toUpperCase(); o.textContent=v.toUpperCase(); sel.appendChild(o); });
   },
-
-  togglePrRpa() {
-    const d = document.getElementById('dropPrRpa'); const isOp = d.classList.contains('open');
-    document.querySelectorAll('.ms-drop').forEach(x => { if(x.id !== 'dropPrRpa') x.classList.remove('open'); });
-    if(!isOp) d.classList.add('open');
-  },
-
+  togglePrRpa() { const d = document.getElementById('dropPrRpa'); const isOp = d.classList.contains('open'); document.querySelectorAll('.ms-drop').forEach(x => { if(x.id !== 'dropPrRpa') x.classList.remove('open'); }); if(!isOp) d.classList.add('open'); },
   renderPrRpaOpts() {
     const res = AppState.prRpaOpcoes.map(v => `<label class="ms-opt"><input type="checkbox" ${AppState.prRpaState.has(v)?'checked':''} onchange="GraficosManager.tglPrRpa('${v.replace(/'/g,"\\'")}',this.checked)"><span>${v}</span></label>`).join('');
-    document.getElementById('dropPrRpa').innerHTML = `<div class="ms-selall" onclick="GraficosManager.selAllPrRpa()">✔ INVERTER</div><div style="padding:6px 0; max-height:200px; overflow-y:auto">` + res + `</div>`;
-    this.attLblPrRpa();
+    document.getElementById('dropPrRpa').innerHTML = `<div class="ms-selall" onclick="GraficosManager.selAllPrRpa()">✔ INVERTER</div><div style="padding:6px 0; max-height:200px; overflow-y:auto">` + res + `</div>`; this.attLblPrRpa();
   },
-
   tglPrRpa(v, chk) { if(chk) AppState.prRpaState.add(v); else AppState.prRpaState.delete(v); this.attLblPrRpa(); this.renderParetoBairro(); },
   selAllPrRpa() { if(AppState.prRpaState.size === AppState.prRpaOpcoes.length) AppState.prRpaState.clear(); else AppState.prRpaOpcoes.forEach(v => AppState.prRpaState.add(v)); this.renderPrRpaOpts(); this.renderParetoBairro(); },
-  attLblPrRpa() {
-    const s=AppState.prRpaState.size, t=AppState.prRpaOpcoes.length, l=document.getElementById('lblPrRpa');
-    l.textContent = s===0 ? 'NENHUMA' : s===t ? 'TODAS' : s + ' SELECIONADAS';
-  },
-
+  attLblPrRpa() { const s=AppState.prRpaState.size, t=AppState.prRpaOpcoes.length, l=document.getElementById('lblPrRpa'); l.textContent = s===0 ? 'NENHUMA' : s===t ? 'TODAS' : s + ' SELECIONADAS'; },
   popularParetoBairroFiltros() {
     const selG = document.getElementById('paretoBairroGerencia'); selG.innerHTML='<option value="">TODAS</option>';
     if(AppState.colGerencia) [...new Set(AppState.dadosBrutos.map(r=>String(r[AppState.colGerencia]||'').trim()).filter(Boolean))].sort().forEach(v => { const o=document.createElement('option'); o.value=v.toUpperCase(); o.textContent=v.toUpperCase(); selG.appendChild(o); });
-    
-    if(AppState.colRPA) {
-      AppState.prRpaOpcoes = [...new Set(AppState.dadosBrutos.map(r=>String(r[AppState.colRPA]||'').trim().replace('.0','')).filter(Boolean))].sort();
-      AppState.prRpaState = new Set(AppState.prRpaOpcoes);
-      this.renderPrRpaOpts();
-    }
-    
+    if(AppState.colRPA) { AppState.prRpaOpcoes = [...new Set(AppState.dadosBrutos.map(r=>String(r[AppState.colRPA]||'').trim().replace('.0','')).filter(Boolean))].sort(); AppState.prRpaState = new Set(AppState.prRpaOpcoes); this.renderPrRpaOpts(); }
     this.onChangeParetoBairroGerencia(true);
   },
-
   onChangeParetoBairroGerencia(init = false) {
-    const gSel = document.getElementById('paretoBairroGerencia').value;
-    const selS = document.getElementById('paretoBairroServico');
-    const oldVal = selS.value;
-    selS.innerHTML = '<option value="">TODOS</option>';
-    
-    let base = AppState.dadosBrutos;
-    if(gSel) base = base.filter(r => String(r[AppState.colGerencia]||'').trim().toUpperCase() === gSel);
-    
-    if(AppState.colServico) {
-      [...new Set(base.map(r=>String(r[AppState.colServico]||'').trim()).filter(Boolean))].sort().forEach(v => {
-        const o=document.createElement('option'); o.value=v.toUpperCase(); o.textContent=v.toUpperCase();
-        selS.appendChild(o);
-      });
-    }
-    
-    if ([...selS.options].some(o => o.value === oldVal)) selS.value = oldVal;
-    if(!init) this.renderParetoBairro();
+    const gSel = document.getElementById('paretoBairroGerencia').value, selS = document.getElementById('paretoBairroServico'), oldVal = selS.value; selS.innerHTML = '<option value="">TODOS</option>';
+    let base = AppState.dadosBrutos; if(gSel) base = base.filter(r => String(r[AppState.colGerencia]||'').trim().toUpperCase() === gSel);
+    if(AppState.colServico) { [...new Set(base.map(r=>String(r[AppState.colServico]||'').trim()).filter(Boolean))].sort().forEach(v => { const o=document.createElement('option'); o.value=v.toUpperCase(); o.textContent=v.toUpperCase(); selS.appendChild(o); }); }
+    if ([...selS.options].some(o => o.value === oldVal)) selS.value = oldVal; if(!init) this.renderParetoBairro();
   },
-
-  toggleRPA() {
-    AppState.isRpaAgrupado = !AppState.isRpaAgrupado;
-    document.getElementById('btnAgruparRPA').textContent = AppState.isRpaAgrupado ? "SEPARAR (1, 2, 3...)" : "AGRUPAR (2/3, 4/5)";
-    this.renderGraficos(AppState.dadosFiltrados);
-  },
+  toggleRPA() { AppState.isRpaAgrupado = !AppState.isRpaAgrupado; document.getElementById('btnAgruparRPA').textContent = AppState.isRpaAgrupado ? "SEPARAR (1, 2, 3...)" : "AGRUPAR (2/3, 4/5)"; this.renderGraficos(AppState.dadosFiltrados); },
 
   renderGraficos(d) {
     this.destroyC();
     const getStyleVar = (v) => getComputedStyle(document.body).getPropertyValue(v).trim();
     const cSuccess = getStyleVar('--success');
     const cPrimary = getStyleVar('--primary');
-    const cWarning = '#ffc107'; 
+    const cSecondary = getStyleVar('--secondary');
+    const cWarning = getStyleVar('--warning'); 
     const cDanger = getStyleVar('--danger');
 
     const stsKeys = ['atendido_prazo', 'andamento', 'atendido_fora', 'atraso'];
@@ -1025,26 +887,30 @@ const GraficosManager = {
 
     const ctSt = { 'atendido_prazo':0, 'andamento':0, 'atendido_fora':0, 'atraso':0 };
     d.forEach(r => { if(ctSt[r.__situacaoMatematica] !== undefined) ctSt[r.__situacaoMatematica]++; });
+
+    // 1. VELOCÍMETRO DE ARCO ÚNICO
+    this.renderSingleArcGauge(d, ctSt, cSecondary, cSuccess, cDanger);
+    
+    // 2. TOP BAIRROS COM SELETOR DE MODO
+    this.renderRankingPremiumCompact(d);
+    
+    // 3. TOP SERVIÇOS UNIFICADO COM SELETOR DE MODO
+    this.renderTopServicosChart(d);
+
+    // 4. DEMANDAS POR GERÊNCIA COM SELETOR DE MODO
+    this.renderGerenciaChart(d);
     
     window.chStatus = new Chart(document.getElementById('chartStatus'), { 
       type:'doughnut', 
-      data:{ labels: stsLabels, datasets:[{ data: stsKeys.map(k=>ctSt[k]), backgroundColor: stsColors }] }, 
+      data:{ labels: stsLabels, datasets:[{ data: stsKeys.map(k=>ctSt[k]), backgroundColor: stsColors, hoverOffset: 4, borderWidth:0 }] }, 
       options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:'bottom', labels:{font:{size:10, family:"'Segoe UI', sans-serif"}}}, datalabels:{display:false} } } 
     });
-
-    const getC = (col, cln=false) => { const ct={}; d.forEach(r=>{ let v=String(r[col]||'S/I').trim().toUpperCase(); if(cln) v=v.replace('.0',''); ct[v]=(ct[v]||0)+1; }); return ct; };
-
-    const cg = getC(AppState.colGerencia); const cgS = Object.entries(cg).sort((a,b)=>b[1]-a[1]).slice(0,12);
-    window.chGerencia = new Chart(document.getElementById('chartGerencia'), { type:'bar', data:{labels:cgS.map(x=>x[0]), datasets:[{data:cgS.map(x=>x[1]), backgroundColor:cPrimary, borderRadius:4}]}, options:{responsive:true, maintainAspectRatio:false, indexAxis:'y', plugins:{legend:{display:false}}} });
 
     const dRpaAtraso = d.filter(r => r.__situacaoMatematica === 'atraso');
     const ctRpa = {};
     dRpaAtraso.forEach(r => {
        let v = String(r[AppState.colRPA]||'S/I').trim().replace('.0','').toUpperCase();
-       if (AppState.isRpaAgrupado) {
-           if (v==='2' || v==='3') v = '2/3';
-           else if (v==='4' || v==='5') v = '4/5';
-       }
+       if (AppState.isRpaAgrupado) { if (v==='2' || v==='3') v = '2/3'; else if (v==='4' || v==='5') v = '4/5'; }
        ctRpa[v] = (ctRpa[v]||0)+1;
     });
     const crS = Object.entries(ctRpa).sort((a,b)=>a[0].localeCompare(b[0]));
@@ -1052,44 +918,257 @@ const GraficosManager = {
 
     const ct = {}; d.forEach(r => { if(r.__dateMov) { const k = r.__dateMov.toISOString().slice(0,7); ct[k] = (ct[k]||0)+1; } });
     const ctS = Object.entries(ct).sort((a,b)=>a[0].localeCompare(b[0]));
-    window.chTendencia = new Chart(document.getElementById('chartTendencia'), { type:'line', data:{labels:ctS.map(x=>{const [y,m]=x[0].split('-'); return m+'/'+y;}), datasets:[{data:ctS.map(x=>x[1]), borderColor:cPrimary, backgroundColor:'rgba(0,0,85,.1)', fill:true, tension:.3}]}, options:{responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true}}} });
-
-    const csrv = getC(AppState.colServico); const csrvS = Object.entries(csrv).sort((a,b)=>b[1]-a[1]).slice(0,10);
-    window.chServicos = new Chart(document.getElementById('chartServicos'), { 
-      type:'bar', 
-      data:{
-        labels:csrvS.map(x=>x[0].length>35?x[0].slice(0,35)+'…':x[0]), 
-        datasets:[{data:csrvS.map(x=>x[1]), backgroundColor:cPrimary, borderRadius:4}]
-      }, 
-      options:{
-        responsive:true, maintainAspectRatio:false, indexAxis:'y', 
-        plugins:{legend:{display:false}},
-        scales: { y: { ticks: { font: this.fontResponsiva } } }
-      } 
-    });
+    window.chTendencia = new Chart(document.getElementById('chartTendencia'), { type:'line', data:{labels:ctS.map(x=>{const [y,m]=x[0].split('-'); return m+'/'+y;}), datasets:[{data:ctS.map(x=>x[1]), borderColor:cPrimary, backgroundColor:getComputedStyle(document.body).getPropertyValue('--bg').trim(), fill:true, tension:.3, borderWidth:3, pointRadius:4}]}, options:{responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true}}} });
 
     const meses = [...new Set(d.filter(r=>r.__dateMov).map(r=>`${r.__dateMov.getFullYear()}-${String(r.__dateMov.getMonth()+1).padStart(2,'0')}`))].sort();
     if(meses.length) {
       window.chStatusMensal = new Chart(document.getElementById('chartStatusMensal'), { 
-        type:'bar', 
-        data:{ 
-          labels: meses.map(m=>{const[y,mo]=m.split('-');return mo+'/'+y;}), 
-          datasets: stsKeys.map((s,i)=>({
-            label: stsLabels[i], 
-            data: meses.map(m => d.filter(r => r.__dateMov && `${r.__dateMov.getFullYear()}-${String(r.__dateMov.getMonth()+1).padStart(2,'0')}`===m && r.__situacaoMatematica===s).length), 
-            backgroundColor: stsColors[i], 
-            borderRadius: 2
-          })) 
-        }, 
+        type:'bar', data:{ labels: meses.map(m=>{const[y,mo]=m.split('-');return mo+'/'+y;}), datasets: stsKeys.map((s,i)=>({ label: stsLabels[i], data: meses.map(m => d.filter(r => r.__dateMov && `${r.__dateMov.getFullYear()}-${String(r.__dateMov.getMonth()+1).padStart(2,'0')}`===m && r.__situacaoMatematica===s).length), backgroundColor: stsColors[i], borderRadius: 2 })) }, 
         options:{responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'bottom', labels:{font:{size:9}}}}, scales:{x:{stacked:true}, y:{stacked:true, beginAtZero:true}}} 
       });
     }
-    this.renderPareto();
-    this.renderParetoBairro();
+    this.renderPareto(); this.renderParetoBairro();
   },
 
   destroyC() { 
     [window.chStatus, window.chGerencia, window.chRpa, window.chTendencia, window.chServicos, window.chPareto, window.chParetoBairro, window.chStatusMensal].forEach(c=>{if(c)try{c.destroy()}catch(e){}}); 
+  },
+
+  // ========================================================
+  // VELOCÍMETRO DE ARCO ÚNICO COM 3 PONTEIROS DE PRECISÃO
+  // ========================================================
+  renderSingleArcGauge(d, ctSt, colorIC, colorIE, colorIA) {
+    const total = d.length || 1;
+    const atendidas = ctSt['atendido_prazo'] + ctSt['atendido_fora'];
+    const abertas = ctSt['andamento'] + ctSt['atraso'] || 1;
+    const noPrazo = ctSt['atendido_prazo'];
+    const atrasadas = ctSt['atraso'];
+
+    const ratioIC = total > 0 ? atendidas / total : 0;
+    const ratioIE = atendidas > 0 ? noPrazo / atendidas : 0;
+    const ratioIA = abertas > 0 ? atrasadas / abertas : 0;
+
+    document.getElementById('mgIC').textContent = (ratioIC * 100).toFixed(1) + '%';
+    document.getElementById('mgIE').textContent = (ratioIE * 100).toFixed(1) + '%';
+    document.getElementById('mgIA').textContent = (ratioIA * 100).toFixed(1) + '%';
+
+    const canvas = document.getElementById('multiGauge');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    ctx.clearRect(0, 0, W, H);
+
+    const cx = W / 2, cy = H - 15;
+    const radius = Math.min(W / 2, H) - 24;
+    const startAngle = Math.PI;
+    const endAngle = 2 * Math.PI;
+
+    const baseColor = getComputedStyle(document.body).getPropertyValue('--border').trim() || '#dfe6ef';
+    const textColor = getComputedStyle(document.body).getPropertyValue('--text').trim() || '#212529';
+
+    // 1. Arco Único de Fundo (Demanda Total de 0% a 100%)
+    ctx.beginPath();
+    ctx.arc(cx, cy, radius, startAngle, endAngle);
+    ctx.lineWidth = 14;
+    ctx.strokeStyle = baseColor;
+    ctx.lineCap = 'round';
+    ctx.stroke();
+
+    // Traços da escala (0%, 25%, 50%, 75%, 100%)
+    const ticks = [0, 0.25, 0.5, 0.75, 1.0];
+    ticks.forEach(t => {
+      const ang = startAngle + (t * Math.PI);
+      const x1 = cx + (radius - 11) * Math.cos(ang);
+      const y1 = cy + (radius - 11) * Math.sin(ang);
+      const x2 = cx + (radius + 4) * Math.cos(ang);
+      const y2 = cy + (radius + 4) * Math.sin(ang);
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x2, y2);
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = baseColor;
+      ctx.stroke();
+    });
+
+    // Rótulos 0% e 100%
+    ctx.font = 'bold 9px "Segoe UI", sans-serif';
+    ctx.fillStyle = textColor;
+    ctx.textAlign = 'center';
+    ctx.fillText('0%', cx - radius - 2, cy + 12);
+    ctx.fillText('100%', cx + radius + 2, cy + 12);
+
+    // 2. Desenho dos Ponteiros
+    const drawNeedle = (ratio, color) => {
+      const clampRatio = Math.max(0, Math.min(1, ratio));
+      const angle = startAngle + (clampRatio * Math.PI);
+
+      const needleLen = radius - 8;
+      const nx = cx + needleLen * Math.cos(angle);
+      const ny = cy + needleLen * Math.sin(angle);
+
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(nx, ny);
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = color;
+      ctx.stroke();
+
+      const px = cx + radius * Math.cos(angle);
+      const py = cy + radius * Math.sin(angle);
+      ctx.beginPath();
+      ctx.arc(px, py, 6, 0, 2 * Math.PI);
+      ctx.fillStyle = color;
+      ctx.fill();
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = '#ffffff';
+      ctx.stroke();
+    };
+
+    drawNeedle(ratioIC, colorIC);
+    drawNeedle(ratioIE, colorIE);
+    drawNeedle(ratioIA, colorIA);
+
+    // Pino central
+    ctx.beginPath();
+    ctx.arc(cx, cy, 6, 0, 2 * Math.PI);
+    ctx.fillStyle = textColor;
+    ctx.fill();
+  },
+
+  // ========================================================
+  // GRÁFICOS DE TOP SERVIÇOS E GERÊNCIA (COM SELETOR DE MODO)
+  // ========================================================
+  renderTopServicosChart(d = AppState.dadosFiltrados) {
+    const modo = document.getElementById('topServicosFiltro')?.value || 'atraso';
+    let base = [...d];
+    let corBarra = getComputedStyle(document.body).getPropertyValue('--primary').trim();
+
+    if (modo === 'atraso') {
+      base = base.filter(r => r.__situacaoMatematica === 'atraso');
+      corBarra = getComputedStyle(document.body).getPropertyValue('--danger').trim();
+    } else if (modo === 'atendido') {
+      base = base.filter(r => r.__situacaoMatematica === 'atendido_prazo' || r.__situacaoMatematica === 'atendido_fora');
+      corBarra = getComputedStyle(document.body).getPropertyValue('--success').trim();
+    }
+
+    const ct = {};
+    base.forEach(r => {
+      let v = String(r[AppState.colServico] || 'S/I').trim().toUpperCase();
+      ct[v] = (ct[v] || 0) + 1;
+    });
+
+    const sorted = Object.entries(ct).sort((a, b) => b[1] - a[1]).slice(0, 6);
+
+    if (window.chServicos) try { window.chServicos.destroy(); } catch (e) {}
+
+    window.chServicos = new Chart(document.getElementById('chartServicos'), {
+      type: 'bar',
+      data: {
+        labels: sorted.map(x => x[0].length > 32 ? x[0].slice(0, 32) + '…' : x[0]),
+        datasets: [{
+          data: sorted.map(x => x[1]),
+          backgroundColor: corBarra,
+          borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        indexAxis: 'y',
+        plugins: {
+          legend: { display: false },
+          datalabels: {
+            display: true, color: '#fff', font: { weight: 'bold', size: 9 }, align: 'end', anchor: 'end',
+            formatter: (v) => v
+          }
+        },
+        scales: { y: { ticks: { font: this.fontResponsiva } } },
+        layout: { padding: { right: 28 } }
+      }
+    });
+  },
+
+  renderGerenciaChart(d = AppState.dadosFiltrados) {
+    const modo = document.getElementById('topGerenciaFiltro')?.value || 'todos';
+    let base = [...d];
+    let corBarra = getComputedStyle(document.body).getPropertyValue('--primary').trim();
+
+    if (modo === 'atraso') {
+      base = base.filter(r => r.__situacaoMatematica === 'atraso');
+      corBarra = getComputedStyle(document.body).getPropertyValue('--danger').trim();
+    } else if (modo === 'atendido') {
+      base = base.filter(r => r.__situacaoMatematica === 'atendido_prazo' || r.__situacaoMatematica === 'atendido_fora');
+      corBarra = getComputedStyle(document.body).getPropertyValue('--success').trim();
+    }
+
+    const ct = {};
+    base.forEach(r => {
+      let v = String(r[AppState.colGerencia] || 'S/I').trim().toUpperCase();
+      ct[v] = (ct[v] || 0) + 1;
+    });
+
+    const cgS = Object.entries(ct).sort((a, b) => b[1] - a[1]).slice(0, 12);
+
+    if (window.chGerencia) try { window.chGerencia.destroy(); } catch (e) {}
+
+    window.chGerencia = new Chart(document.getElementById('chartGerencia'), {
+      type: 'bar',
+      data: {
+        labels: cgS.map(x => x[0]),
+        datasets: [{
+          data: cgS.map(x => x[1]),
+          backgroundColor: corBarra,
+          borderRadius: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        indexAxis: 'y',
+        plugins: {
+          legend: { display: false },
+          datalabels: {
+            display: true, color: '#fff', font: { weight: 'bold', size: 9 }, align: 'end', anchor: 'end',
+            formatter: (v) => v
+          }
+        },
+        scales: { y: { ticks: { font: this.fontResponsiva } } },
+        layout: { padding: { right: 28 } }
+      }
+    });
+  },
+
+  // ========================================================
+  // RANKING DE BAIRROS (COM SELETOR DE MODO)
+  // ========================================================
+  renderRankingPremiumCompact(d = AppState.dadosFiltrados) {
+    const modo = document.getElementById('topBairrosFiltro')?.value || 'todos';
+    let base = [...d];
+
+    if (modo === 'atraso') {
+      base = base.filter(r => r.__situacaoMatematica === 'atraso');
+    } else if (modo === 'atendido') {
+      base = base.filter(r => r.__situacaoMatematica === 'atendido_prazo' || r.__situacaoMatematica === 'atendido_fora');
+    }
+
+    const ct = {}; 
+    base.forEach(r => { 
+      const v = String(r[AppState.colBairro]||'').trim().toUpperCase(); 
+      if(v) ct[v] = (ct[v]||0)+1; 
+    });
+    
+    const top = Object.entries(ct).sort((a,b)=>b[1]-a[1]).slice(0,6);
+    const max = top.length > 0 ? top[0][1] : 1;
+    const posClass = i => i===0 ? 'g' : i===1 ? 's' : i===2 ? 'b' : 'n';
+    
+    document.getElementById('rankBairrosPremium').innerHTML = top.map((t, i) => `
+      <div class="rank-row">
+        <div class="rpos ${posClass(i)}">${i+1}º</div>
+        <div class="rname" title="${t[0]}">${t[0]||'—'}</div>
+        <div class="rbar-wrap"><div class="rbar" style="width:${Math.round((t[1]/max)*100)}%"></div></div>
+        <div class="rcount">${t[1]}</div>
+      </div>
+    `).join('') || '<div style="color:var(--muted);font-size:0.75rem;padding:12px;text-align:center;">SEM DADOS FILTRADOS</div>';
   },
 
   renderPareto() {
@@ -1100,77 +1179,28 @@ const GraficosManager = {
     if(tSel==='atendidos') base = base.filter(r => r.__situacaoMatematica === 'atendido_prazo' || r.__situacaoMatematica === 'atendido_fora');
 
     const ct = {}; base.forEach(r => { const v = String(r[AppState.colServico]||'S/I').trim().toUpperCase(); ct[v] = (ct[v]||0)+1; });
-    let sorted = Object.entries(ct).sort((a,b)=>b[1]-a[1]);
-    const tot = sorted.reduce((s,x)=>s+x[1],0);
-    if(topN>0) sorted = sorted.slice(0, topN);
-
+    let sorted = Object.entries(ct).sort((a,b)=>b[1]-a[1]); const tot = sorted.reduce((s,x)=>s+x[1],0); if(topN>0) sorted = sorted.slice(0, topN);
     let acum = 0; const acm = sorted.map(x => { acum+=x[1]; return parseFloat((acum/tot*100).toFixed(1)); });
     
     window.chPareto = new Chart(document.getElementById('chartPareto'), { 
-      type:'bar', 
-      data:{ 
-        labels:sorted.map(x=>x[0].length>35?x[0].slice(0,35)+'…':x[0]), 
-        datasets:[ 
-          {type:'bar', label:'QTD', data:sorted.map(x=>x[1]), backgroundColor:getComputedStyle(document.body).getPropertyValue('--primary').trim(), borderRadius:4, yAxisID:'y'}, 
-          {type:'line', label:'ACUMULADO %', data:acm, borderColor:getComputedStyle(document.body).getPropertyValue('--danger').trim(), backgroundColor:'transparent', yAxisID:'y2', tension:.3, pointRadius:2} 
-        ] 
-      }, 
-      options:{
-        responsive:true, maintainAspectRatio:false, 
-        plugins:{legend:{position:'top', labels:{font:{family:"'Segoe UI', sans-serif"}}}}, 
-        scales:{
-          x: { ticks: { font: this.fontResponsiva } },
-          y:{beginAtZero:true, position:'left'}, 
-          y2:{beginAtZero:true, position:'right', min:0, max:100, grid:{drawOnChartArea:false}, ticks:{callback:v=>v+'%'}}
-        }
-      } 
+      type:'bar', data:{ labels:sorted.map(x=>x[0].length>35?x[0].slice(0,35)+'…':x[0]), datasets:[ {type:'bar', label:'QTD', data:sorted.map(x=>x[1]), backgroundColor:getComputedStyle(document.body).getPropertyValue('--primary').trim(), borderRadius:4, yAxisID:'y'}, {type:'line', label:'ACUMULADO %', data:acm, borderColor:getComputedStyle(document.body).getPropertyValue('--danger').trim(), backgroundColor:'transparent', yAxisID:'y2', tension:.3, pointRadius:2} ] }, 
+      options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'top', labels:{font:{family:"'Segoe UI', sans-serif"}}}}, scales:{ x: { ticks: { font: this.fontResponsiva } }, y:{beginAtZero:true, position:'left'}, y2:{beginAtZero:true, position:'right', min:0, max:100, grid:{drawOnChartArea:false}, ticks:{callback:v=>v+'%'}} } } 
     });
   },
 
   renderParetoBairro() {
     if(window.chParetoBairro) try{window.chParetoBairro.destroy()}catch(e){}
     let base = [...AppState.dadosFiltrados];
-    const gSel = document.getElementById('paretoBairroGerencia').value;
-    const sSel = document.getElementById('paretoBairroServico').value;
-    const topN = parseInt(document.getElementById('paretoBairroTop').value)||10;
-
+    const gSel = document.getElementById('paretoBairroGerencia').value, sSel = document.getElementById('paretoBairroServico').value, topN = parseInt(document.getElementById('paretoBairroTop').value)||10;
     if(gSel && AppState.colGerencia) base = base.filter(r => String(r[AppState.colGerencia]||'').trim().toUpperCase()===gSel.toUpperCase());
     if(sSel && AppState.colServico) base = base.filter(r => String(r[AppState.colServico]||'').trim().toUpperCase()===sSel.toUpperCase());
-    
-    if (AppState.prRpaState.size > 0 && AppState.prRpaState.size < AppState.prRpaOpcoes.length) {
-      base = base.filter(r => AppState.prRpaState.has(String(r[AppState.colRPA]||'').trim().replace('.0','').toUpperCase()));
-    }
-
-    const ct = {}; 
-    base.forEach(r => { 
-      const v = String(r[AppState.colBairro]||'S/I').trim().toUpperCase(); 
-      if(v) ct[v] = (ct[v]||0)+1; 
-    });
-    
-    let sorted = Object.entries(ct).sort((a,b)=>b[1]-a[1]);
-    const tot = sorted.reduce((s,x)=>s+x[1],0);
-    if(topN>0) sorted = sorted.slice(0, topN);
-
+    if (AppState.prRpaState.size > 0 && AppState.prRpaState.size < AppState.prRpaOpcoes.length) { base = base.filter(r => AppState.prRpaState.has(String(r[AppState.colRPA]||'').trim().replace('.0','').toUpperCase())); }
+    const ct = {}; base.forEach(r => { const v = String(r[AppState.colBairro]||'S/I').trim().toUpperCase(); if(v) ct[v] = (ct[v]||0)+1; });
+    let sorted = Object.entries(ct).sort((a,b)=>b[1]-a[1]); const tot = sorted.reduce((s,x)=>s+x[1],0); if(topN>0) sorted = sorted.slice(0, topN);
     let acum = 0; const acm = sorted.map(x => { acum+=x[1]; return tot > 0 ? parseFloat((acum/tot*100).toFixed(1)) : 0; });
-    
     window.chParetoBairro = new Chart(document.getElementById('chartParetoBairro'), { 
-      type:'bar', 
-      data:{ 
-        labels:sorted.map(x=>x[0].length>35?x[0].slice(0,35)+'…':x[0]), 
-        datasets:[ 
-          {type:'bar', label:'QTD', data:sorted.map(x=>x[1]), backgroundColor:getComputedStyle(document.body).getPropertyValue('--secondary').trim(), borderRadius:4, yAxisID:'y'}, 
-          {type:'line', label:'ACUMULADO %', data:acm, borderColor:getComputedStyle(document.body).getPropertyValue('--danger').trim(), backgroundColor:'transparent', yAxisID:'y2', tension:.3, pointRadius:2} 
-        ] 
-      }, 
-      options:{
-        responsive:true, maintainAspectRatio:false, 
-        plugins:{legend:{position:'top', labels:{font:{family:"'Segoe UI', sans-serif"}}}}, 
-        scales:{
-          x: { ticks: { font: this.fontResponsiva } },
-          y:{beginAtZero:true, position:'left'}, 
-          y2:{beginAtZero:true, position:'right', min:0, max:100, grid:{drawOnChartArea:false}, ticks:{callback:v=>v+'%'}}
-        }
-      } 
+      type:'bar', data:{ labels:sorted.map(x=>x[0].length>35?x[0].slice(0,35)+'…':x[0]), datasets:[ {type:'bar', label:'QTD', data:sorted.map(x=>x[1]), backgroundColor:getComputedStyle(document.body).getPropertyValue('--secondary').trim(), borderRadius:4, yAxisID:'y'}, {type:'line', label:'ACUMULADO %', data:acm, borderColor:getComputedStyle(document.body).getPropertyValue('--danger').trim(), backgroundColor:'transparent', yAxisID:'y2', tension:.3, pointRadius:2} ] }, 
+      options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'top', labels:{font:{family:"'Segoe UI', sans-serif"}}}}, scales:{ x: { ticks: { font: this.fontResponsiva } }, y:{beginAtZero:true, position:'left'}, y2:{beginAtZero:true, position:'right', min:0, max:100, grid:{drawOnChartArea:false}, ticks:{callback:v=>v+'%'}} } } 
     });
   }
 };
@@ -1180,87 +1210,29 @@ const GraficosManager = {
    ================================================-------- */
 const RelatorioManager = {
   renderRelatorioDinamico(dados = AppState.dadosFiltrados) {
-    const tbody = document.getElementById('tblRelatorioBody');
-    const arvore = {};
+    const tbody = document.getElementById('tblRelatorioBody'), arvore = {};
     dados.forEach(r => {
       const g = String(r[AppState.colGrupo]||'SEM GRUPO').trim(), s = String(r[AppState.colServico]||'SEM SERVIÇO').trim();
       if(!arvore[g]) arvore[g] = {}; if(!arvore[g][s]) arvore[g][s] = {an:0, ap:0, af:0, at:0, tot:0};
       const v = arvore[g][s]; v.tot++;
-      if(r.__situacaoMatematica==='andamento') v.an++;
-      else if(r.__situacaoMatematica==='atendido_prazo') v.ap++;
-      else if(r.__situacaoMatematica==='atendido_fora') v.af++;
-      else if(r.__situacaoMatematica==='atraso') v.at++;
+      if(r.__situacaoMatematica==='andamento') v.an++; else if(r.__situacaoMatematica==='atendido_prazo') v.ap++; else if(r.__situacaoMatematica==='atendido_fora') v.af++; else if(r.__situacaoMatematica==='atraso') v.at++;
     });
-
-    const pcts = (n, d) => d > 0 ? (n/d*100).toFixed(1)+'%' : '-';
-    let html = '', tAn=0, tAp=0, tAf=0, tAt=0, tTot=0;
-
+    const pcts = (n, d) => d > 0 ? (n/d*100).toFixed(1)+'%' : '-'; let html = '', tAn=0, tAp=0, tAf=0, tAt=0, tTot=0;
     Object.entries(arvore).sort((a,b) => Object.values(b[1]).reduce((s,x)=>s+x.tot,0) - Object.values(a[1]).reduce((s,x)=>s+x.tot,0)).forEach(([grupo, servs]) => {
-      let gAn=0, gAp=0, gAf=0, gAt=0, gTot=0;
-      Object.values(servs).forEach(v => { gAn+=v.an; gAp+=v.ap; gAf+=v.af; gAt+=v.at; gTot+=v.tot; });
-      tAn+=gAn; tAp+=gAp; tAf+=gAf; tAt+=gAt; tTot+=gTot;
-      const isOp = AppState.gruposExpandidos.has(grupo), arr = isOp ? '▼' : '▶';
-
-      const gAtendidas = gAp + gAf;
-      const gNaoAtendidas = gAn + gAt;
-
-      html += `<tr class="tr-grupo" onclick="RelatorioManager.toggleGrupo('${grupo.replace(/'/g,"\\'")}')">
-        <td style="text-align:left"><span style="margin-right:6px;font-size:0.8rem">${arr}</span><strong>${grupo.toUpperCase()}</strong></td>
-        <td class="cell-clk bg-andamento" onclick="event.stopPropagation(); RelatorioManager.filtrarCell('${grupo.replace(/'/g,"\\'")}','','andamento')">${gAn||'-'}</td>
-        <td class="cell-clk bg-prazo" onclick="event.stopPropagation(); RelatorioManager.filtrarCell('${grupo.replace(/'/g,"\\'")}','','atendido_prazo')">${gAp||'-'}</td>
-        <td class="cell-clk bg-fora" onclick="event.stopPropagation(); RelatorioManager.filtrarCell('${grupo.replace(/'/g,"\\'")}','','atendido_fora')">${gAf||'-'}</td>
-        <td class="cell-clk bg-atraso atraso" onclick="event.stopPropagation(); RelatorioManager.filtrarCell('${grupo.replace(/'/g,"\\'")}','','atraso')">${gAt||'-'}</td>
-        <td class="cell-clk" onclick="event.stopPropagation(); RelatorioManager.filtrarCell('${grupo.replace(/'/g,"\\'")}','','total')"><strong>${gTot}</strong></td>
-        <td style="text-align:center">${pcts(gAtendidas, gTot)}</td>
-        <td style="text-align:center">${pcts(gAp, gAtendidas)}</td>
-        <td style="text-align:center">${pcts(gAt, gNaoAtendidas)}</td>
-      </tr>`;
-
+      let gAn=0, gAp=0, gAf=0, gAt=0, gTot=0; Object.values(servs).forEach(v => { gAn+=v.an; gAp+=v.ap; gAf+=v.af; gAt+=v.at; gTot+=v.tot; }); tAn+=gAn; tAp+=gAp; tAf+=gAf; tAt+=gAt; tTot+=gTot;
+      const isOp = AppState.gruposExpandidos.has(grupo), arr = isOp ? '▼' : '▶', gAtendidas = gAp + gAf, gNaoAtendidas = gAn + gAt;
+      html += `<tr class="tr-grupo" onclick="RelatorioManager.toggleGrupo('${grupo.replace(/'/g,"\\'")}')"><td style="text-align:left"><span style="margin-right:6px;font-size:0.8rem">${arr}</span><strong>${grupo.toUpperCase()}</strong></td><td class="cell-clk bg-andamento" onclick="event.stopPropagation(); RelatorioManager.filtrarCell('${grupo.replace(/'/g,"\\'")}','','andamento')">${gAn||'-'}</td><td class="cell-clk bg-prazo" onclick="event.stopPropagation(); RelatorioManager.filtrarCell('${grupo.replace(/'/g,"\\'")}','','atendido_prazo')">${gAp||'-'}</td><td class="cell-clk bg-fora" onclick="event.stopPropagation(); RelatorioManager.filtrarCell('${grupo.replace(/'/g,"\\'")}','','atendido_fora')">${gAf||'-'}</td><td class="cell-clk bg-atraso atraso" onclick="event.stopPropagation(); RelatorioManager.filtrarCell('${grupo.replace(/'/g,"\\'")}','','atraso')">${gAt||'-'}</td><td class="cell-clk" onclick="event.stopPropagation(); RelatorioManager.filtrarCell('${grupo.replace(/'/g,"\\'")}','','total')"><strong>${gTot}</strong></td><td style="text-align:center">${pcts(gAtendidas, gTot)}</td><td style="text-align:center">${pcts(gAp, gAtendidas)}</td><td style="text-align:center">${pcts(gAt, gNaoAtendidas)}</td></tr>`;
       Object.entries(servs).sort((a,b) => b[1].tot - a[1].tot).forEach(([srv, v]) => {
-        const cls = isOp ? 'expanded' : '', sT = v.an + v.ap + v.af + v.at;
-        const sAtendidas = v.ap + v.af;
-        const sNaoAtendidas = v.an + v.at;
-        html += `<tr class="tr-servico ${cls}">
-          <td style="text-align:left">↳ ${srv.toUpperCase()}</td>
-          <td class="cell-clk bg-andamento" onclick="RelatorioManager.filtrarCell('${grupo.replace(/'/g,"\\'")}','${srv.replace(/'/g,"\\'")}','andamento')">${v.an||'-'}</td>
-          <td class="cell-clk bg-prazo" onclick="RelatorioManager.filtrarCell('${grupo.replace(/'/g,"\\'")}','${srv.replace(/'/g,"\\'")}','atendido_prazo')">${v.ap||'-'}</td>
-          <td class="cell-clk bg-fora" onclick="RelatorioManager.filtrarCell('${grupo.replace(/'/g,"\\'")}','${srv.replace(/'/g,"\\'")}','atendido_fora')">${v.af||'-'}</td>
-          <td class="cell-clk bg-atraso atraso" onclick="RelatorioManager.filtrarCell('${grupo.replace(/'/g,"\\'")}','${srv.replace(/'/g,"\\'")}','atraso')">${v.at||'-'}</td>
-          <td class="cell-clk" onclick="RelatorioManager.filtrarCell('${grupo.replace(/'/g,"\\'")}','${srv.replace(/'/g,"\\'")}','total')" style="color:var(--secondary)">${sT}</td>
-          <td style="text-align:center">${pcts(sAtendidas, sT)}</td>
-          <td style="text-align:center">${pcts(v.ap, sAtendidas)}</td>
-          <td style="text-align:center">${pcts(v.at, sNaoAtendidas)}</td>
-        </tr>`;
+        const cls = isOp ? 'expanded' : '', sT = v.an + v.ap + v.af + v.at, sAtendidas = v.ap + v.af, sNaoAtendidas = v.an + v.at;
+        html += `<tr class="tr-servico ${cls}"><td style="text-align:left">↳ ${srv.toUpperCase()}</td><td class="cell-clk bg-andamento" onclick="RelatorioManager.filtrarCell('${grupo.replace(/'/g,"\\'")}','${srv.replace(/'/g,"\\'")}','andamento')">${v.an||'-'}</td><td class="cell-clk bg-prazo" onclick="RelatorioManager.filtrarCell('${grupo.replace(/'/g,"\\'")}','${srv.replace(/'/g,"\\'")}','atendido_prazo')">${v.ap||'-'}</td><td class="cell-clk bg-fora" onclick="RelatorioManager.filtrarCell('${grupo.replace(/'/g,"\\'")}','${srv.replace(/'/g,"\\'")}','atendido_fora')">${v.af||'-'}</td><td class="cell-clk bg-atraso atraso" onclick="RelatorioManager.filtrarCell('${grupo.replace(/'/g,"\\'")}','${srv.replace(/'/g,"\\'")}','atraso')">${v.at||'-'}</td><td class="cell-clk" onclick="RelatorioManager.filtrarCell('${grupo.replace(/'/g,"\\'")}','${srv.replace(/'/g,"\\'")}','total')" style="color:var(--secondary)">${sT}</td><td style="text-align:center">${pcts(sAtendidas, sT)}</td><td style="text-align:center">${pcts(v.ap, sAtendidas)}</td><td style="text-align:center">${pcts(v.at, sNaoAtendidas)}</td></tr>`;
       });
     });
-    tbody.innerHTML = html;
-
-    const tAtendidasGeral = tAp + tAf;
-    const tNaoAtendidasGeral = tAn + tAt;
-
-    document.getElementById('tblRelatorioFoot').innerHTML = `<tr>
-      <td style="text-align:right">TOTAIS GERAIS:</td>
-      <td class="cell-clk bg-andamento" onclick="RelatorioManager.filtrarCell(null,null,'andamento')">${tAn}</td>
-      <td class="cell-clk bg-prazo" onclick="RelatorioManager.filtrarCell(null,null,'atendido_prazo')">${tAp}</td>
-      <td class="cell-clk bg-fora" onclick="RelatorioManager.filtrarCell(null,null,'atendido_fora')">${tAf}</td>
-      <td class="cell-clk bg-atraso atraso" onclick="RelatorioManager.filtrarCell(null,null,'atraso')">${tAt}</td>
-      <td class="cell-clk" onclick="RelatorioManager.filtrarCell(null,null,'total')"><strong>${tTot}</strong></td>
-      <td style="text-align:center;color:var(--primary)"><strong>${pcts(tAtendidasGeral, tTot)}</strong></td>
-      <td style="text-align:center;color:var(--primary)"><strong>${pcts(tAp, tAtendidasGeral)}</strong></td>
-      <td style="text-align:center;color:var(--danger)"><strong>${pcts(tAt, tNaoAtendidasGeral)}</strong></td>
-    </tr>`;
+    tbody.innerHTML = html; const tAtendidasGeral = tAp + tAf, tNaoAtendidasGeral = tAn + tAt;
+    document.getElementById('tblRelatorioFoot').innerHTML = `<tr><td style="text-align:right">TOTAIS GERAIS:</td><td class="cell-clk bg-andamento" onclick="RelatorioManager.filtrarCell(null,null,'andamento')">${tAn}</td><td class="cell-clk bg-prazo" onclick="RelatorioManager.filtrarCell(null,null,'atendido_prazo')">${tAp}</td><td class="cell-clk bg-fora" onclick="RelatorioManager.filtrarCell(null,null,'atendido_fora')">${tAf}</td><td class="cell-clk bg-atraso atraso" onclick="RelatorioManager.filtrarCell(null,null,'atraso')">${tAt}</td><td class="cell-clk" onclick="RelatorioManager.filtrarCell(null,null,'total')"><strong>${tTot}</strong></td><td style="text-align:center;color:var(--primary)"><strong>${pcts(tAtendidasGeral, tTot)}</strong></td><td style="text-align:center;color:var(--primary)"><strong>${pcts(tAp, tAtendidasGeral)}</strong></td><td style="text-align:center;color:var(--danger)"><strong>${pcts(tAt, tNaoAtendidasGeral)}</strong></td></tr>`;
   },
-
   toggleGrupo(g) { if (AppState.gruposExpandidos.has(g)) AppState.gruposExpandidos.delete(g); else AppState.gruposExpandidos.add(g); this.renderRelatorioDinamico(); },
   expandirTudo(exp) { AppState.gruposExpandidos.clear(); if (exp) [...new Set(AppState.dadosFiltrados.map(r => String(r[AppState.colGrupo]||'SEM GRUPO').trim()))].forEach(g => AppState.gruposExpandidos.add(g)); this.renderRelatorioDinamico(); },
-
-  filtrarCell(g, s, cat) {
-    AppState.fDinGrupo = g; AppState.fDinServico = s; AppState.fDinCat = cat;
-    if (g) AppState.gruposExpandidos.add(g);
-    this.renderRelatorioDinamico(); TabelaManager.renderTabela(AppState.dadosFiltrados);
-    document.getElementById('secTabela').scrollIntoView({behavior:'smooth'});
-  },
-
+  filtrarCell(g, s, cat) { AppState.fDinGrupo = g; AppState.fDinServico = s; AppState.fDinCat = cat; if (g) AppState.gruposExpandidos.add(g); this.renderRelatorioDinamico(); TabelaManager.renderTabela(AppState.dadosFiltrados); document.getElementById('secTabela').scrollIntoView({behavior:'smooth'}); },
   limparFiltroDinamicoBase() { AppState.fDinGrupo = null; AppState.fDinServico = null; AppState.fDinCat = null; },
   limparFiltroDinamico() { this.limparFiltroDinamicoBase(); this.renderRelatorioDinamico(); TabelaManager.renderTabela(AppState.dadosFiltrados); }
 };
@@ -1270,26 +1242,18 @@ const RelatorioManager = {
    ================================================-------- */
 const TabelaManager = {
   renderColsOpts() {
-    const cont = document.getElementById('ms-cols-drop');
-    const cols = AppState.colunas.filter(c => !c.startsWith('__'));
+    const cont = document.getElementById('ms-cols-drop'), cols = AppState.colunas.filter(c => !c.startsWith('__'));
     const res = cols.map(c => `<label class="ms-opt"><input type="checkbox" ${AppState.colunasVisiveis.has(c)?'checked':''} onchange="TabelaManager.tglCol('${c.replace(/'/g,"\\'")}',this.checked)"><span>${c}</span></label>`).join('');
     cont.innerHTML = `<div class="ms-selall" onclick="TabelaManager.selAllCols()">✔ INVERTER SELEÇÃO</div><div style="padding:6px 0; max-height:220px; overflow-y:auto">` + res + `</div>`;
   },
-
   tglCol(c, chk) { if(chk) AppState.colunasVisiveis.add(c); else AppState.colunasVisiveis.delete(c); this.renderTabela(AppState.dadosFiltrados); },
-  selAllCols() {
-    const cols = AppState.colunas.filter(c => !c.startsWith('__'));
-    if(AppState.colunasVisiveis.size === cols.length) AppState.colunasVisiveis.clear(); else cols.forEach(c => AppState.colunasVisiveis.add(c));
-    this.renderColsOpts(); this.renderTabela(AppState.dadosFiltrados);
-  },
+  selAllCols() { const cols = AppState.colunas.filter(c => !c.startsWith('__')); if(AppState.colunasVisiveis.size === cols.length) AppState.colunasVisiveis.clear(); else cols.forEach(c => AppState.colunasVisiveis.add(c)); this.renderColsOpts(); this.renderTabela(AppState.dadosFiltrados); },
 
   renderTabela(dados) {
     let base = [...dados]; const badge = document.getElementById('filtroDinamicoBadge');
-
     if (AppState.fDinGrupo || AppState.fDinServico || AppState.fDinCat) {
       if (AppState.fDinServico) base = base.filter(r => String(r[AppState.colGrupo]||'').trim()===AppState.fDinGrupo && String(r[AppState.colServico]||'').trim()===AppState.fDinServico);
       else if (AppState.fDinGrupo) base = base.filter(r => String(r[AppState.colGrupo]||'').trim()===AppState.fDinGrupo);
-      
       let cat = 'TODAS';
       if (AppState.fDinCat && AppState.fDinCat!=='total') {
         base = base.filter(r => r.__situacaoMatematica===AppState.fDinCat);
@@ -1298,13 +1262,10 @@ const TabelaManager = {
       badge.innerHTML = `<span>FILTRO: ${AppState.fDinServico || AppState.fDinGrupo || 'TOTAIS'} (${cat}) [${base.length} REG]</span> <button onclick="RelatorioManager.limparFiltroDinamico()">✕</button>`;
       badge.classList.remove('hidden'); badge.classList.add('filter-badge');
     } else badge.classList.add('hidden');
-
     const q = document.getElementById('tblSearch').value.toLowerCase().trim();
     if (q) base = base.filter(r => AppState.colunas.some(c => String(r[c]??'').toLowerCase().includes(q)));
-
     AppState.tblDadosVisiveis = base; AppState.paginaAtual = 1; AppState.sortCol = null;
     const cols = AppState.colunas.filter(c => !c.startsWith('__') && AppState.colunasVisiveis.has(c));
-    
     document.getElementById('tblHead').innerHTML = '<tr>' + cols.map((c) => `<th class="sortable" onclick="TabelaManager.sortTabela('${c.replace(/'/g,"\\'")}')" title="CLIQUE PARA ORDENAR">${c.toUpperCase()} <span style="font-size:0.75rem;opacity:0.5;float:right">⇅</span></th>`).join('') + '</tr>';
     this.renderPaginaTabela();
   },
@@ -1313,10 +1274,7 @@ const TabelaManager = {
     const cols = AppState.colunas.filter(c => !c.startsWith('__') && AppState.colunasVisiveis.has(c));
     const ini = (AppState.paginaAtual - 1) * AppState.linhasPorPagina, fatia = AppState.tblDadosVisiveis.slice(ini, ini + AppState.linhasPorPagina);
     document.getElementById('tblBody').innerHTML = fatia.map(r => '<tr>' + cols.map(c => `<td>${r[c] instanceof Date ? r[c].toLocaleDateString('pt-BR') : (r[c]??'')}</td>`).join('') + '</tr>').join('');
-
-    const tot = AppState.tblDadosVisiveis.length;
-    document.getElementById('tblInfo').textContent = `${Math.min(ini+1,tot)}–${Math.min(ini+AppState.linhasPorPagina,tot)} DE ${tot.toLocaleString('pt-BR')} REGISTROS`;
-    
+    const tot = AppState.tblDadosVisiveis.length; document.getElementById('tblInfo').textContent = `${Math.min(ini+1,tot)}–${Math.min(ini+AppState.linhasPorPagina,tot)} DE ${tot.toLocaleString('pt-BR')} REGISTROS`;
     const totalPag = Math.ceil(tot / AppState.linhasPorPagina), el = document.getElementById('pagBtns');
     if (totalPag <= 1) { el.innerHTML = ''; return; }
     let html = `<button class="btn-mini" ${AppState.paginaAtual===1?'disabled':''} onclick="TabelaManager.irPagina(${AppState.paginaAtual-1})">‹</button>`;
@@ -1325,24 +1283,17 @@ const TabelaManager = {
     html += `<button class="btn-mini" ${AppState.paginaAtual===totalPag?'disabled':''} onclick="TabelaManager.irPagina(${AppState.paginaAtual+1})">›</button>`;
     el.innerHTML = html;
   },
-
   irPagina(p) { AppState.paginaAtual = p; this.renderPaginaTabela(); },
-
   sortTabela(col) {
     if (AppState.sortCol === col) AppState.sortDir *= -1; else { AppState.sortCol = col; AppState.sortDir = 1; }
-    AppState.tblDadosVisiveis.sort((a,b) => {
-      let va = a[col]??'', vb = b[col]??'';
-      if(typeof va==='number' && typeof vb==='number') return (va - vb) * AppState.sortDir;
-      return String(va).localeCompare(String(vb), 'pt-BR') * AppState.sortDir;
-    });
+    AppState.tblDadosVisiveis.sort((a,b) => { let va = a[col]??'', vb = b[col]??''; if(typeof va==='number' && typeof vb==='number') return (va - vb) * AppState.sortDir; return String(va).localeCompare(String(vb), 'pt-BR') * AppState.sortDir; });
     AppState.paginaAtual = 1; this.renderPaginaTabela();
   },
-
   buscarTabela() { this.renderTabela(AppState.dadosFiltrados); }
 };
 
 /* ========================================================
-   7. MÓDULO DE EXPORTAÇÃO E RELATÓRIOS PDF/EXCEL (ExportManager)
+   7. EXPORTAÇÃO E RELATÓRIOS PDF/EXCEL (ExportManager)
    ================================================-------- */
 const ExportManager = {
   exportarExcel() {
@@ -1351,7 +1302,6 @@ const ExportManager = {
     const ws = XLSX.utils.json_to_sheet(AppState.tblDadosVisiveis.map(r => { let o={}; cols.forEach(c => o[c] = r[c] instanceof Date ? r[c].toLocaleDateString('pt-BR') : r[c]); return o; }));
     const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, ws, 'Registros'); XLSX.writeFile(wb, 'INDICADORES_156.xlsx');
   },
-
   exportarPDFGrid() {
     if(!AppState.tblDadosVisiveis.length) return alert('Sem dados.');
     const { jsPDF } = window.jspdf; const doc = new jsPDF({orientation:'landscape'});
@@ -1361,221 +1311,92 @@ const ExportManager = {
     doc.autoTable({head:[cols.map(c=>c.toUpperCase())], body:rows, startY:20, styles:{fontSize:7, cellPadding:2}}); doc.save('INDICADORES_156_GRID.pdf');
   },
 
-  abrirModalExportGraficos() {
-    if(!AppState.dadosFiltrados.length) return alert('Carregue e filtre dados primeiro.');
-    document.getElementById('modalExportGraficos').classList.add('show');
-  },
-
-  fecharModalExportGraficos() {
-    document.getElementById('modalExportGraficos').classList.remove('show');
-  },
-
-  marcarTodosGraficos(status) {
-    document.querySelectorAll('.chk-exp-graf').forEach(chk => chk.checked = status);
-  },
+  abrirModalExportGraficos() { if(!AppState.dadosFiltrados.length) return alert('Carregue e filtre dados primeiro.'); document.getElementById('modalExportGraficos').classList.add('show'); },
+  fecharModalExportGraficos() { document.getElementById('modalExportGraficos').classList.remove('show'); },
+  marcarTodosGraficos(status) { document.querySelectorAll('.chk-exp-graf').forEach(chk => chk.checked = status); },
 
   gerarPDFGraficosSelecionados() {
     const checks = document.querySelectorAll('.chk-exp-graf:checked');
     if(!checks.length) return alert('Selecione ao menos um gráfico.');
-    
     this.fecharModalExportGraficos();
-    
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF({orientation: 'portrait', unit: 'mm', format: 'a4'});
+    const { jsPDF } = window.jspdf; const doc = new jsPDF({orientation: 'portrait', unit: 'mm', format: 'a4'});
     
     const chartMap = {
+      'chartServicos': { chart: window.chServicos, title: 'TOP SERVIÇOS (UNIFICADO)' },
       'chartStatus': { chart: window.chStatus, title: 'SITUAÇÃO (DEMANDAS VS ATENDIDAS)' },
       'chartGerencia': { chart: window.chGerencia, title: 'DEMANDAS POR GERÊNCIA' },
       'chartRpa': { chart: window.chRpa, title: 'DEMANDAS POR RPA EM ATRASO' },
       'chartTendencia': { chart: window.chTendencia, title: 'TENDÊNCIA TEMPORAL (GERAL)' },
-      'chartServicos': { chart: window.chServicos, title: 'TOP SERVIÇOS' },
       'chartStatusMensal': { chart: window.chStatusMensal, title: 'EVOLUÇÃO MENSAL DAS DEMANDAS' },
       'chartPareto': { chart: window.chPareto, title: 'ANÁLISE DE PARETO — SERVIÇOS' },
       'chartParetoBairro': { chart: window.chParetoBairro, title: 'ANÁLISE DE PARETO — BAIRROS' }
     };
     
     let selectedItems = [];
-    checks.forEach(chk => {
-      if(chartMap[chk.value] && chartMap[chk.value].chart) {
-        selectedItems.push({
-          title: chartMap[chk.value].title,
-          img: chartMap[chk.value].chart.toBase64Image()
-        });
-      }
-    });
-    
+    checks.forEach(chk => { if(chartMap[chk.value] && chartMap[chk.value].chart) selectedItems.push({ title: chartMap[chk.value].title, img: chartMap[chk.value].chart.toBase64Image() }); });
     if(!selectedItems.length) return alert('Nenhum gráfico válido encontrado para exportação.');
     
-    let totalPages = Math.ceil(selectedItems.length / 2);
-    let pageIdx = 1;
-    
+    let totalPages = Math.ceil(selectedItems.length / 2); let pageIdx = 1;
     for (let i = 0; i < selectedItems.length; i += 2) {
       if (pageIdx > 1) doc.addPage();
-      
-      doc.setFontSize(8.5); doc.setFont("helvetica", "bold");
-      doc.text("AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA - EMLURB", 105, 10, {align:"center"});
-      doc.setFontSize(7.5); doc.setFont("helvetica", "normal");
-      doc.text("RELATÓRIO GERENCIAL DE INDICADORES 156 - GRÁFICOS", 105, 14, {align:"center"});
-      
-      doc.setFont("helvetica", "bold"); doc.setFontSize(8);
-      doc.text(selectedItems[i].title, 14, 22);
-      doc.addImage(selectedItems[i].img, 'PNG', 14, 25, 182, 110);
-      
-      if (selectedItems[i+1]) {
-        doc.setFont("helvetica", "bold"); doc.setFontSize(8);
-        doc.text(selectedItems[i+1].title, 14, 142);
-        doc.addImage(selectedItems[i+1].img, 'PNG', 14, 145, 182, 110);
-      }
-      
-      doc.setFontSize(6.5); doc.setFont("helvetica", "normal");
-      doc.text(`Emitido em: ${new Date().toLocaleString('pt-BR')}`, 14, 288);
-      doc.text(`Página ${pageIdx} de ${totalPages}`, 196, 288, {align:"right"});
-      
+      doc.setFontSize(8.5); doc.setFont("helvetica", "bold"); doc.text("AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA - EMLURB", 105, 10, {align:"center"});
+      doc.setFontSize(7.5); doc.setFont("helvetica", "normal"); doc.text("RELATÓRIO GERENCIAL DE INDICADORES 156 - GRÁFICOS", 105, 14, {align:"center"});
+      doc.setFont("helvetica", "bold"); doc.setFontSize(8); doc.text(selectedItems[i].title, 14, 22); doc.addImage(selectedItems[i].img, 'PNG', 14, 25, 182, 110);
+      if (selectedItems[i+1]) { doc.setFont("helvetica", "bold"); doc.setFontSize(8); doc.text(selectedItems[i+1].title, 14, 142); doc.addImage(selectedItems[i+1].img, 'PNG', 14, 145, 182, 110); }
+      doc.setFontSize(6.5); doc.setFont("helvetica", "normal"); doc.text(`Emitido em: ${new Date().toLocaleString('pt-BR')}`, 14, 288); doc.text(`Página ${pageIdx} de ${totalPages}`, 196, 288, {align:"right"});
       pageIdx++;
     }
-    
     doc.save('GRAFICOS_GERENCIAIS_156.pdf');
   },
 
   exportarPDFResumo() {
     if(!AppState.tblDadosVisiveis.length) return alert('Sem dados para exportar.');
-    
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF({orientation: 'portrait', unit: 'mm', format: 'a4'});
-    let page = 1;
-    
+    const { jsPDF } = window.jspdf; const doc = new jsPDF({orientation: 'portrait', unit: 'mm', format: 'a4'}); let page = 1;
     const getC = (regex) => AppState.colunas.find(c => regex.test(c));
+    const cDem = getC(/^SOLIC$/i) || AppState.colunas[0], cDtCad = getC(/^DATA\s*CADASTRO$/i), cOrig = getC(/^TIPO$/i), cTipoDem = getC(/^DEMANDANTE$/i), cDemNome = getC(/^SOLICITANTE$/i), cNum = getC(/^N[º°]?$|^NUMERO$/i), cObs = getC(/OBSERVA[ÇC][ÃA]O|DESCRI[ÇC][ÃA]O|PARECER|DESPACHO/i);
+    const formatD = (v) => v instanceof Date ? v.toLocaleDateString('pt-BR') : (v||''); const textWrap = (txt, w) => doc.splitTextToSize(String(txt||''), w);
     
-    const cDem = getC(/^SOLIC$/i) || AppState.colunas[0];
-    const cDtCad = getC(/^DATA\s*CADASTRO$/i);
-    const cOrig = getC(/^TIPO$/i);
-    const cTipoDem = getC(/^DEMANDANTE$/i);
-    const cDemNome = getC(/^SOLICITANTE$/i);
-    const cNum = getC(/^N[º°]?$|^NUMERO$/i);
-    const cObs = getC(/OBSERVA[ÇC][ÃA]O|DESCRI[ÇC][ÃA]O|PARECER|DESPACHO/i);
-    
-    const formatD = (v) => v instanceof Date ? v.toLocaleDateString('pt-BR') : (v||'');
-    const textWrap = (txt, w) => doc.splitTextToSize(String(txt||''), w);
-    
-    let subFiltroTexto = "";
-    let catNome = "";
+    let subFiltroTexto = ""; let catNome = "";
     if (AppState.fDinCat) {
-      if (AppState.fDinCat === 'andamento') catNome = 'EM ANDAMENTO';
-      else if (AppState.fDinCat === 'atendido_prazo') catNome = 'NO PRAZO';
-      else if (AppState.fDinCat === 'atendido_fora') catNome = 'ATENDIDA ATRASADA';
-      else if (AppState.fDinCat === 'atraso') catNome = 'EM ATRASO';
-      else if (AppState.fDinCat === 'total') catNome = 'TOTAL';
+      if (AppState.fDinCat === 'andamento') catNome = 'EM ANDAMENTO'; else if (AppState.fDinCat === 'atendido_prazo') catNome = 'NO PRAZO'; else if (AppState.fDinCat === 'atendido_fora') catNome = 'ATENDIDA ATRASADA'; else if (AppState.fDinCat === 'atraso') catNome = 'EM ATRASO'; else if (AppState.fDinCat === 'total') catNome = 'TOTAL';
     }
     
-    if (AppState.fDinServico) {
-      subFiltroTexto = `${AppState.fDinServico.toUpperCase()}${catNome ? ' - ' + catNome : ''} - ${AppState.tblDadosVisiveis.length} DEMANDA${AppState.tblDadosVisiveis.length > 1 ? 'S' : ''}`;
-    } else if (AppState.fDinGrupo) {
-      subFiltroTexto = `${AppState.fDinGrupo.toUpperCase()}${catNome ? ' - ' + catNome : ''} - ${AppState.tblDadosVisiveis.length} DEMANDA${AppState.tblDadosVisiveis.length > 1 ? 'S' : ''}`;
-    } else if (catNome) {
-      subFiltroTexto = `${catNome} - ${AppState.tblDadosVisiveis.length} DEMANDA${AppState.tblDadosVisiveis.length > 1 ? 'S' : ''}`;
-    } else {
-      subFiltroTexto = `TODAS AS DEMANDAS - ${AppState.tblDadosVisiveis.length} DEMANDA${AppState.tblDadosVisiveis.length > 1 ? 'S' : ''}`;
-    }
+    if (AppState.fDinServico) subFiltroTexto = `${AppState.fDinServico.toUpperCase()}${catNome ? ' - ' + catNome : ''} - ${AppState.tblDadosVisiveis.length} DEMANDA${AppState.tblDadosVisiveis.length > 1 ? 'S' : ''}`;
+    else if (AppState.fDinGrupo) subFiltroTexto = `${AppState.fDinGrupo.toUpperCase()}${catNome ? ' - ' + catNome : ''} - ${AppState.tblDadosVisiveis.length} DEMANDA${AppState.tblDadosVisiveis.length > 1 ? 'S' : ''}`;
+    else if (catNome) subFiltroTexto = `${catNome} - ${AppState.tblDadosVisiveis.length} DEMANDA${AppState.tblDadosVisiveis.length > 1 ? 'S' : ''}`;
+    else subFiltroTexto = `TODAS AS DEMANDAS - ${AppState.tblDadosVisiveis.length} DEMANDA${AppState.tblDadosVisiveis.length > 1 ? 'S' : ''}`;
     
     let y = 12;
-    
-    const printHeader = () => {
-      doc.setFontSize(9); doc.setFont("helvetica", "bold");
-      doc.text("AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA - EMLURB", 105, y, {align:"center"}); y+=4;
-      doc.setFontSize(8);
-      doc.text("Resumo de Demandas", 105, y, {align:"center"}); y+=4;
-      
-      doc.setFontSize(7); doc.setFont("helvetica", "normal");
-      doc.setTextColor(80, 80, 80);
-      doc.text(subFiltroTexto, 105, y, {align:"center"});
-      doc.setTextColor(0, 0, 0);
-      y += 7;
-    };
-    
+    const printHeader = () => { doc.setFontSize(9); doc.setFont("helvetica", "bold"); doc.text("AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA - EMLURB", 105, y, {align:"center"}); y+=4; doc.setFontSize(8); doc.text("Resumo de Demandas", 105, y, {align:"center"}); y+=4; doc.setFontSize(7); doc.setFont("helvetica", "normal"); doc.setTextColor(80, 80, 80); doc.text(subFiltroTexto, 105, y, {align:"center"}); doc.setTextColor(0, 0, 0); y += 7; };
     printHeader();
     
     AppState.tblDadosVisiveis.forEach((r, i) => {
       if(y > 280) { doc.addPage(); page++; y = 12; printHeader(); }
-      
       const drawF = (lbl, hasCol, val, x, w) => {
-        if (!hasCol) return; 
-        let txt = String(val||'').trim();
-        if (!txt) txt = "-"; 
-        
-        doc.setFontSize(7); doc.setFont("helvetica", "bold");
-        doc.text(lbl+":", x, y);
-        const lblW = doc.getTextWidth(lbl+": ");
-        
-        let valFontSize = 7;
-        doc.setFont("helvetica", "normal");
-        
-        while(doc.getTextWidth(txt) > w && valFontSize > 4.5) {
-           valFontSize -= 0.5;
-           doc.setFontSize(valFontSize);
-        }
-        
-        if(doc.getTextWidth(txt) > w) {
-           while(doc.getTextWidth(txt) > w && txt.length > 0) txt = txt.slice(0, -1);
-           txt += '...';
-        }
-        
-        doc.text(txt, x + lblW, y);
-        doc.setFontSize(7); 
+        if (!hasCol) return; let txt = String(val||'').trim(); if (!txt) txt = "-"; 
+        doc.setFontSize(7); doc.setFont("helvetica", "bold"); doc.text(lbl+":", x, y); const lblW = doc.getTextWidth(lbl+": ");
+        let valFontSize = 7; doc.setFont("helvetica", "normal");
+        while(doc.getTextWidth(txt) > w && valFontSize > 4.5) { valFontSize -= 0.5; doc.setFontSize(valFontSize); }
+        if(doc.getTextWidth(txt) > w) { while(doc.getTextWidth(txt) > w && txt.length > 0) txt = txt.slice(0, -1); txt += '...'; }
+        doc.text(txt, x + lblW, y); doc.setFontSize(7); 
       };
 
-      drawF("DEMANDA", cDem, r[cDem], 5, 30);
-      drawF("DATA", cDtCad, formatD(r[cDtCad]), 40, 25);
-      drawF("PRAZO", AppState.colPrazo, formatD(r[AppState.colPrazo]), 70, 25);
-      drawF("SITUAÇÃO", AppState.colStatus, r[AppState.colStatus], 100, 45);
-      drawF("ORIGEM", cOrig, r[cOrig], 150, 45);
-      y += 3.5;
-      
-      drawF("TIPO", cTipoDem, r[cTipoDem], 5, 35);
-      drawF("NOME", cDemNome, r[cDemNome], 45, 65);
-      drawF("SERVIÇO", AppState.colServico, r[AppState.colServico], 115, 80);
-      y += 3.5;
-      
-      drawF("ENDEREÇO", AppState.colLogradouro, r[AppState.colLogradouro], 5, 80);
-      drawF("N°", cNum, r[cNum], 90, 15);
-      drawF("BAIRRO", AppState.colBairro, r[AppState.colBairro], 110, 40);
-      drawF("RPA", AppState.colRPA, r[AppState.colRPA], 155, 40);
-      y += 3.5;
+      drawF("DEMANDA", cDem, r[cDem], 5, 30); drawF("DATA", cDtCad, formatD(r[cDtCad]), 40, 25); drawF("PRAZO", AppState.colPrazo, formatD(r[AppState.colPrazo]), 70, 25); drawF("SITUAÇÃO", AppState.colStatus, r[AppState.colStatus], 100, 45); drawF("ORIGEM", cOrig, r[cOrig], 150, 45); y += 3.5;
+      drawF("TIPO", cTipoDem, r[cTipoDem], 5, 35); drawF("NOME", cDemNome, r[cDemNome], 45, 65); drawF("SERVIÇO", AppState.colServico, r[AppState.colServico], 115, 80); y += 3.5;
+      drawF("ENDEREÇO", AppState.colLogradouro, r[AppState.colLogradouro], 5, 80); drawF("N°", cNum, r[cNum], 90, 15); drawF("BAIRRO", AppState.colBairro, r[AppState.colBairro], 110, 40); drawF("RPA", AppState.colRPA, r[AppState.colRPA], 155, 40); y += 3.5;
       
       if (cObs) {
-          let st = String(r[AppState.colStatus]||'').toUpperCase();
-          let isCadastrada = st.includes('CADASTRA');
-          let labelObs = isCadastrada ? "OBS:" : "DESPACHO:";
-          
-          doc.setFontSize(7); doc.setFont("helvetica", "bold"); 
-          doc.text(labelObs, 5, y);
-          const lblW = doc.getTextWidth(labelObs + " ");
-          
-          doc.setFont("helvetica", "normal");
-          let obsTxt = String(r[cObs]||'').trim();
-          if(!obsTxt) obsTxt = "-";
-          
-          let obsLines = textWrap(obsTxt, 195 - lblW);
-          doc.text(obsLines, 5 + lblW, y);
-          y += (obsLines.length * 3) + 1;
+          let st = String(r[AppState.colStatus]||'').toUpperCase(), isCadastrada = st.includes('CADASTRA'), labelObs = isCadastrada ? "OBS:" : "DESPACHO:";
+          doc.setFontSize(7); doc.setFont("helvetica", "bold"); doc.text(labelObs, 5, y); const lblW = doc.getTextWidth(labelObs + " ");
+          doc.setFont("helvetica", "normal"); let obsTxt = String(r[cObs]||'').trim(); if(!obsTxt) obsTxt = "-";
+          let obsLines = textWrap(obsTxt, 195 - lblW); doc.text(obsLines, 5 + lblW, y); y += (obsLines.length * 3) + 1;
       }
-      
       if (y > 280) { doc.addPage(); page++; y = 12; printHeader(); } else { y += 1.5; }
-      
-      doc.setDrawColor(180);
-      doc.setLineDash([1, 1], 0);
-      doc.line(5, y, 205, y);
-      doc.setLineDash([], 0); 
-      y += 3.5; 
+      doc.setDrawColor(180); doc.setLineDash([1, 1], 0); doc.line(5, y, 205, y); doc.setLineDash([], 0); y += 3.5; 
     });
     
-    const totalPages = doc.internal.getNumberOfPages();
-    const agora = new Date().toLocaleString('pt-BR');
-    for(let j=1; j<=totalPages; j++) {
-      doc.setPage(j); doc.setFontSize(6); doc.setFont("helvetica", "normal");
-      doc.text(`Emitido em: ${agora}`, 5, 292);
-      doc.text(`Página ${j} de ${totalPages}`, 205, 292, {align:"right"});
-    }
-    
+    const totalPages = doc.internal.getNumberOfPages(), agora = new Date().toLocaleString('pt-BR');
+    for(let j=1; j<=totalPages; j++) { doc.setPage(j); doc.setFontSize(6); doc.setFont("helvetica", "normal"); doc.text(`Emitido em: ${agora}`, 5, 292); doc.text(`Página ${j} de ${totalPages}`, 205, 292, {align:"right"}); }
     doc.save('RESUMO_COMPACTO_156.pdf');
   }
 };
