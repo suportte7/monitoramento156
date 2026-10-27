@@ -169,7 +169,7 @@ tbody tr:hover{background:color-mix(in srgb,var(--secondary) 5%,transparent)}
 tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weight:800;border-top:3px solid var(--border);box-shadow:0 -2px 8px rgba(0,0,0,0.06);z-index:6;padding:8px 10px}
 
 .bg-andamento { background-color: color-mix(in srgb, var(--secondary) 8%, var(--surface)); }
-.bg-prazo     { background-color: color-mix(in srgb, var(--success) 8%, var(--surface)); }
+.bg-prazo     { background-color: color-mix(in srophe, var(--success) 8%, var(--surface)); }
 .bg-fora      { background-color: color-mix(in srgb, var(--warning) 16%, var(--surface)); }
 .bg-atraso    { background-color: color-mix(in srgb, var(--danger) 10%, var(--surface)); }
 
@@ -355,11 +355,11 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
     <!-- LINHA PRINCIPAL DEDICADA: VELOCÍMETRO, BAIRROS E TOP SERVIÇOS UNIFICADO -->
     <div class="charts-grid" style="margin-bottom:12px;">
       
-      <!-- Velocímetro de Arco Único (Ponteiros de Precisão) -->
+      <!-- Velocímetro de Arco Único (Com rótulos de % exatamente nos pontos) -->
       <div class="chart-card">
         <h3><span>🎯 ÍNDICES (VELOCÍMETRO)</span></h3>
         <div class="gauge-outer">
-          <canvas id="multiGauge" width="260" height="150"></canvas>
+          <canvas id="multiGauge" width="280" height="165"></canvas>
           <div class="multi-gauge-legend">
              <div class="mg-item"><span class="mg-dot" style="background:var(--secondary)"></span> IC: <b id="mgIC">0%</b></div>
              <div class="mg-item"><span class="mg-dot" style="background:var(--success)"></span> IE: <b id="mgIE">0%</b></div>
@@ -935,7 +935,7 @@ const GraficosManager = {
   },
 
   // ========================================================
-  // VELOCÍMETRO DE ARCO ÚNICO COM 3 PONTEIROS DE PRECISÃO
+  // VELOCÍMETRO DE ARCO ÚNICO COM RÓTULOS DE % NOS PRÓPRIOS PONTOS
   // ========================================================
   renderSingleArcGauge(d, ctSt, colorIC, colorIE, colorIA) {
     const total = d.length || 1;
@@ -948,9 +948,13 @@ const GraficosManager = {
     const ratioIE = atendidas > 0 ? noPrazo / atendidas : 0;
     const ratioIA = abertas > 0 ? atrasadas / abertas : 0;
 
-    document.getElementById('mgIC').textContent = (ratioIC * 100).toFixed(1) + '%';
-    document.getElementById('mgIE').textContent = (ratioIE * 100).toFixed(1) + '%';
-    document.getElementById('mgIA').textContent = (ratioIA * 100).toFixed(1) + '%';
+    const valIC = (ratioIC * 100).toFixed(1) + '%';
+    const valIE = (ratioIE * 100).toFixed(1) + '%';
+    const valIA = (ratioIA * 100).toFixed(1) + '%';
+
+    document.getElementById('mgIC').textContent = valIC;
+    document.getElementById('mgIE').textContent = valIE;
+    document.getElementById('mgIA').textContent = valIA;
 
     const canvas = document.getElementById('multiGauge');
     if (!canvas) return;
@@ -958,8 +962,8 @@ const GraficosManager = {
     const W = canvas.width, H = canvas.height;
     ctx.clearRect(0, 0, W, H);
 
-    const cx = W / 2, cy = H - 15;
-    const radius = Math.min(W / 2, H) - 24;
+    const cx = W / 2, cy = H - 20;
+    const radius = Math.min(W / 2, H) - 30;
     const startAngle = Math.PI;
     const endAngle = 2 * Math.PI;
 
@@ -978,8 +982,8 @@ const GraficosManager = {
     const ticks = [0, 0.25, 0.5, 0.75, 1.0];
     ticks.forEach(t => {
       const ang = startAngle + (t * Math.PI);
-      const x1 = cx + (radius - 11) * Math.cos(ang);
-      const y1 = cy + (radius - 11) * Math.sin(ang);
+      const x1 = cx + (radius - 10) * Math.cos(ang);
+      const y1 = cy + (radius - 10) * Math.sin(ang);
       const x2 = cx + (radius + 4) * Math.cos(ang);
       const y2 = cy + (radius + 4) * Math.sin(ang);
       ctx.beginPath();
@@ -990,15 +994,15 @@ const GraficosManager = {
       ctx.stroke();
     });
 
-    // Rótulos 0% e 100%
+    // Rótulos fixos 0% e 100% da escala
     ctx.font = 'bold 9px "Segoe UI", sans-serif';
     ctx.fillStyle = textColor;
     ctx.textAlign = 'center';
-    ctx.fillText('0%', cx - radius - 2, cy + 12);
-    ctx.fillText('100%', cx + radius + 2, cy + 12);
+    ctx.fillText('0%', cx - radius - 2, cy + 14);
+    ctx.fillText('100%', cx + radius + 2, cy + 14);
 
-    // 2. Desenho dos Ponteiros
-    const drawNeedle = (ratio, color) => {
+    // 2. Desenho dos Ponteiros com Percentual nos Pontos
+    const drawNeedleWithLabel = (ratio, valStr, color) => {
       const clampRatio = Math.max(0, Math.min(1, ratio));
       const angle = startAngle + (clampRatio * Math.PI);
 
@@ -1006,6 +1010,7 @@ const GraficosManager = {
       const nx = cx + needleLen * Math.cos(angle);
       const ny = cy + needleLen * Math.sin(angle);
 
+      // Haste do ponteiro
       ctx.beginPath();
       ctx.moveTo(cx, cy);
       ctx.lineTo(nx, ny);
@@ -1013,6 +1018,7 @@ const GraficosManager = {
       ctx.strokeStyle = color;
       ctx.stroke();
 
+      // Ponto/Marcador no arco
       const px = cx + radius * Math.cos(angle);
       const py = cy + radius * Math.sin(angle);
       ctx.beginPath();
@@ -1022,11 +1028,37 @@ const GraficosManager = {
       ctx.lineWidth = 2;
       ctx.strokeStyle = '#ffffff';
       ctx.stroke();
+
+      // Rótulo numérico exato na ponta do indicador
+      const labelDistance = radius + 18;
+      const lx = cx + labelDistance * Math.cos(angle);
+      const ly = cy + labelDistance * Math.sin(angle);
+
+      ctx.font = '800 10px "Segoe UI", sans-serif';
+      const textWidth = ctx.measureText(valStr).width;
+      const padX = 4, padY = 2;
+
+      // Fundo contrastante para a legenda no ponto
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      if (ctx.roundRect) {
+        ctx.roundRect(lx - (textWidth/2) - padX, ly - 7 - padY, textWidth + (padX*2), 13 + (padY*2), 4);
+      } else {
+        ctx.rect(lx - (textWidth/2) - padX, ly - 7 - padY, textWidth + (padX*2), 13 + (padY*2));
+      }
+      ctx.fill();
+
+      // Texto do percentual
+      ctx.fillStyle = '#ffffff';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(valStr, lx, ly);
     };
 
-    drawNeedle(ratioIC, colorIC);
-    drawNeedle(ratioIE, colorIE);
-    drawNeedle(ratioIA, colorIA);
+    // Desenha cada ponteiro com seu rótulo flutuante no ponto exato
+    drawNeedleWithLabel(ratioIC, valIC, colorIC);
+    drawNeedleWithLabel(ratioIE, valIE, colorIE);
+    drawNeedleWithLabel(ratioIA, valIA, colorIA);
 
     // Pino central
     ctx.beginPath();
