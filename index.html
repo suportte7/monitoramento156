@@ -126,13 +126,13 @@ body[data-theme="premium"] .card-title { border-bottom-color: var(--border); }
 .charts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-bottom:16px}
 .chart-card{background:var(--surface);border-radius:12px;padding:14px;border:1px solid var(--border);box-shadow:var(--shadow); transition:transform 0.2s, box-shadow 0.2s; display:flex; flex-direction:column;}
 body[data-theme="premium"] .chart-card:hover { transform:translateY(-3px); box-shadow:0 15px 45px rgba(0,0,0,0.5); }
-.chart-card h3{font-size:0.75rem;font-weight:700;color:var(--primary);margin-bottom:12px; text-transform:uppercase; display:flex; align-items:center; justify-content:space-between; gap:6px;}
-.chart-wrap{position:relative;flex:1;min-height:220px;}
+.chart-card h3{font-size:0.75rem;font-weight:800;color:var(--primary);margin-bottom:12px; text-transform:uppercase; display:flex; align-items:center; justify-content:space-between; gap:6px;}
+.chart-wrap{position:relative;flex:1;min-height:240px;}
 
 /* GAUGE DE ARCO ÚNICO CSS */
 .gauge-outer { display:flex; flex-direction:column; align-items:center; justify-content:center; flex:1; position:relative; min-height:160px;}
 .multi-gauge-legend { display:flex; justify-content:center; gap:12px; width:100%; margin-top:8px; flex-wrap:wrap;}
-.mg-item { display:flex; align-items:center; gap:4px; font-size:0.7rem; font-weight:700; color:var(--text); text-transform:uppercase; }
+.mg-item { display:flex; align-items:center; gap:4px; font-size:0.7rem; font-weight:800; color:var(--text); text-transform:uppercase; }
 .mg-dot { width:8px; height:8px; border-radius:50%; display:inline-block; }
 
 /* RANKING BAIRROS COMPACTO CSS */
@@ -146,7 +146,7 @@ body[data-theme="premium"] .chart-card:hover { transform:translateY(-3px); box-s
 .rpos.s { background:linear-gradient(135deg, #c0c0c0, #888888); color:#000; box-shadow:0 2px 6px rgba(192,192,192,0.4); }
 .rpos.b { background:linear-gradient(135deg, #cd7f32, #a05020); color:#fff; box-shadow:0 2px 6px rgba(205,127,50,0.4); }
 .rpos.n { background:var(--bg); color:var(--muted); border:1px solid var(--border); }
-.rname { flex:1; font-size:0.7rem; font-weight:700; color:var(--text); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; text-transform:uppercase; }
+.rname { flex:1; font-size:0.7rem; font-weight:800; color:var(--text); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; text-transform:uppercase; }
 .rbar-wrap { width:50px; height:4px; background:color-mix(in srgb, var(--border) 50%, transparent); border-radius:2px; overflow:hidden;}
 .rbar { height:100%; border-radius:2px; background:linear-gradient(90deg, var(--primary), var(--secondary)); transition:width 0.5s ease;}
 .rcount { font-size:0.75rem; font-weight:800; color:var(--secondary); min-width:24px; text-align:right; }
@@ -154,7 +154,7 @@ body[data-theme="premium"] .chart-card:hover { transform:translateY(-3px); box-s
 /* PARETO */
 .pareto-filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; align-items: flex-end; }
 .pareto-scroll { overflow-x: auto; overflow-y: hidden; width: 100%; padding-bottom: 10px; }
-.pareto-wrap { height: 280px; min-width: 700px; position: relative; }
+.pareto-wrap { height: 300px; min-width: 700px; position: relative; }
 .pareto-filters .form-group { flex-direction: column; }
 .pareto-filters .form-control { padding: 6px 10px; }
 
@@ -164,7 +164,7 @@ table{width:100%;border-collapse:collapse;font-size:0.78rem; text-transform:uppe
 thead th{background:var(--bg);color:var(--primary);font-weight:800;padding:8px 10px;border-bottom:2px solid var(--border);white-space:nowrap;position:sticky;top:0;z-index:5}
 thead th.sortable{cursor:pointer;user-select:none;transition:background .2s}
 thead th.sortable:hover{background:color-mix(in srgb,var(--secondary) 8%,var(--bg))}
-tbody td{padding:6px 10px;border-bottom:1px solid var(--border);vertical-align:middle;max-width:280px;word-break:break-word;line-height:1.2;font-weight:600;}
+tbody td{padding:6px 10px;border-bottom:1px solid var(--border);vertical-align:middle;max-width:280px;word-break:break-word;line-height:1.2;font-weight:700;}
 tbody tr:hover{background:color-mix(in srgb,var(--secondary) 5%,transparent)}
 tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weight:800;border-top:3px solid var(--border);box-shadow:0 -2px 8px rgba(0,0,0,0.06);z-index:6;padding:8px 10px}
 
@@ -178,7 +178,7 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
 .tr-grupo td{border-top:2px solid var(--border);border-bottom:2px solid var(--border);padding:8px 10px}
 .tr-servico{display:none;background:var(--surface)}
 .tr-servico.expanded{display:table-row}
-.tr-servico td:first-child{padding-left:32px;border-left:4px solid var(--secondary);font-weight:600}
+.tr-servico td:first-child{padding-left:32px;border-left:4px solid var(--secondary);font-weight:700}
 
 .cell-clk{cursor:pointer;font-weight:800;color:var(--secondary);text-align:center;transition:background .2s;text-decoration:underline;text-decoration-color:transparent}
 .cell-clk:hover{background:color-mix(in srgb,var(--secondary) 18%,var(--surface))!important;text-decoration-color:var(--secondary)}
@@ -200,16 +200,16 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
 
 .ov-track{height:14px;border-radius:999px;background:var(--border);overflow:hidden;margin:16px 0 8px}
 .ov-bar{height:100%;width:0%;background:var(--secondary);border-radius:inherit;transition:width .2s ease}
-.empty-state{text-align:center;padding:50px 20px;color:var(--muted); text-transform:uppercase; font-weight:700; font-size:0.85rem;}
+.empty-state{text-align:center;padding:50px 20px;color:var(--muted); text-transform:uppercase; font-weight:800; font-size:0.85rem;}
 .hidden{display:none!important}
 
 /* MODAL DISCRETO DE EXPORTAÇÃO DE GRÁFICOS */
 .modal-export-overlay { display:none; position:fixed; inset:0; z-index:99999; background:rgba(0,10,30,0.65); backdrop-filter:blur(3px); align-items:center; justify-content:center; }
 .modal-export-overlay.show { display:flex; }
-.modal-export-box { background:var(--surface); border-radius:14px; padding:24px; width:min(480px, 92%); box-shadow:0 20px 50px rgba(0,0,0,0.3); border:1px solid var(--border); }
+.modal-export-box { background:var(--surface); border-radius:14px; padding:24px; width:min(500px, 92%); box-shadow:0 20px 50px rgba(0,0,0,0.3); border:1px solid var(--border); }
 .modal-export-box h3 { font-size:0.9rem; font-weight:800; color:var(--primary); text-transform:uppercase; margin-bottom:14px; display:flex; align-items:center; justify-content:space-between; }
-.modal-export-list { display:flex; flex-direction:column; gap:8px; max-height:260px; overflow-y:auto; margin-bottom:18px; padding-right:4px; }
-.modal-export-item { display:flex; align-items:center; gap:8px; font-size:0.78rem; font-weight:700; text-transform:uppercase; cursor:pointer; padding:6px 8px; border-radius:6px; background:var(--bg); border:1px solid var(--border); }
+.modal-export-list { display:flex; flex-direction:column; gap:8px; max-height:280px; overflow-y:auto; margin-bottom:18px; padding-right:4px; }
+.modal-export-item { display:flex; align-items:center; gap:8px; font-size:0.78rem; font-weight:800; text-transform:uppercase; cursor:pointer; padding:6px 8px; border-radius:6px; background:var(--bg); border:1px solid var(--border); }
 .modal-export-item:hover { background:color-mix(in srgb, var(--secondary) 8%, var(--bg)); }
 .modal-export-item input { accent-color: var(--secondary); width:15px; height:15px; }
 
@@ -225,7 +225,7 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
 #btnBackToTop.show { opacity: 1; visibility: visible; transform: translateY(0); }
 #btnBackToTop.show:hover { transform: translateY(-3px); }
 
-.app-footer { text-align: center; padding: 10px 0 6px 0; font-size: 0.75rem; color: var(--muted); font-style: italic; font-weight: 400; opacity: 0.85; letter-spacing: 0.3px; }
+.app-footer { text-align: center; padding: 10px 0 6px 0; font-size: 0.75rem; color: var(--muted); font-style: italic; font-weight: 700; opacity: 0.85; letter-spacing: 0.3px; }
 
 @media (max-width: 768px) {
   .kpi-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 6px !important; }
@@ -355,11 +355,11 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
     <!-- LINHA PRINCIPAL DEDICADA: VELOCÍMETRO, BAIRROS E TOP SERVIÇOS UNIFICADO -->
     <div class="charts-grid" style="margin-bottom:12px;">
       
-      <!-- Velocímetro de Arco Único (Com rótulos de % exatamente nos pontos) -->
+      <!-- 1. Velocímetro de Arco Único -->
       <div class="chart-card">
         <h3><span>🎯 ÍNDICES (VELOCÍMETRO)</span></h3>
         <div class="gauge-outer">
-          <canvas id="multiGauge" width="280" height="165"></canvas>
+          <canvas id="multiGauge"></canvas>
           <div class="multi-gauge-legend">
              <div class="mg-item"><span class="mg-dot" style="background:var(--secondary)"></span> IC: <b id="mgIC">0%</b></div>
              <div class="mg-item"><span class="mg-dot" style="background:var(--success)"></span> IE: <b id="mgIE">0%</b></div>
@@ -368,7 +368,7 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
         </div>
       </div>
 
-      <!-- Ranking Bairros com Seletor Integrado -->
+      <!-- 2. Ranking Bairros com Seletor Integrado -->
       <div class="chart-card">
         <h3>
           <span>🗺️ TOP BAIRROS</span>
@@ -381,7 +381,7 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
         <div class="rank-list" id="rankBairrosPremium"></div>
       </div>
 
-      <!-- Top Serviços Unificado com Seletor Integrado -->
+      <!-- 3. Top Serviços Unificado com Seletor Integrado -->
       <div class="chart-card">
         <h3>
           <span>🔧 TOP SERVIÇOS</span>
@@ -391,16 +391,17 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
             <option value="atendido">APENAS ATENDIDAS</option>
           </select>
         </h3>
-        <div class="chart-wrap" style="height:190px"><canvas id="chartServicos"></canvas></div>
+        <div class="chart-wrap" style="height:210px"><canvas id="chartServicos"></canvas></div>
       </div>
 
     </div>
 
     <!-- DEMAIS GRÁFICOS COMPLEMENTARES -->
     <div class="charts-grid">
+      <!-- 4. Situação -->
       <div class="chart-card"><h3><span>📊 SITUAÇÃO (DEMANDAS VS ATENDIDAS)</span></h3><div class="chart-wrap"><canvas id="chartStatus"></canvas></div></div>
       
-      <!-- Gerência com Seletor Integrado -->
+      <!-- 5. Gerência com Seletor Integrado -->
       <div class="chart-card">
         <h3>
           <span>🏢 DEMANDAS POR GERÊNCIA</span>
@@ -413,6 +414,7 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
         <div class="chart-wrap"><canvas id="chartGerencia"></canvas></div>
       </div>
       
+      <!-- 6. RPA -->
       <div class="chart-card">
         <h3>
            <span style="color:var(--danger)">📍 DEMANDAS POR RPA EM ATRASO</span>
@@ -421,10 +423,14 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
         <div class="chart-wrap"><canvas id="chartRpa"></canvas></div>
       </div>
       
+      <!-- 7. Tendência Temporal -->
       <div class="chart-card"><h3><span>📈 TENDÊNCIA TEMPORAL (GERAL)</span></h3><div class="chart-wrap"><canvas id="chartTendencia"></canvas></div></div>
+      
+      <!-- 8. Evolução Mensal -->
       <div class="chart-card"><h3><span>📊 EVOLUÇÃO MENSAL DAS DEMANDAS</span></h3><div class="chart-wrap"><canvas id="chartStatusMensal"></canvas></div></div>
     </div>
 
+    <!-- 9. Pareto Serviços -->
     <div class="card">
       <div class="card-title">📉 ANÁLISE DE PARETO — SERVIÇOS MAIS SOLICITADOS</div>
       <div class="pareto-filters">
@@ -439,6 +445,7 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
       </div>
     </div>
 
+    <!-- 10. Pareto Bairro -->
     <div class="card">
       <div class="card-title">📉 ANÁLISE DE PARETO — DEMANDAS POR BAIRRO</div>
       <div class="pareto-filters">
@@ -494,7 +501,7 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
 
   <div class="card hidden" id="secTabela">
     <div style="margin-bottom:16px; border-bottom:2px solid #f1f3f5; padding-bottom:12px;">
-      <h3 style="font-size:0.8rem; font-weight:700; color:var(--primary); margin-bottom:12px; text-transform:uppercase;">📋 REGISTROS DETALHADOS</h3>
+      <h3 style="font-size:0.8rem; font-weight:800; color:var(--primary); margin-bottom:12px; text-transform:uppercase;">📋 REGISTROS DETALHADOS</h3>
       
       <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:space-between">
         <input type="text" class="form-control" id="tblSearch" placeholder="BUSCAR NA TABELA..." oninput="TabelaManager.buscarTabela()" style="max-width:280px;">
@@ -512,7 +519,7 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
       </div>
     </div>
     
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:0.8rem;color:var(--muted);font-weight:700;text-transform:uppercase;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:0.8rem;color:var(--muted);font-weight:800;text-transform:uppercase;">
       <span id="tblInfo">—</span>
       <div id="pagBtns" style="display:flex;gap:4px"></div>
     </div>
@@ -551,24 +558,27 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
   </div>
 </div>
 
+<!-- MODAL COM AS 10 OPÇÕES DE EXPORTAÇÃO -->
 <div class="modal-export-overlay" id="modalExportGraficos">
   <div class="modal-export-box">
     <h3>
-      <span>SELECIONAR GRÁFICOS PARA EXPORTAÇÃO</span>
+      <span>SELECIONAR GRÁFICOS E WIDGETS PARA EXPORTAÇÃO</span>
       <button class="sidebar-close" onclick="ExportManager.fecharModalExportGraficos()">✕</button>
     </h3>
-    <div style="font-size:0.75rem; color:var(--muted); margin-bottom:12px; text-transform:uppercase; font-weight:600;">
-      Marque os gráficos que deseja incluir no relatório PDF gerencial:
+    <div style="font-size:0.75rem; color:var(--muted); margin-bottom:12px; text-transform:uppercase; font-weight:800;">
+      Marque os 10 itens que deseja incluir no relatório PDF gerencial:
     </div>
     <div class="modal-export-list">
-      <label class="modal-export-item"><input type="checkbox" class="chk-exp-graf" value="chartServicos" checked> 🔧 Top Serviços (Unificado)</label>
-      <label class="modal-export-item"><input type="checkbox" class="chk-exp-graf" value="chartStatus" checked> 📊 Situação (Demandas vs Atendidas)</label>
-      <label class="modal-export-item"><input type="checkbox" class="chk-exp-graf" value="chartGerencia" checked> 🏢 Demandas por Gerência</label>
-      <label class="modal-export-item"><input type="checkbox" class="chk-exp-graf" value="chartRpa" checked> 📍 Demandas por RPA em Atraso</label>
-      <label class="modal-export-item"><input type="checkbox" class="chk-exp-graf" value="chartTendencia" checked> 📈 Tendência Temporal (Geral)</label>
-      <label class="modal-export-item"><input type="checkbox" class="chk-exp-graf" value="chartStatusMensal" checked> 📊 Evolução Mensal das Demandas</label>
-      <label class="modal-export-item"><input type="checkbox" class="chk-exp-graf" value="chartPareto" checked> 📉 Análise de Pareto — Serviços</label>
-      <label class="modal-export-item"><input type="checkbox" class="chk-exp-graf" value="chartParetoBairro" checked> 📉 Análise de Pareto — Bairros</label>
+      <label class="modal-export-item"><input type="checkbox" class="chk-exp-graf" value="multiGauge" checked> 🎯 1. Velocímetro de Índices</label>
+      <label class="modal-export-item"><input type="checkbox" class="chk-exp-graf" value="rankBairrosPremium" checked> 🗺️ 2. Top Bairros (Ranking)</label>
+      <label class="modal-export-item"><input type="checkbox" class="chk-exp-graf" value="chartServicos" checked> 🔧 3. Top Serviços (Unificado)</label>
+      <label class="modal-export-item"><input type="checkbox" class="chk-exp-graf" value="chartStatus" checked> 📊 4. Situação (Demandas vs Atendidas)</label>
+      <label class="modal-export-item"><input type="checkbox" class="chk-exp-graf" value="chartGerencia" checked> 🏢 5. Demandas por Gerência</label>
+      <label class="modal-export-item"><input type="checkbox" class="chk-exp-graf" value="chartRpa" checked> 📍 6. Demandas por RPA em Atraso</label>
+      <label class="modal-export-item"><input type="checkbox" class="chk-exp-graf" value="chartTendencia" checked> 📈 7. Tendência Temporal (Geral)</label>
+      <label class="modal-export-item"><input type="checkbox" class="chk-exp-graf" value="chartStatusMensal" checked> 📊 8. Evolução Mensal das Demandas</label>
+      <label class="modal-export-item"><input type="checkbox" class="chk-exp-graf" value="chartPareto" checked> 📉 9. Análise de Pareto — Serviços</label>
+      <label class="modal-export-item"><input type="checkbox" class="chk-exp-graf" value="chartParetoBairro" checked> 📉 10. Análise de Pareto — Bairros</label>
     </div>
     <div style="display:flex; gap:10px;">
       <button class="btn btn-secondary btn-mini" style="flex:1; justify-content:center; padding:10px;" onclick="ExportManager.marcarTodosGraficos(true)">MARCAR TODOS</button>
@@ -578,6 +588,13 @@ tfoot th, tfoot td{position:sticky;bottom:0;background:var(--surface);font-weigh
 </div>
 
 <script>
+/* ========================================================
+   CONFIGURAÇÃO GLOBAL CHART.JS
+   ================================================-------- */
+Chart.defaults.color = '#111111';
+Chart.defaults.font.family = "'Segoe UI', system-ui, sans-serif";
+Chart.defaults.font.weight = 'bold';
+
 /* ========================================================
    1. MÓDULO DE ESTADO GLOBAL (AppState)
    ================================================-------- */
@@ -842,20 +859,32 @@ FilterManager.init();
    4. MÓDULO DE GRÁFICOS (GraficosManager)
    ================================================-------- */
 const GraficosManager = {
+  
   fontResponsiva(ctx) {
-    let label = ctx.tick && ctx.tick.label ? ctx.tick.label : ''; if(Array.isArray(label)) label = label.join('');
-    return label.length > 22 ? { size: 8, family: "'Segoe UI', sans-serif" } : { size: 10, family: "'Segoe UI', sans-serif" };
+    let label = '';
+    if (ctx && ctx.tick && ctx.tick.label) {
+      label = Array.isArray(ctx.tick.label) ? ctx.tick.label.join('') : String(ctx.tick.label);
+    } else if (typeof ctx === 'string') {
+      label = ctx;
+    }
+    let len = label.length;
+    if (len > 40) return { size: 6.5, family: "'Segoe UI', system-ui, sans-serif", weight: 'bold' };
+    if (len > 30) return { size: 7.5, family: "'Segoe UI', system-ui, sans-serif", weight: 'bold' };
+    if (len > 20) return { size: 8.5, family: "'Segoe UI', system-ui, sans-serif", weight: 'bold' };
+    if (len > 10) return { size: 9.5, family: "'Segoe UI', system-ui, sans-serif", weight: 'bold' };
+    return { size: 10.5, family: "'Segoe UI', system-ui, sans-serif", weight: 'bold' };
   },
+  
   popularParetoG() {
     const sel = document.getElementById('paretoGerencia'); sel.innerHTML='<option value="">TODAS</option>';
     if(AppState.colGerencia) [...new Set(AppState.dadosBrutos.map(r=>String(r[AppState.colGerencia]||'').trim()).filter(Boolean))].sort().forEach(v => { const o=document.createElement('option'); o.value=v.toUpperCase(); o.textContent=v.toUpperCase(); sel.appendChild(o); });
   },
   togglePrRpa() { const d = document.getElementById('dropPrRpa'); const isOp = d.classList.contains('open'); document.querySelectorAll('.ms-drop').forEach(x => { if(x.id !== 'dropPrRpa') x.classList.remove('open'); }); if(!isOp) d.classList.add('open'); },
   renderPrRpaOpts() {
-    const res = AppState.prRpaOpcoes.map(v => `<label class="ms-opt"><input type="checkbox" ${AppState.prRpaState.has(v)?'checked':''} onchange="GraficosManager.tglPrRpa('${v.replace(/'/g,"\\'")}',this.checked)"><span>${v}</span></label>`).join('');
+    const res = AppState.prRpaOpcoes.map(v => `<label class="ms-opt"><input type="checkbox" ${AppState.prRpaState.has(v)?'checked':''} onchange="GraficosManager.togglePrRpaOpt('${v.replace(/'/g,"\\'")}',this.checked)"><span>${v}</span></label>`).join('');
     document.getElementById('dropPrRpa').innerHTML = `<div class="ms-selall" onclick="GraficosManager.selAllPrRpa()">✔ INVERTER</div><div style="padding:6px 0; max-height:200px; overflow-y:auto">` + res + `</div>`; this.attLblPrRpa();
   },
-  tglPrRpa(v, chk) { if(chk) AppState.prRpaState.add(v); else AppState.prRpaState.delete(v); this.attLblPrRpa(); this.renderParetoBairro(); },
+  togglePrRpaOpt(v, chk) { if(chk) AppState.prRpaState.add(v); else AppState.prRpaState.delete(v); this.attLblPrRpa(); this.renderParetoBairro(); },
   selAllPrRpa() { if(AppState.prRpaState.size === AppState.prRpaOpcoes.length) AppState.prRpaState.clear(); else AppState.prRpaOpcoes.forEach(v => AppState.prRpaState.add(v)); this.renderPrRpaOpts(); this.renderParetoBairro(); },
   attLblPrRpa() { const s=AppState.prRpaState.size, t=AppState.prRpaOpcoes.length, l=document.getElementById('lblPrRpa'); l.textContent = s===0 ? 'NENHUMA' : s===t ? 'TODAS' : s + ' SELECIONADAS'; },
   popularParetoBairroFiltros() {
@@ -888,22 +917,18 @@ const GraficosManager = {
     const ctSt = { 'atendido_prazo':0, 'andamento':0, 'atendido_fora':0, 'atraso':0 };
     d.forEach(r => { if(ctSt[r.__situacaoMatematica] !== undefined) ctSt[r.__situacaoMatematica]++; });
 
-    // 1. VELOCÍMETRO DE ARCO ÚNICO
     this.renderSingleArcGauge(d, ctSt, cSecondary, cSuccess, cDanger);
-    
-    // 2. TOP BAIRROS COM SELETOR DE MODO
     this.renderRankingPremiumCompact(d);
-    
-    // 3. TOP SERVIÇOS UNIFICADO COM SELETOR DE MODO
     this.renderTopServicosChart(d);
-
-    // 4. DEMANDAS POR GERÊNCIA COM SELETOR DE MODO
     this.renderGerenciaChart(d);
     
     window.chStatus = new Chart(document.getElementById('chartStatus'), { 
       type:'doughnut', 
       data:{ labels: stsLabels, datasets:[{ data: stsKeys.map(k=>ctSt[k]), backgroundColor: stsColors, hoverOffset: 4, borderWidth:0 }] }, 
-      options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:'bottom', labels:{font:{size:10, family:"'Segoe UI', sans-serif"}}}, datalabels:{display:false} } } 
+      options:{ 
+        devicePixelRatio: 4, responsive:true, maintainAspectRatio:false, 
+        plugins:{ legend:{position:'bottom', labels:{font:{size:10, weight:'bold'}}}, datalabels:{display:false} } 
+      } 
     });
 
     const dRpaAtraso = d.filter(r => r.__situacaoMatematica === 'atraso');
@@ -914,17 +939,44 @@ const GraficosManager = {
        ctRpa[v] = (ctRpa[v]||0)+1;
     });
     const crS = Object.entries(ctRpa).sort((a,b)=>a[0].localeCompare(b[0]));
-    window.chRpa = new Chart(document.getElementById('chartRpa'), { type:'bar', data:{labels:crS.map(x=>x[0]), datasets:[{data:crS.map(x=>x[1]), backgroundColor:cDanger, borderRadius:4}]}, options:{responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true}}} });
+    window.chRpa = new Chart(document.getElementById('chartRpa'), { 
+      type:'bar', data:{labels:crS.map(x=>x[0]), datasets:[{data:crS.map(x=>x[1]), backgroundColor:cDanger, borderRadius:4}]}, 
+      options:{ 
+        devicePixelRatio: 4, responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, 
+        scales:{ 
+          x: { ticks: { color: '#111', font: {weight: 'bold'} } }, 
+          y: { beginAtZero:true, ticks: { color: '#111', font: {weight: 'bold'} } } 
+        },
+        layout: { padding: { left: 10, right: 10 } }
+      } 
+    });
 
     const ct = {}; d.forEach(r => { if(r.__dateMov) { const k = r.__dateMov.toISOString().slice(0,7); ct[k] = (ct[k]||0)+1; } });
     const ctS = Object.entries(ct).sort((a,b)=>a[0].localeCompare(b[0]));
-    window.chTendencia = new Chart(document.getElementById('chartTendencia'), { type:'line', data:{labels:ctS.map(x=>{const [y,m]=x[0].split('-'); return m+'/'+y;}), datasets:[{data:ctS.map(x=>x[1]), borderColor:cPrimary, backgroundColor:getComputedStyle(document.body).getPropertyValue('--bg').trim(), fill:true, tension:.3, borderWidth:3, pointRadius:4}]}, options:{responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true}}} });
+    window.chTendencia = new Chart(document.getElementById('chartTendencia'), { 
+      type:'line', data:{labels:ctS.map(x=>{const [y,m]=x[0].split('-'); return m+'/'+y;}), datasets:[{data:ctS.map(x=>x[1]), borderColor:cPrimary, backgroundColor:getComputedStyle(document.body).getPropertyValue('--bg').trim(), fill:true, tension:.3, borderWidth:3, pointRadius:4}]}, 
+      options:{ 
+        devicePixelRatio: 4, responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, 
+        scales:{ 
+          x: { ticks: { color: '#111', font: {weight: 'bold'} } }, 
+          y: { beginAtZero:true, ticks: { color: '#111', font: {weight: 'bold'} } } 
+        },
+        layout: { padding: { left: 10, right: 10 } }
+      } 
+    });
 
     const meses = [...new Set(d.filter(r=>r.__dateMov).map(r=>`${r.__dateMov.getFullYear()}-${String(r.__dateMov.getMonth()+1).padStart(2,'0')}`))].sort();
     if(meses.length) {
       window.chStatusMensal = new Chart(document.getElementById('chartStatusMensal'), { 
         type:'bar', data:{ labels: meses.map(m=>{const[y,mo]=m.split('-');return mo+'/'+y;}), datasets: stsKeys.map((s,i)=>({ label: stsLabels[i], data: meses.map(m => d.filter(r => r.__dateMov && `${r.__dateMov.getFullYear()}-${String(r.__dateMov.getMonth()+1).padStart(2,'0')}`===m && r.__situacaoMatematica===s).length), backgroundColor: stsColors[i], borderRadius: 2 })) }, 
-        options:{responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'bottom', labels:{font:{size:9}}}}, scales:{x:{stacked:true}, y:{stacked:true, beginAtZero:true}}} 
+        options:{ 
+          devicePixelRatio: 4, responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'bottom', labels:{font:{size:9, weight:'bold'}}}}, 
+          scales:{ 
+            x: { stacked:true, ticks: { color: '#111', font: {weight: 'bold'} } }, 
+            y: { stacked:true, beginAtZero:true, ticks: { color: '#111', font: {weight: 'bold'} } } 
+          },
+          layout: { padding: { left: 10, right: 10 } }
+        } 
       });
     }
     this.renderPareto(); this.renderParetoBairro();
@@ -934,9 +986,6 @@ const GraficosManager = {
     [window.chStatus, window.chGerencia, window.chRpa, window.chTendencia, window.chServicos, window.chPareto, window.chParetoBairro, window.chStatusMensal].forEach(c=>{if(c)try{c.destroy()}catch(e){}}); 
   },
 
-  // ========================================================
-  // VELOCÍMETRO DE ARCO ÚNICO COM RÓTULOS DE % NOS PRÓPRIOS PONTOS
-  // ========================================================
   renderSingleArcGauge(d, ctSt, colorIC, colorIE, colorIA) {
     const total = d.length || 1;
     const atendidas = ctSt['atendido_prazo'] + ctSt['atendido_fora'];
@@ -958,19 +1007,26 @@ const GraficosManager = {
 
     const canvas = document.getElementById('multiGauge');
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    const W = canvas.width, H = canvas.height;
-    ctx.clearRect(0, 0, W, H);
+    
+    const cssW = 280, cssH = 165;
+    const scale = 4;
+    canvas.style.width = cssW + 'px';
+    canvas.style.height = cssH + 'px';
+    canvas.width = cssW * scale;
+    canvas.height = cssH * scale;
 
-    const cx = W / 2, cy = H - 20;
-    const radius = Math.min(W / 2, H) - 30;
+    const ctx = canvas.getContext('2d');
+    ctx.scale(scale, scale);
+    ctx.clearRect(0, 0, cssW, cssH);
+
+    const cx = cssW / 2, cy = cssH - 20;
+    const radius = Math.min(cssW / 2, cssH) - 30;
     const startAngle = Math.PI;
     const endAngle = 2 * Math.PI;
 
     const baseColor = getComputedStyle(document.body).getPropertyValue('--border').trim() || '#dfe6ef';
-    const textColor = getComputedStyle(document.body).getPropertyValue('--text').trim() || '#212529';
+    const textColor = '#111111';
 
-    // 1. Arco Único de Fundo (Demanda Total de 0% a 100%)
     ctx.beginPath();
     ctx.arc(cx, cy, radius, startAngle, endAngle);
     ctx.lineWidth = 14;
@@ -978,7 +1034,6 @@ const GraficosManager = {
     ctx.lineCap = 'round';
     ctx.stroke();
 
-    // Traços da escala (0%, 25%, 50%, 75%, 100%)
     const ticks = [0, 0.25, 0.5, 0.75, 1.0];
     ticks.forEach(t => {
       const ang = startAngle + (t * Math.PI);
@@ -994,14 +1049,12 @@ const GraficosManager = {
       ctx.stroke();
     });
 
-    // Rótulos fixos 0% e 100% da escala
-    ctx.font = 'bold 9px "Segoe UI", sans-serif';
+    ctx.font = '900 10px "Segoe UI", sans-serif';
     ctx.fillStyle = textColor;
     ctx.textAlign = 'center';
     ctx.fillText('0%', cx - radius - 2, cy + 14);
     ctx.fillText('100%', cx + radius + 2, cy + 14);
 
-    // 2. Desenho dos Ponteiros com Percentual nos Pontos
     const drawNeedleWithLabel = (ratio, valStr, color) => {
       const clampRatio = Math.max(0, Math.min(1, ratio));
       const angle = startAngle + (clampRatio * Math.PI);
@@ -1010,7 +1063,6 @@ const GraficosManager = {
       const nx = cx + needleLen * Math.cos(angle);
       const ny = cy + needleLen * Math.sin(angle);
 
-      // Haste do ponteiro
       ctx.beginPath();
       ctx.moveTo(cx, cy);
       ctx.lineTo(nx, ny);
@@ -1018,7 +1070,6 @@ const GraficosManager = {
       ctx.strokeStyle = color;
       ctx.stroke();
 
-      // Ponto/Marcador no arco
       const px = cx + radius * Math.cos(angle);
       const py = cy + radius * Math.sin(angle);
       ctx.beginPath();
@@ -1029,166 +1080,94 @@ const GraficosManager = {
       ctx.strokeStyle = '#ffffff';
       ctx.stroke();
 
-      // Rótulo numérico exato na ponta do indicador
       const labelDistance = radius + 18;
       const lx = cx + labelDistance * Math.cos(angle);
       const ly = cy + labelDistance * Math.sin(angle);
 
-      ctx.font = '800 10px "Segoe UI", sans-serif';
+      ctx.font = '900 11px "Segoe UI", sans-serif';
       const textWidth = ctx.measureText(valStr).width;
       const padX = 4, padY = 2;
 
-      // Fundo contrastante para a legenda no ponto
       ctx.fillStyle = color;
       ctx.beginPath();
       if (ctx.roundRect) {
-        ctx.roundRect(lx - (textWidth/2) - padX, ly - 7 - padY, textWidth + (padX*2), 13 + (padY*2), 4);
+        ctx.roundRect(lx - (textWidth/2) - padX, ly - 7 - padY, textWidth + (padX*2), 14 + (padY*2), 4);
       } else {
-        ctx.rect(lx - (textWidth/2) - padX, ly - 7 - padY, textWidth + (padX*2), 13 + (padY*2));
+        ctx.rect(lx - (textWidth/2) - padX, ly - 7 - padY, textWidth + (padX*2), 14 + (padY*2));
       }
       ctx.fill();
 
-      // Texto do percentual
       ctx.fillStyle = '#ffffff';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText(valStr, lx, ly);
     };
 
-    // Desenha cada ponteiro com seu rótulo flutuante no ponto exato
     drawNeedleWithLabel(ratioIC, valIC, colorIC);
     drawNeedleWithLabel(ratioIE, valIE, colorIE);
     drawNeedleWithLabel(ratioIA, valIA, colorIA);
 
-    // Pino central
     ctx.beginPath();
     ctx.arc(cx, cy, 6, 0, 2 * Math.PI);
     ctx.fillStyle = textColor;
     ctx.fill();
   },
 
-  // ========================================================
-  // GRÁFICOS DE TOP SERVIÇOS E GERÊNCIA (COM SELETOR DE MODO)
-  // ========================================================
   renderTopServicosChart(d = AppState.dadosFiltrados) {
     const modo = document.getElementById('topServicosFiltro')?.value || 'atraso';
-    let base = [...d];
-    let corBarra = getComputedStyle(document.body).getPropertyValue('--primary').trim();
-
-    if (modo === 'atraso') {
-      base = base.filter(r => r.__situacaoMatematica === 'atraso');
-      corBarra = getComputedStyle(document.body).getPropertyValue('--danger').trim();
-    } else if (modo === 'atendido') {
-      base = base.filter(r => r.__situacaoMatematica === 'atendido_prazo' || r.__situacaoMatematica === 'atendido_fora');
-      corBarra = getComputedStyle(document.body).getPropertyValue('--success').trim();
-    }
-
-    const ct = {};
-    base.forEach(r => {
-      let v = String(r[AppState.colServico] || 'S/I').trim().toUpperCase();
-      ct[v] = (ct[v] || 0) + 1;
-    });
-
+    let base = [...d]; let corBarra = getComputedStyle(document.body).getPropertyValue('--primary').trim();
+    if (modo === 'atraso') { base = base.filter(r => r.__situacaoMatematica === 'atraso'); corBarra = getComputedStyle(document.body).getPropertyValue('--danger').trim(); } 
+    else if (modo === 'atendido') { base = base.filter(r => r.__situacaoMatematica === 'atendido_prazo' || r.__situacaoMatematica === 'atendido_fora'); corBarra = getComputedStyle(document.body).getPropertyValue('--success').trim(); }
+    const ct = {}; base.forEach(r => { let v = String(r[AppState.colServico] || 'S/I').trim().toUpperCase(); ct[v] = (ct[v] || 0) + 1; });
     const sorted = Object.entries(ct).sort((a, b) => b[1] - a[1]).slice(0, 6);
 
     if (window.chServicos) try { window.chServicos.destroy(); } catch (e) {}
-
     window.chServicos = new Chart(document.getElementById('chartServicos'), {
       type: 'bar',
-      data: {
-        labels: sorted.map(x => x[0].length > 32 ? x[0].slice(0, 32) + '…' : x[0]),
-        datasets: [{
-          data: sorted.map(x => x[1]),
-          backgroundColor: corBarra,
-          borderRadius: 6
-        }]
-      },
+      data: { labels: sorted.map(x => x[0]), datasets: [{ data: sorted.map(x => x[1]), backgroundColor: corBarra, borderRadius: 6 }] },
       options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        indexAxis: 'y',
-        plugins: {
-          legend: { display: false },
-          datalabels: {
-            display: true, color: '#fff', font: { weight: 'bold', size: 9 }, align: 'end', anchor: 'end',
-            formatter: (v) => v
-          }
+        devicePixelRatio: 4, responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+        plugins: { legend: { display: false }, datalabels: { display: true, color: '#fff', font: { weight: 'bold', size: 10 }, align: 'end', anchor: 'end', formatter: (v) => v } },
+        scales: { 
+          x: { ticks: { color: '#111', font: {weight:'bold'} } },
+          y: { ticks: { color: '#111', font: (ctx) => GraficosManager.fontResponsiva(ctx), autoSkip: false } } 
         },
-        scales: { y: { ticks: { font: this.fontResponsiva } } },
-        layout: { padding: { right: 28 } }
+        layout: { padding: { right: 35, left: 10, top: 5, bottom: 5 } }
       }
     });
   },
 
   renderGerenciaChart(d = AppState.dadosFiltrados) {
     const modo = document.getElementById('topGerenciaFiltro')?.value || 'todos';
-    let base = [...d];
-    let corBarra = getComputedStyle(document.body).getPropertyValue('--primary').trim();
-
-    if (modo === 'atraso') {
-      base = base.filter(r => r.__situacaoMatematica === 'atraso');
-      corBarra = getComputedStyle(document.body).getPropertyValue('--danger').trim();
-    } else if (modo === 'atendido') {
-      base = base.filter(r => r.__situacaoMatematica === 'atendido_prazo' || r.__situacaoMatematica === 'atendido_fora');
-      corBarra = getComputedStyle(document.body).getPropertyValue('--success').trim();
-    }
-
-    const ct = {};
-    base.forEach(r => {
-      let v = String(r[AppState.colGerencia] || 'S/I').trim().toUpperCase();
-      ct[v] = (ct[v] || 0) + 1;
-    });
-
+    let base = [...d]; let corBarra = getComputedStyle(document.body).getPropertyValue('--primary').trim();
+    if (modo === 'atraso') { base = base.filter(r => r.__situacaoMatematica === 'atraso'); corBarra = getComputedStyle(document.body).getPropertyValue('--danger').trim(); } 
+    else if (modo === 'atendido') { base = base.filter(r => r.__situacaoMatematica === 'atendido_prazo' || r.__situacaoMatematica === 'atendido_fora'); corBarra = getComputedStyle(document.body).getPropertyValue('--success').trim(); }
+    const ct = {}; base.forEach(r => { let v = String(r[AppState.colGerencia] || 'S/I').trim().toUpperCase(); ct[v] = (ct[v] || 0) + 1; });
     const cgS = Object.entries(ct).sort((a, b) => b[1] - a[1]).slice(0, 12);
 
     if (window.chGerencia) try { window.chGerencia.destroy(); } catch (e) {}
-
     window.chGerencia = new Chart(document.getElementById('chartGerencia'), {
       type: 'bar',
-      data: {
-        labels: cgS.map(x => x[0]),
-        datasets: [{
-          data: cgS.map(x => x[1]),
-          backgroundColor: corBarra,
-          borderRadius: 4
-        }]
-      },
+      data: { labels: cgS.map(x => x[0]), datasets: [{ data: cgS.map(x => x[1]), backgroundColor: corBarra, borderRadius: 4 }] },
       options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        indexAxis: 'y',
-        plugins: {
-          legend: { display: false },
-          datalabels: {
-            display: true, color: '#fff', font: { weight: 'bold', size: 9 }, align: 'end', anchor: 'end',
-            formatter: (v) => v
-          }
+        devicePixelRatio: 4, responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+        plugins: { legend: { display: false }, datalabels: { display: true, color: '#fff', font: { weight: 'bold', size: 10 }, align: 'end', anchor: 'end', formatter: (v) => v } },
+        scales: { 
+          x: { ticks: { color: '#111', font: {weight:'bold'} } },
+          y: { ticks: { color: '#111', font: (ctx) => GraficosManager.fontResponsiva(ctx), autoSkip: false } } 
         },
-        scales: { y: { ticks: { font: this.fontResponsiva } } },
-        layout: { padding: { right: 28 } }
+        layout: { padding: { right: 35, left: 10, top: 5, bottom: 5 } }
       }
     });
   },
 
-  // ========================================================
-  // RANKING DE BAIRROS (COM SELETOR DE MODO)
-  // ========================================================
   renderRankingPremiumCompact(d = AppState.dadosFiltrados) {
     const modo = document.getElementById('topBairrosFiltro')?.value || 'todos';
     let base = [...d];
+    if (modo === 'atraso') { base = base.filter(r => r.__situacaoMatematica === 'atraso'); } 
+    else if (modo === 'atendido') { base = base.filter(r => r.__situacaoMatematica === 'atendido_prazo' || r.__situacaoMatematica === 'atendido_fora'); }
 
-    if (modo === 'atraso') {
-      base = base.filter(r => r.__situacaoMatematica === 'atraso');
-    } else if (modo === 'atendido') {
-      base = base.filter(r => r.__situacaoMatematica === 'atendido_prazo' || r.__situacaoMatematica === 'atendido_fora');
-    }
-
-    const ct = {}; 
-    base.forEach(r => { 
-      const v = String(r[AppState.colBairro]||'').trim().toUpperCase(); 
-      if(v) ct[v] = (ct[v]||0)+1; 
-    });
-    
+    const ct = {}; base.forEach(r => { const v = String(r[AppState.colBairro]||'').trim().toUpperCase(); if(v) ct[v] = (ct[v]||0)+1; });
     const top = Object.entries(ct).sort((a,b)=>b[1]-a[1]).slice(0,6);
     const max = top.length > 0 ? top[0][1] : 1;
     const posClass = i => i===0 ? 'g' : i===1 ? 's' : i===2 ? 'b' : 'n';
@@ -1215,8 +1194,16 @@ const GraficosManager = {
     let acum = 0; const acm = sorted.map(x => { acum+=x[1]; return parseFloat((acum/tot*100).toFixed(1)); });
     
     window.chPareto = new Chart(document.getElementById('chartPareto'), { 
-      type:'bar', data:{ labels:sorted.map(x=>x[0].length>35?x[0].slice(0,35)+'…':x[0]), datasets:[ {type:'bar', label:'QTD', data:sorted.map(x=>x[1]), backgroundColor:getComputedStyle(document.body).getPropertyValue('--primary').trim(), borderRadius:4, yAxisID:'y'}, {type:'line', label:'ACUMULADO %', data:acm, borderColor:getComputedStyle(document.body).getPropertyValue('--danger').trim(), backgroundColor:'transparent', yAxisID:'y2', tension:.3, pointRadius:2} ] }, 
-      options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'top', labels:{font:{family:"'Segoe UI', sans-serif"}}}}, scales:{ x: { ticks: { font: this.fontResponsiva } }, y:{beginAtZero:true, position:'left'}, y2:{beginAtZero:true, position:'right', min:0, max:100, grid:{drawOnChartArea:false}, ticks:{callback:v=>v+'%'}} } } 
+      type:'bar', data:{ labels:sorted.map(x=>x[0]), datasets:[ {type:'bar', label:'QTD', data:sorted.map(x=>x[1]), backgroundColor:getComputedStyle(document.body).getPropertyValue('--primary').trim(), borderRadius:4, yAxisID:'y'}, {type:'line', label:'ACUMULADO %', data:acm, borderColor:getComputedStyle(document.body).getPropertyValue('--danger').trim(), backgroundColor:'transparent', yAxisID:'y2', tension:.3, pointRadius:2} ] }, 
+      options:{ 
+        devicePixelRatio: 4, responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'top', labels:{font:{weight:'bold'}}}}, 
+        scales:{ 
+          x: { ticks: { color: '#111', font: (ctx) => GraficosManager.fontResponsiva(ctx), maxRotation: 45, minRotation: 45 }, grid:{display:false} }, 
+          y: { beginAtZero:true, position:'left', ticks: { color: '#111', font: {weight:'bold'} } }, 
+          y2: { beginAtZero:true, position:'right', min:0, max:100, grid:{drawOnChartArea:false}, ticks:{ color: '#111', font: {weight:'bold'}, callback:v=>v+'%'} } 
+        },
+        layout: { padding: { bottom: 25, left: 10, right: 10 } }
+      } 
     });
   },
 
@@ -1230,9 +1217,18 @@ const GraficosManager = {
     const ct = {}; base.forEach(r => { const v = String(r[AppState.colBairro]||'S/I').trim().toUpperCase(); if(v) ct[v] = (ct[v]||0)+1; });
     let sorted = Object.entries(ct).sort((a,b)=>b[1]-a[1]); const tot = sorted.reduce((s,x)=>s+x[1],0); if(topN>0) sorted = sorted.slice(0, topN);
     let acum = 0; const acm = sorted.map(x => { acum+=x[1]; return tot > 0 ? parseFloat((acum/tot*100).toFixed(1)) : 0; });
+    
     window.chParetoBairro = new Chart(document.getElementById('chartParetoBairro'), { 
-      type:'bar', data:{ labels:sorted.map(x=>x[0].length>35?x[0].slice(0,35)+'…':x[0]), datasets:[ {type:'bar', label:'QTD', data:sorted.map(x=>x[1]), backgroundColor:getComputedStyle(document.body).getPropertyValue('--secondary').trim(), borderRadius:4, yAxisID:'y'}, {type:'line', label:'ACUMULADO %', data:acm, borderColor:getComputedStyle(document.body).getPropertyValue('--danger').trim(), backgroundColor:'transparent', yAxisID:'y2', tension:.3, pointRadius:2} ] }, 
-      options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'top', labels:{font:{family:"'Segoe UI', sans-serif"}}}}, scales:{ x: { ticks: { font: this.fontResponsiva } }, y:{beginAtZero:true, position:'left'}, y2:{beginAtZero:true, position:'right', min:0, max:100, grid:{drawOnChartArea:false}, ticks:{callback:v=>v+'%'}} } } 
+      type:'bar', data:{ labels:sorted.map(x=>x[0]), datasets:[ {type:'bar', label:'QTD', data:sorted.map(x=>x[1]), backgroundColor:getComputedStyle(document.body).getPropertyValue('--secondary').trim(), borderRadius:4, yAxisID:'y'}, {type:'line', label:'ACUMULADO %', data:acm, borderColor:getComputedStyle(document.body).getPropertyValue('--danger').trim(), backgroundColor:'transparent', yAxisID:'y2', tension:.3, pointRadius:2} ] }, 
+      options:{ 
+        devicePixelRatio: 4, responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'top', labels:{font:{weight:'bold'}}}}, 
+        scales:{ 
+          x: { ticks: { color: '#111', font: (ctx) => GraficosManager.fontResponsiva(ctx), maxRotation: 45, minRotation: 45 }, grid:{display:false} }, 
+          y:{ beginAtZero:true, position:'left', ticks: { color: '#111', font: {weight:'bold'} } }, 
+          y2:{ beginAtZero:true, position:'right', min:0, max:100, grid:{drawOnChartArea:false}, ticks:{ color: '#111', font: {weight:'bold'}, callback:v=>v+'%'} } 
+        },
+        layout: { padding: { bottom: 25, left: 10, right: 10 } }
+      } 
     });
   }
 };
@@ -1349,32 +1345,85 @@ const ExportManager = {
 
   gerarPDFGraficosSelecionados() {
     const checks = document.querySelectorAll('.chk-exp-graf:checked');
-    if(!checks.length) return alert('Selecione ao menos um gráfico.');
+    if(!checks.length) return alert('Selecione ao menos um gráfico ou widget.');
     this.fecharModalExportGraficos();
     const { jsPDF } = window.jspdf; const doc = new jsPDF({orientation: 'portrait', unit: 'mm', format: 'a4'});
     
-    const chartMap = {
-      'chartServicos': { chart: window.chServicos, title: 'TOP SERVIÇOS (UNIFICADO)' },
-      'chartStatus': { chart: window.chStatus, title: 'SITUAÇÃO (DEMANDAS VS ATENDIDAS)' },
-      'chartGerencia': { chart: window.chGerencia, title: 'DEMANDAS POR GERÊNCIA' },
-      'chartRpa': { chart: window.chRpa, title: 'DEMANDAS POR RPA EM ATRASO' },
-      'chartTendencia': { chart: window.chTendencia, title: 'TENDÊNCIA TEMPORAL (GERAL)' },
-      'chartStatusMensal': { chart: window.chStatusMensal, title: 'EVOLUÇÃO MENSAL DAS DEMANDAS' },
-      'chartPareto': { chart: window.chPareto, title: 'ANÁLISE DE PARETO — SERVIÇOS' },
-      'chartParetoBairro': { chart: window.chParetoBairro, title: 'ANÁLISE DE PARETO — BAIRROS' }
+    // Função auxiliar para remover emojis e símbolos especiais antes de desenhar no PDF (evita lixo tipo "Ø=ÜÉ")
+    const limparTituloPDF = (txt) => {
+      return txt.replace(/[\u{1F000}-\u{1F9FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]|[🎯🗺️🔧📊🏢📍📈📉]/gu, '').trim();
     };
-    
+
     let selectedItems = [];
-    checks.forEach(chk => { if(chartMap[chk.value] && chartMap[chk.value].chart) selectedItems.push({ title: chartMap[chk.value].title, img: chartMap[chk.value].chart.toBase64Image() }); });
-    if(!selectedItems.length) return alert('Nenhum gráfico válido encontrado para exportação.');
+    checks.forEach(chk => {
+      let val = chk.value;
+      if (val === 'multiGauge') {
+        const mgCanvas = document.getElementById('multiGauge');
+        if (mgCanvas) {
+          selectedItems.push({ title: limparTituloPDF('🎯 ÍNDICES (VELOCÍMETRO)'), img: mgCanvas.toDataURL('image/png', 1.0), w: mgCanvas.width, h: mgCanvas.height, isCustom: false });
+        }
+      } else if (val === 'rankBairrosPremium') {
+        let base = [...AppState.dadosFiltrados];
+        const modo = document.getElementById('topBairrosFiltro')?.value || 'todos';
+        if (modo === 'atraso') base = base.filter(r => r.__situacaoMatematica === 'atraso'); 
+        else if (modo === 'atendido') base = base.filter(r => r.__situacaoMatematica === 'atendido_prazo' || r.__situacaoMatematica === 'atendido_fora');
+        const ct = {}; base.forEach(r => { const v = String(r[AppState.colBairro]||'').trim().toUpperCase(); if(v) ct[v] = (ct[v]||0)+1; });
+        const top = Object.entries(ct).sort((a,b)=>b[1]-a[1]).slice(0, 10);
+        selectedItems.push({ title: limparTituloPDF('🗺️ TOP BAIRROS (RANKING)'), isCustom: true, data: top });
+      } else {
+        const chartMap = {
+          'chartServicos': { chart: window.chServicos, title: '🔧 TOP SERVIÇOS (UNIFICADO)' },
+          'chartStatus': { chart: window.chStatus, title: '📊 SITUAÇÃO (DEMANDAS VS ATENDIDAS)' },
+          'chartGerencia': { chart: window.chGerencia, title: '🏢 DEMANDAS POR GERÊNCIA' },
+          'chartRpa': { chart: window.chRpa, title: '📍 DEMANDAS POR RPA EM ATRASO' },
+          'chartTendencia': { chart: window.chTendencia, title: '📈 TENDÊNCIA TEMPORAL (GERAL)' },
+          'chartStatusMensal': { chart: window.chStatusMensal, title: '📊 EVOLUÇÃO MENSAL DAS DEMANDAS' },
+          'chartPareto': { chart: window.chPareto, title: '📉 ANÁLISE DE PARETO — SERVIÇOS' },
+          'chartParetoBairro': { chart: window.chParetoBairro, title: '📉 ANÁLISE DE PARETO — BAIRROS' }
+        };
+        if(chartMap[val] && chartMap[val].chart) {
+          let ch = chartMap[val].chart;
+          selectedItems.push({ title: limparTituloPDF(chartMap[val].title), img: ch.toBase64Image('image/png', 1.0), w: ch.canvas.width, h: ch.canvas.height, isCustom: false });
+        }
+      }
+    });
+
+    if(!selectedItems.length) return alert('Nenhum item válido encontrado para exportação.');
     
     let totalPages = Math.ceil(selectedItems.length / 2); let pageIdx = 1;
     for (let i = 0; i < selectedItems.length; i += 2) {
       if (pageIdx > 1) doc.addPage();
       doc.setFontSize(8.5); doc.setFont("helvetica", "bold"); doc.text("AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA - EMLURB", 105, 10, {align:"center"});
-      doc.setFontSize(7.5); doc.setFont("helvetica", "normal"); doc.text("RELATÓRIO GERENCIAL DE INDICADORES 156 - GRÁFICOS", 105, 14, {align:"center"});
-      doc.setFont("helvetica", "bold"); doc.setFontSize(8); doc.text(selectedItems[i].title, 14, 22); doc.addImage(selectedItems[i].img, 'PNG', 14, 25, 182, 110);
-      if (selectedItems[i+1]) { doc.setFont("helvetica", "bold"); doc.setFontSize(8); doc.text(selectedItems[i+1].title, 14, 142); doc.addImage(selectedItems[i+1].img, 'PNG', 14, 145, 182, 110); }
+      doc.setFontSize(7.5); doc.setFont("helvetica", "normal"); doc.text("RELATÓRIO GERENCIAL DE INDICADORES 156 - PAINEL VISUAL", 105, 14, {align:"center"});
+      
+      const renderItem = (item, yPos) => {
+        doc.setFont("helvetica", "bold"); doc.setFontSize(8); doc.text(item.title, 14, yPos);
+        if (item.isCustom) {
+          let rows = item.data.map((t, idx) => [`${idx+1}º`, t[0], String(t[1])]);
+          doc.autoTable({
+            startY: yPos + 3,
+            head: [['POS', 'BAIRRO', 'QTD']],
+            body: rows.length ? rows : [['-', 'SEM DADOS', '0']],
+            theme: 'grid',
+            styles: { fontSize: 7, cellPadding: 2 },
+            headStyles: { fillColor: [0, 0, 85] },
+            margin: { left: 14, right: 14 }
+          });
+        } else {
+          let maxWidth = 182, maxHeight = 102;
+          let ratio = item.w / item.h;
+          let drawW = maxWidth, drawH = maxWidth / ratio;
+          if (drawH > maxHeight) { drawH = maxHeight; drawW = maxHeight * ratio; }
+          let drawX = 14 + (maxWidth - drawW) / 2;
+          doc.addImage(item.img, 'PNG', drawX, yPos + 3, drawW, drawH);
+        }
+      };
+
+      renderItem(selectedItems[i], 20);
+      if (selectedItems[i+1]) {
+        renderItem(selectedItems[i+1], 138);
+      }
+      
       doc.setFontSize(6.5); doc.setFont("helvetica", "normal"); doc.text(`Emitido em: ${new Date().toLocaleString('pt-BR')}`, 14, 288); doc.text(`Página ${pageIdx} de ${totalPages}`, 196, 288, {align:"right"});
       pageIdx++;
     }
