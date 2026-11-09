@@ -1,17 +1,37 @@
 {
-  "name": "DVCC 156 EMLURB",
-  "short_name": "DVCC 156",
-  "start_url": "./index.html",
+  "id": "gestcard-app",
+  "name": "GestCard",
+  "short_name": "GestCard",
+  "description": "Controle de cartões, parcelas e acertos entre pessoas.",
+  "lang": "pt-BR",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#f3f6fb",
-  "theme_color": "#000055",
-  "description": "Painel analítico e interativo para monitoramento de demandas da EMLURB.",
+  "orientation": "portrait",
+  "background_color": "#0f172a",
+  "theme_color": "#000000",
+  "categories": [
+    "finance",
+    "productivity"
+  ],
   "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
     {
       "src": "icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
